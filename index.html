@@ -21,42 +21,52 @@
 <body>
 
 <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">
-        <img src="images/logo.jpg" height="60">
-      </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      <img src="images/logo.jpg" height="60">
+    </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#anasayfa">Ana Sayfa</a>
-            </li>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+          
+        <li class="nav-item">
+          <a class="nav-link" href="#anasayfa">Ana Sayfa</a>
+        </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#hizmetler">Hizmetlerimiz</a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#hizmetler">Hizmetlerimiz</a>
+        </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#hakkimizda">Hakkımızda</a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#hakkimizda">Hakkımızda</a>
+        </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#projeler">Projeler</a>
-            </li>
+        <!-- 🔥 DROPDOWN EKLENDİ -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="projelerDropdown" role="button" data-bs-toggle="dropdown">
+            Projeler
+          </a>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#iletisim">İletişim</a>
-            </li>
-        </ul>
-      </div>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#projeler">Tüm Projeler</a></li>
+            <li><a class="dropdown-item" href="#projeler">Tamamlanan Projeler</a></li>
+            <li><a class="dropdown-item" href="#projeler">Devam Eden Projeler</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#iletisim">İletişim</a>
+        </li>
+
+      </ul>
     </div>
-  </nav>
-
+  </div>
+</nav>
   <!-- HERO -->
   <section id="anasayfa" class="hero d-flex align-items-center">
   <div class="overlay"></div>
