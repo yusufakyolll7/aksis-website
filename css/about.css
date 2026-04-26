@@ -1,0 +1,125 @@
+:root {
+  --primary: #0d1b2a;
+  --secondary: #1b263b;
+  --accent: #0077b6;
+  --accent-light: #00b4d8;
+  --bg: #f8f9fa;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  padding-top: 100px;
+  color: #333;
+}
+
+/* =========================
+   GENEL SAYFA KONTEYNER
+========================= */
+
+section {
+  padding: 80px 0;
+}
+
+.container {
+  max-width: 1100px;
+}
+
+/* =========================
+   HAKKIMIZDA YAZI BLOĞU
+========================= */
+
+.about-full-text {
+  background: #fff;
+  padding: 50px 80px;
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+  width: 100%;
+}
+
+
+.about-full-text:hover {
+  transform: translateY(-3px);
+}
+
+/* Başlık */
+.about-full-text h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--primary);
+  position: relative;
+}
+
+.about-full-text h3::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent), var(--accent-light));
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  border-radius: 5px;
+}
+
+/* Paragraflar */
+.about-full-text p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #444;
+  margin-bottom: 18px;
+  text-align: justify;
+}
+
+/* İlk paragraf vurgusu */
+.about-full-text p:first-of-type {
+  font-weight: 500;
+  color: #222;
+}
+
+/* =========================
+   HAKKIMIZDA FOTO
+========================= */
+
+.about-full-img {
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+}
+
+.about-full-img img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  transition: 0.4s ease;
+}
+
+.about-full-img img:hover {
+  transform: scale(1.02);
+}
+
+/* =========================
+   HOVER GENEL EFEKT
+========================= */
+
+.about-full-text,
+.about-full-img img {
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .about-full-text {
+    padding: 25px;
+  }
+
+  .about-full-text h3 {
+    font-size: 22px;
+  }
+
+  .about-full-text p {
+    font-size: 15px;
+  }
+}
