@@ -35,11 +35,13 @@ body {
   font-size: 60px;
   font-weight: 700;
   letter-spacing: 1px;
+  animation: fadeUp 1s ease forwards;
 }
 
 .hero p {
   font-size: 22px;
   opacity: 0.9;
+  animation: fadeUp 1.5s ease forwards;
 }
 
 .hero .container {
@@ -99,6 +101,31 @@ html {
 footer {
   font-size: 14px;
   letter-spacing: 0.5px;
+  background-color: #0d1b2a;
+}
+
+.footer h5 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.footer p {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+.footer i {
+  margin-right: 8px;
 }
 
 .btn-primary {
@@ -132,10 +159,6 @@ section {
   transition: 0.3s;
   font-size: 16px;
   font-weight: 500;
-}
-
-.nav-link:hover {
-  color: var(--accent) !important;
 }
 
 .navbar-brand {
@@ -211,16 +234,16 @@ ul li {
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.back-btn {
-  padding: 12px 30px;
-  border-radius: 30px;
-  font-weight: 500;
-  transition: 0.3s;
-}
 
-.back-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {

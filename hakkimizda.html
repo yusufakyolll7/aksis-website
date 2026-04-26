@@ -13,9 +13,33 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <img src="images/logo.png" height="50">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <img src="images/logo.jpg" height="60">
     </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#anasayfa">Ana Sayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#hizmetler">Hizmetler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Hakkımızda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#projeler">Projeler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#iletisim">İletişim</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 
@@ -152,19 +176,52 @@
 
 </div>
 
-    <!-- BUTON -->
-    <div class="text-center mt-5 pt-4">
-      <a href="index.html" class="btn btn-primary back-btn">
-        ← Ana Sayfaya Dön
-      </a>
-    </div>
-
   </div>
 </section>
 
-<footer class="bg-dark text-white text-center py-4">
+<footer class="footer bg-dark text-white pt-5 pb-3">
   <div class="container">
-    <p class="mb-0">© 2026 Aksis Mühendislik - Tüm Hakları Saklıdır</p>
+
+    <div class="row">
+
+      <!-- LOGO + AÇIKLAMA -->
+      <div class="col-md-4 mb-4">
+        <img src="images/logo.jpg" height="60" class="mb-3">
+        <p>
+          Aksis Mühendislik, modern mühendislik çözümleri ile
+          projelerinizi güvenle hayata geçirir.
+        </p>
+      </div>
+
+      <!-- MENÜ -->
+      <div class="col-md-4 mb-4">
+        <h5>Menü</h5>
+        <ul class="list-unstyled">
+          <li><a href="#anasayfa">Ana Sayfa</a></li>
+          <li><a href="#hizmetler">Hizmetler</a></li>
+          <li><a href="#hakkimizda">Hakkımızda</a></li>
+          <li><a href="#projeler">Projeler</a></li>
+          <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+      </div>
+
+      <!-- İLETİŞİM -->
+      <div class="col-md-4 mb-4">
+        <h5>İletişim</h5>
+        <p><i class="bi bi-geo-alt"></i> İstanbul / Türkiye</p>
+        <p><i class="bi bi-telephone"></i> +90 5XX XXX XX XX</p>
+        <p><i class="bi bi-envelope"></i> info@aksismuhendislik.com</p>
+      </div>
+
+    </div>
+
+    <hr class="bg-light">
+
+    <!-- ALT -->
+    <div class="text-center">
+      <p class="mb-0">© 2026 Aksis Mühendislik - Tüm Hakları Saklıdır</p>
+    </div>
+
   </div>
 </footer>
 
