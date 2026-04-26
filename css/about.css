@@ -14,15 +14,16 @@ body {
 }
 
 /* =========================
-   GENEL SAYFA KONTEYNER
+   GENEL LAYOUT
 ========================= */
 
 section {
   padding: 80px 0;
 }
 
+/* ⚠️ Bootstrap ile uyumlu hale getirildi */
 .container {
-  max-width: 1100px;
+  max-width: 1140px;
 }
 
 /* =========================
@@ -31,15 +32,18 @@ section {
 
 .about-full-text {
   background: #fff;
-  padding: 50px 80px;
+  padding: 50px 60px;
   border-radius: 18px;
   box-shadow: 0 10px 35px rgba(0,0,0,0.06);
   width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
-
+/* hover hafif efekt (abartısız) */
 .about-full-text:hover {
   transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
 }
 
 /* Başlık */
@@ -51,6 +55,7 @@ section {
   position: relative;
 }
 
+/* alt çizgi */
 .about-full-text h3::after {
   content: "";
   width: 60px;
@@ -78,11 +83,11 @@ section {
 }
 
 /* =========================
-   HAKKIMIZDA FOTO
+   FOTO BLOĞU
 ========================= */
 
 .about-full-img {
-  max-width: 900px;
+  width: 100%;
   margin: 40px auto 0 auto;
 }
 
@@ -93,17 +98,58 @@ section {
   transition: 0.4s ease;
 }
 
+/* hover zoom */
 .about-full-img img:hover {
   transform: scale(1.02);
 }
 
 /* =========================
-   HOVER GENEL EFEKT
+   MİSYON / KALİTE KARTLARI
 ========================= */
 
-.about-full-text,
-.about-full-img img {
-  transition: all 0.3s ease;
+.about-card {
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  transition: 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+}
+
+.about-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+/* =========================
+   LİSTE
+========================= */
+
+.mission-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.mission-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.mission-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
 }
 
 /* =========================
@@ -115,6 +161,10 @@ section {
     padding: 25px;
   }
 
+  .about-card {
+    padding: 25px;
+  }
+
   .about-full-text h3 {
     font-size: 22px;
   }
@@ -122,4 +172,22 @@ section {
   .about-full-text p {
     font-size: 15px;
   }
+}
+.about-hero h1 {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+.about-line {
+  width: 90px;
+  height: 4px;
+  margin: 12px auto;
+  background: linear-gradient(to right, var(--accent), var(--accent-light));
+  border-radius: 5px;
+}
+.about-hero p {
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
 }

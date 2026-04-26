@@ -212,10 +212,11 @@ ul li {
   font-weight: bold;
 }
 .stat-box {
+  background: #ffffff;
   padding: 30px;
   border-radius: 12px;
-  background: #f8f9fa;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 .stat-box h2 {
