@@ -234,6 +234,118 @@ ul li {
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
+.service-icon {
+  font-size: 40px;
+  color: var(--accent);
+}
+
+.service-card {
+  transition: all 0.3s ease;
+  position: relative;
+  background: #6c8f97;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  color: white;
+  height: 100%;
+  height: 500px; /* bunu birazdan ayarlayacağız */
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.service-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.service-content {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.service-content h5 {
+  transition: 0.3s;
+  min-height: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.service-card:hover h5 {
+  color: #ffffff;
+}
+
+.service-content ul {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 5px;
+  padding-left: 0;
+  list-style: none;
+  flex: 1;
+}
+
+.service-content li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.service-content li::before {
+  content: "✔";
+  margin-right: 8px;
+  color: white;
+}
+
+.service-content ul::-webkit-scrollbar {
+  width: 5px;
+}
+
+.service-content ul::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.2),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: 0.5s;
+}
+
+.service-card:hover::before {
+  top: 100%;
+  left: 100%;
+}
+
+.service-card:hover .service-img {
+  transform: scale(1.05);
+}
 
 @keyframes fadeUp {
   from {
@@ -253,5 +365,17 @@ ul li {
 
   .hero p {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .services-grid {
+    grid-template-columns: 1fr;
   }
 }
