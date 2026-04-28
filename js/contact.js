@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.disabled = true;
         submitBtn.textContent = "Gönderiliyor...";
 
-        // EmailJS bilgileriniz (Buraya kendi bilgilerinizi girmelisiniz)
-        const PUBLIC_KEY = "BURAYA_PUBLIC_KEY_GELECEK";
-        const SERVICE_ID = "BURAYA_SERVICE_ID_GELECEK";
-        const TEMPLATE_ID = "BURAYA_TEMPLATE_ID_GELECEK";
+        // EmailJS bilgileriniz
+        const PUBLIC_KEY = "xNu6bPouo7um--H8N";
+        const SERVICE_ID = "service_xciakzj";
+        const TEMPLATE_ID = "template_bo62p8e";
 
         if (PUBLIC_KEY === "BURAYA_PUBLIC_KEY_GELECEK") {
             alert("Lütfen js/contact.js dosyasından EmailJS bilgilerinizi tanımlayın!");

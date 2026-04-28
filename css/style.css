@@ -137,6 +137,12 @@ footer {
 .footer p {
   line-height: 1.8;
   margin-bottom: 15px;
+  color: #94A3B8;
+}
+
+/* Bootstrap'in text-muted sınıfını Hızlı Menü tonuyla eşitliyoruz */
+.footer .text-muted {
+  color: #94A3B8 !important;
 }
 
 .footer a {
@@ -259,15 +265,17 @@ section {
   transform: scale(1.02);
 }
 
-/* FOOTER LOGO TRICK kaldırıldı, safi PNG ve parlama eklendi */
+/* FOOTER LOGO: Koyu zeminde görünmesi için tamamen beyaza çevrildi (silüet) */
 .footer-logo {
   transition: all 0.3s ease;
-  filter: drop-shadow(0 0 10px rgba(170, 170, 170, 0.9)) drop-shadow(0 0 25px rgba(170, 170, 170, 0.6));
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 .footer-logo:hover {
-  filter: drop-shadow(0 0 15px rgba(200, 200, 200, 1)) drop-shadow(0 0 35px rgba(200, 200, 200, 0.8));
-  transform: scale(1.02);
+  transform: translateY(-2px) scale(1.02);
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 4px 10px rgba(255, 255, 255, 0.3));
 }
 
 p {
@@ -349,16 +357,84 @@ p {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  border-top: 3px solid transparent;
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: serviceCardEnter 0.6s ease forwards;
+}
+
+/* Staggered entrance delays for each card */
+.services-grid > div:nth-child(1) .service-card { animation-delay: 0.05s; }
+.services-grid > div:nth-child(2) .service-card { animation-delay: 0.12s; }
+.services-grid > div:nth-child(3) .service-card { animation-delay: 0.19s; }
+.services-grid > div:nth-child(4) .service-card { animation-delay: 0.26s; }
+.services-grid > div:nth-child(5) .service-card { animation-delay: 0.33s; }
+.services-grid > div:nth-child(6) .service-card { animation-delay: 0.40s; }
+.services-grid > div:nth-child(7) .service-card { animation-delay: 0.47s; }
+.services-grid > div:nth-child(8) .service-card { animation-delay: 0.54s; }
+
+@keyframes serviceCardEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shine sweep overlay */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(37, 99, 235, 0.06) 45%,
+    rgba(37, 99, 235, 0.12) 50%,
+    rgba(37, 99, 235, 0.06) 55%,
+    transparent 65%,
+    transparent 100%
+  );
+  transition: left 0.7s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.service-card:hover::before {
+  left: 100%;
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: #CBD5E1;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.10), 0 8px 16px rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.15);
+  border-top-color: var(--accent);
+}
+
+/* Subtle inner glow on hover */
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.service-card:hover::after {
+  opacity: 1;
 }
 
 .service-icon-header {
@@ -368,6 +444,18 @@ p {
   padding: 30px 24px 10px;
   color: var(--accent);
   font-size: 42px;
+  position: relative;
+  z-index: 2;
+}
+
+.service-icon-header i {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: inline-block;
+}
+
+.service-card:hover .service-icon-header i {
+  transform: scale(1.18) translateY(-3px);
+  filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.3));
 }
 
 .service-content {
@@ -375,6 +463,8 @@ p {
   padding: 24px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 2;
 }
 
 .service-content h5 {
@@ -383,6 +473,11 @@ p {
   color: var(--primary);
   margin-bottom: 16px;
   min-height: 44px;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .service-content h5 {
+  color: var(--accent);
 }
 
 .service-content ul {
@@ -398,6 +493,11 @@ p {
   font-size: 14px;
   color: var(--secondary);
   line-height: 1.5;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.service-card:hover .service-content li {
+  color: #1E293B;
 }
 
 .service-content li::before {
@@ -409,6 +509,12 @@ p {
   height: 6px;
   background-color: var(--accent);
   border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-content li::before {
+  transform: scale(1.4);
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.4);
 }
 
 @keyframes fadeUp {
@@ -449,4 +555,199 @@ p {
 #tamamlanan-projeler-alani .carousel-indicators .active,
 #devam-eden-projeler-alani .carousel-indicators .active {
   background-color: var(--accent);
+}
+
+/* FLOATING CONTACT FORM PREMIUM REDESIGN */
+.floating-contact-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, var(--accent), #1D4ED8);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: none;
+}
+
+.floating-contact-btn:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.5);
+}
+
+.floating-contact-btn i {
+  transition: transform 0.3s ease;
+}
+
+.floating-contact-popup {
+  position: fixed;
+  bottom: 110px;
+  right: 30px;
+  width: 350px;
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.15);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  font-family: var(--font-family);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.floating-contact-popup.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.fcp-header {
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  color: white;
+  padding: 25px 25px 20px;
+  position: relative;
+}
+
+.fcp-header::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  right: 25px;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  transform: rotate(45deg);
+  z-index: 0;
+}
+
+.fcp-header-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.fcp-header-title i {
+  color: var(--accent-light);
+  font-size: 22px;
+}
+
+.fcp-header-subtitle {
+  font-size: 14px;
+  color: #94A3B8;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}
+
+.fcp-body {
+  padding: 35px 25px 25px;
+  background-color: #FFFFFF;
+  position: relative;
+  z-index: 2;
+}
+
+.fcp-intro {
+  font-size: 14px;
+  color: var(--secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.fcp-form-group {
+  margin-bottom: 16px;
+}
+
+.fcp-input, .fcp-textarea {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 15px;
+  font-size: 14px;
+  color: var(--primary);
+  background: #F8FAFC;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.fcp-input:focus, .fcp-textarea:focus {
+  background: #FFFFFF;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.fcp-textarea {
+  resize: none;
+  height: 100px;
+}
+
+.fcp-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.fcp-submit:hover {
+  background: #1D4ED8;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+}
+
+/* NAVBAR DROPDOWN ON HOVER */
+@media all and (min-width: 992px) {
+  .navbar .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+  .navbar .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 10px 0;
+    background: #FFFFFF;
+  }
+  .dropdown-item {
+    padding: 10px 20px;
+    font-weight: 500;
+    color: var(--secondary);
+    transition: all 0.2s ease;
+    font-size: 14px;
+  }
+  .dropdown-item:hover {
+    background-color: #F8FAFC;
+    color: var(--accent);
+    padding-left: 25px;
+  }
 }

@@ -13,4 +13,16 @@ firebase.initializeApp(firebaseConfig);
 
 // Servisleri dışa aktarma
 const db = firebase.firestore();
+
+// ÇEVRİMDIŞI ÖNBELLEK (OFFLINE PERSISTENCE) AKTİVASYONU
+// Bu sayede sayfa geçişlerinde veriler sunucu yerine direkt anında önbellekten gelir (Sıfır bekleme süresi)
+db.enablePersistence({ synchronizeTabs: true })
+  .catch((err) => {
+      if (err.code == 'failed-precondition') {
+          console.log("Birden fazla sekme açık olduğu için cache senkronizasyonu yapılamadı.");
+      } else if (err.code == 'unimplemented') {
+          console.log("Tarayıcı offline cache desteklemiyor.");
+      }
+  });
+
 const auth = firebase.auth();

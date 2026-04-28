@@ -48,8 +48,14 @@
           <a class="nav-link" href="#hakkimizda">Hakkımızda</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="#projeler">Projeler</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Projeler
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="projeler.html?kategori=tamamlandi">Tamamlanan Projeler</a></li>
+            <li><a class="dropdown-item" href="projeler.html?kategori=devam_ediyor">Devam Eden Projeler</a></li>
+          </ul>
         </li>
 
         <li class="nav-item">
@@ -117,7 +123,7 @@
   </div>
   </section>
 
-  <section id="hakkimizda" class="py-5">
+  <section id="hakkimizda" class="py-5 bg-white">
   <div class="container text-center">
 
     <h2 class="mb-2">Hakkımızda</h2>
@@ -139,36 +145,30 @@
   </div>
 </section>
 
-  <section id="projeler" class="py-5 bg-light">
+  <section id="projeler" class="py-4 bg-light">
   <div class="container text-center">
 
-    <h2 class="mb-2">Referans Projelerimiz</h2>
-    <p class="text-muted mb-5">Başarıyla tamamladığımız ve devam eden projelerimiz</p>
+    <h2 class="mb-1">Son Projelerimiz</h2>
+    <p class="text-muted mb-4">Özenle tamamladığımız en güncel çalışmalarımız</p>
 
-    <!-- TAMAMLANAN PROJELER -->
-    <div class="d-flex align-items-center justify-content-center mb-4">
-      <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(37,99,235,0.08); color: var(--accent); font-weight: 600; font-size: 16px; padding: 8px 20px; border-radius: 50px;">
-        <i class="bi bi-check-circle-fill"></i> Tamamlanan Projeler
-      </span>
-    </div>
-    <div class="mb-5" id="tamamlanan-projeler-alani">
-        <p class="text-muted">Yükleniyor...</p>
+    <!-- PROJELER ALANI -->
+    <div id="son-projeler-alani" class="row g-4 text-start">
+        <div class="col-12 text-center text-muted py-5">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-3" style="font-weight: 500;">Projeler Yükleniyor...</p>
+        </div>
     </div>
 
-    <!-- DEVAM EDEN PROJELER -->
-    <div class="d-flex align-items-center justify-content-center mb-4">
-      <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(245,158,11,0.08); color: #D97706; font-weight: 600; font-size: 16px; padding: 8px 20px; border-radius: 50px;">
-        <i class="bi bi-clock-history"></i> Devam Eden Projeler
-      </span>
-    </div>
-    <div id="devam-eden-projeler-alani">
-        <p class="text-muted">Yükleniyor...</p>
+    <div class="text-center mt-4">
+      <a href="projeler.html?kategori=tamamlandi" class="btn btn-primary">
+        Tüm Projeleri Gör
+      </a>
     </div>
 
   </div>
   </section>
 
-  <section id="iletisim" class="py-5 bg-light">
+  <section id="iletisim" class="py-5 bg-white">
   <div class="container">
     <h2 class="text-center mb-5">İletişim</h2>
 
@@ -200,7 +200,7 @@
   </div>
   </section>
 
-  <section id="harita">
+  <section id="harita" class="bg-light">
   <iframe 
     src="https://www.google.com/maps?q=istanbul&output=embed" 
     width="100%" 
@@ -290,5 +290,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="js/contact.js"></script>
 
+  <!-- Floating Contact Form -->
+  <script src="js/floating-contact.js"></script>
 </body>
 </html>

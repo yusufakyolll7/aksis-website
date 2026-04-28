@@ -42,8 +42,14 @@
         <li class="nav-item">
           <a class="nav-link" href="index.html#hakkimizda">Hakkımızda</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.html#projeler">Projeler</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Projeler
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="projeler.html?kategori=tamamlandi">Tamamlanan Projeler</a></li>
+            <li><a class="dropdown-item" href="projeler.html?kategori=devam_ediyor">Devam Eden Projeler</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.html#iletisim">İletişim</a>
@@ -309,5 +315,7 @@
 <script src="js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Floating Contact Form -->
+  <script src="js/floating-contact.js"></script>
 </body>
 </html>

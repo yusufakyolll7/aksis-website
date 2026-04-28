@@ -1,0 +1,192 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const kategori = urlParams.get('kategori') || 'tamamlandi'; // varsayılan tamamlanan
+    
+    const baslikEl = document.getElementById("sayfa-basligi");
+    const gridEl = document.getElementById("projeler-grid");
+    
+    // Sayfa başlığını ayarla
+    if (kategori === 'tamamlandi') {
+        baslikEl.textContent = "Tamamlanan Projeler";
+    } else {
+        baslikEl.textContent = "Devam Eden Projeler";
+    }
+
+    // Proje kartı HTML'ini oluştur
+    function projeKartiOlustur(proje, id, index = 0) {
+        let imgHtml = '';
+        if (proje.resimUrls && proje.resimUrls.length > 1) {
+            const carouselId = `carousel-${id}`;
+            let indicators = '';
+            let items = '';
+
+            proje.resimUrls.forEach((url, index) => {
+                const activeClass = index === 0 ? 'active' : '';
+                indicators += `<button type="button" data-bs-target="#${carouselId}" data-bs-slide-to="${index}" class="${activeClass}"></button>`;
+                items += `
+                    <div class="carousel-item ${activeClass}">
+                        <img src="${url}" class="d-block w-100" style="height: 280px; object-fit: cover;" alt="${proje.baslik}">
+                    </div>
+                `;
+            });
+
+            imgHtml = `
+                <div class="px-4">
+                    <div id="${carouselId}" class="carousel slide shadow-sm rounded-4 overflow-hidden" data-bs-ride="carousel">
+                        <div class="carousel-indicators">${indicators}</div>
+                        <div class="carousel-inner">${items}</div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        } else {
+            const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
+            imgHtml = `
+                <div class="px-4">
+                    <div class="overflow-hidden shadow-sm rounded-4">
+                        <img src="${tekResim}" class="w-100 proje-card-img" style="height: 280px; object-fit: cover; transition: transform 0.5s ease;" alt="${proje.baslik}">
+                    </div>
+                </div>
+            `;
+        }
+
+        // Renk paleti belirleme (index'e göre 0: Beyaz, 1: Lacivert, 2: Mavi)
+        let cardStyle = 'background-color: #FFFFFF;';
+        let headerStyle = 'bg-white';
+        let textStyle = 'text-dark';
+        let descStyle = 'text-muted';
+        let btnStyle = 'border: 1px solid var(--accent); color: var(--accent); background-color: transparent;';
+        let btnHoverClass = 'proje-incele-btn'; 
+
+        if (index % 3 === 1) {
+            // İkinci Kart: Lacivert (Daha açık ve canlı)
+            cardStyle = 'background-color: #1E3A8A;'; 
+            headerStyle = 'bg-transparent';
+            textStyle = 'text-white';
+            descStyle = 'text-light opacity-75';
+            btnStyle = 'border: none; color: #1E3A8A; background-color: white;';
+            btnHoverClass = 'proje-incele-btn-dark';
+        } else if (index % 3 === 2) {
+            // Üçüncü Kart: Mavi (Accent Color)
+            cardStyle = 'background-color: var(--accent);'; // #2563EB
+            headerStyle = 'bg-transparent';
+            textStyle = 'text-white';
+            descStyle = 'text-white opacity-75';
+            btnStyle = 'border: none; color: var(--accent); background-color: white;';
+            btnHoverClass = 'proje-incele-btn-blue';
+        }
+
+        // Bootstrap col-md-4 class'ı ile her satıra 3 adet proje dizeceğiz.
+        return `
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card h-100 shadow-sm border-0 proje-card" style="${cardStyle} transition: transform 0.3s ease, box-shadow 0.3s ease; border-radius: 12px; overflow: hidden;">
+                    <div class="${headerStyle} px-4 pt-4 pb-3 text-center">
+                        <h5 class="fw-bold ${textStyle} mb-0" style="font-size: 20px;">${proje.baslik}</h5>
+                    </div>
+                    ${imgHtml}
+                    <div class="card-body d-flex flex-column p-4">
+                        <p class="${descStyle} flex-grow-1" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 15px; line-height: 1.6;">${proje.aciklama}</p>
+                        <a href="proje-detay.html?id=${id}" class="btn mt-4 w-100 ${btnHoverClass}" style="border-radius: 8px; font-weight: 600; padding: 12px; ${btnStyle} transition: all 0.3s ease;">Projeyi İncele <i class="bi bi-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Firebase'den Verileri Çek (Sıralama ve filtrelemeyi JS ile yapıyoruz, onSnapshot ile anında yüklenir)
+    db.collection("projects").onSnapshot((querySnapshot) => {
+        let projeler = [];
+
+        querySnapshot.forEach((doc) => {
+            const proje = doc.data();
+            if (proje.durum === kategori) {
+                projeler.push({ id: doc.id, data: proje });
+            }
+        });
+
+        // Tarihe göre sıralama (Eğer tarih verisi eksikse 0 kabul edip en sona atar, hata vermez)
+        projeler.sort((a, b) => {
+            const timeA = (a.data.createdAt && typeof a.data.createdAt.toMillis === 'function') 
+                            ? a.data.createdAt.toMillis() : 0;
+            const timeB = (b.data.createdAt && typeof b.data.createdAt.toMillis === 'function') 
+                            ? b.data.createdAt.toMillis() : 0;
+            return timeB - timeA;
+        });
+
+        if (projeler.length === 0) {
+            gridEl.innerHTML = `
+                <div class="col-12 text-center text-muted py-5 mt-5">
+                    <i class="bi bi-inbox text-secondary mb-3" style="font-size: 60px; opacity: 0.5;"></i>
+                    <h4 class="text-dark">Kayıt Bulunamadı</h4>
+                    <p>Bu kategoride henüz yayınlanmış bir proje bulunmuyor.</p>
+                </div>`;
+            return;
+        }
+
+        let html = '';
+        projeler.forEach((p, index) => {
+            html += projeKartiOlustur(p.data, p.id, index);
+        });
+        
+        gridEl.innerHTML = html;
+
+        // Hover efektleri için JS müdahalesi
+        const cards = gridEl.querySelectorAll('.proje-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+                card.style.boxShadow = '0 20px 40px rgba(15, 23, 42, 0.12)';
+                
+                const img = card.querySelector('.proje-card-img');
+                if (img) img.style.transform = 'scale(1.05)';
+
+                const btn = card.querySelector('.proje-incele-btn');
+                if (btn) {
+                    btn.style.backgroundColor = 'var(--accent)';
+                    btn.style.color = 'white';
+                }
+
+                const btnDark = card.querySelector('.proje-incele-btn-dark');
+                if (btnDark) {
+                    btnDark.style.boxShadow = '0 6px 15px rgba(255,255,255,0.2)';
+                }
+
+                const btnBlue = card.querySelector('.proje-incele-btn-blue');
+                if (btnBlue) {
+                    btnBlue.style.boxShadow = '0 6px 15px rgba(255,255,255,0.2)';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 2px 4px rgba(15, 23, 42, 0.04)';
+                
+                const img = card.querySelector('.proje-card-img');
+                if (img) img.style.transform = 'scale(1)';
+
+                const btn = card.querySelector('.proje-incele-btn');
+                if (btn) {
+                    btn.style.backgroundColor = 'transparent';
+                    btn.style.color = 'var(--accent)';
+                }
+
+                const btnDark = card.querySelector('.proje-incele-btn-dark');
+                if (btnDark) {
+                    btnDark.style.boxShadow = 'none';
+                }
+
+                const btnBlue = card.querySelector('.proje-incele-btn-blue');
+                if (btnBlue) {
+                    btnBlue.style.boxShadow = 'none';
+                }
+            });
+        });
+    }, (error) => {
+        console.error("Projeler yüklenirken hata oluştu:", error);
+        gridEl.innerHTML = `<div class="col-12 text-center text-danger py-5"><p>Projeler yüklenirken bir hata oluştu.</p></div>`;
+    });
+});
