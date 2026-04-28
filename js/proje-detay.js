@@ -41,62 +41,65 @@ document.addEventListener("DOMContentLoaded", async () => {
                 indicators += `<button type="button" data-bs-target="#${carouselId}" data-bs-slide-to="${index}" class="${activeClass}"></button>`;
                 items += `
                     <div class="carousel-item ${activeClass}">
-                        <img src="${url}" class="d-block w-100 rounded shadow-sm" style="max-height: 600px; object-fit: contain; background-color: #f8f9fa;" alt="${proje.baslik}">
+                        <img src="${url}" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="${proje.baslik}">
                     </div>
                 `;
             });
 
             imgHtml = `
-                <div id="${carouselId}" class="carousel slide mb-5" data-bs-ride="carousel">
+                <div id="${carouselId}" class="carousel slide carousel-fade shadow-sm rounded-4 overflow-hidden" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         ${indicators}
                     </div>
-                    <div class="carousel-inner rounded">
+                    <div class="carousel-inner">
                         ${items}
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                        <span class="carousel-control-prev-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true"></span>
                         <span class="visually-hidden">Önceki</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
-                        <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                        <span class="carousel-control-next-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true"></span>
                         <span class="visually-hidden">Sonraki</span>
                     </button>
                 </div>
             `;
         } else {
             // Tek resim
-            const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.jpg');
-            imgHtml = `<img src="${tekResim}" class="img-fluid rounded shadow-sm mb-5 w-100" style="max-height: 600px; object-fit: contain; background-color: #f8f9fa;" alt="${proje.baslik}">`;
+            const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
+            imgHtml = `<div class="shadow-sm rounded-4 overflow-hidden"><img src="${tekResim}" class="img-fluid w-100" style="height: 500px; object-fit: cover;" alt="${proje.baslik}"></div>`;
         }
 
-        // Durum Badge
-        const durumBadge = proje.durum === 'tamamlandi' 
-            ? '<span class="badge bg-success mb-3 fs-6">Tamamlandı</span>' 
-            : '<span class="badge bg-warning text-dark mb-3 fs-6">Devam Ediyor</span>';
+        // Sayfa başlığını güncelle
+        document.title = proje.baslik + ' | Aksis Mühendislik';
 
-        // Detay Sayfası Tasarımını Ekrana Bas
+        // Detay Sayfası — Sade ve Şık
         detayAlani.innerHTML = `
             <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="text-center mb-5">
-                        ${durumBadge}
-                        <h1 class="fw-bold display-4 mb-3">${proje.baslik}</h1>
-                        <p class="text-muted"><i class="bi bi-calendar3"></i> Eklenme Tarihi: ${proje.createdAt ? proje.createdAt.toDate().toLocaleDateString('tr-TR') : 'Bilinmiyor'}</p>
+                <div class="col-lg-11">
+
+                    <!-- Proje Başlığı -->
+                    <div class="text-center mb-5" data-aos="fade-up">
+                        <h1 class="fw-bold" style="font-size: 2.4rem; letter-spacing: -0.02em; color: var(--primary);">${proje.baslik}</h1>
+                        <div style="width: 60px; height: 3px; background: var(--accent); border-radius: 2px; margin: 16px auto 0;"></div>
                     </div>
                     
-                    ${imgHtml}
-                    
-                    <div class="proje-aciklama bg-white p-4 p-md-5 rounded shadow-sm">
-                        <h3 class="fw-bold mb-4">Proje Detayları</h3>
-                        <p class="fs-5" style="line-height: 1.8; white-space: pre-wrap;">${proje.aciklama}</p>
+                    <!-- Resim veya Galeri -->
+                    <div class="row justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-lg-10">
+                            ${imgHtml}
+                        </div>
                     </div>
-                    
-                    <div class="text-center mt-5">
-                        <a href="index.html#projeler" class="btn btn-outline-dark btn-lg">
-                            <i class="bi bi-arrow-left"></i> Tüm Projelere Dön
-                        </a>
+
+                    <!-- Açıklama Bloğu -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="bg-white rounded-4 border p-4 p-md-5" style="min-height: 300px;">
+                                <p class="mb-0" style="line-height: 2; font-size: 1.1rem; color: var(--secondary); white-space: pre-wrap;">${proje.aciklama}</p>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         `;

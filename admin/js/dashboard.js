@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 : '';
 
             // İlk resmi al (çoklu resim destekleniyorsa ilkini, desteklenmiyorsa eski yapıyı kullan)
-            const ilkResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || '../images/logo.jpg');
+            const ilkResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || '../images/logo.png');
 
             const tr = document.createElement('tr');
             tr.innerHTML = `

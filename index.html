@@ -13,7 +13,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
@@ -23,8 +25,8 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">
-      <img src="images/logo.jpg" height="60">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <img src="images/logo.png" height="70" class="nav-logo" alt="Aksis Logo">
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -46,17 +48,8 @@
           <a class="nav-link" href="#hakkimizda">Hakkımızda</a>
         </li>
 
-        <!-- 🔥 DROPDOWN EKLENDİ -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="projelerDropdown" role="button" data-bs-toggle="dropdown">
-            Projeler
-          </a>
-
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#projeler">Tüm Projeler</a></li>
-            <li><a class="dropdown-item" href="#projeler">Tamamlanan Projeler</a></li>
-            <li><a class="dropdown-item" href="#projeler">Devam Eden Projeler</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="#projeler">Projeler</a>
         </li>
 
         <li class="nav-item">
@@ -80,35 +73,45 @@
 
   <section id="hizmetler" class="py-5 bg-light">
   <div class="container text-center">
-    <h2 class="mb-5">Hizmetlerimiz</h2>
+    <h2 class="mb-2">Hizmetlerimiz</h2>
+    <p class="text-muted mb-5">Uzman kadromuzla sunduğumuz profesyonel çözümler</p>
 
     <div class="row g-4">
 
       <div class="col-md-4" data-aos="fade-up">
-        <div class="card p-4 shadow-sm h-100">
-          <h5>Elektrik Taahhüt</h5>
-          <p>Projelerinizi anahtar teslim gerçekleştiriyoruz.</p>
+        <div class="card p-4 shadow-sm h-100 text-center">
+          <div class="mb-3">
+            <i class="bi bi-lightning-charge" style="font-size: 40px; color: var(--accent);"></i>
+          </div>
+          <h5 class="fw-bold">Elektrik Taahhüt</h5>
+          <p class="text-muted">Altyapıdan üstyapıya kadar tüm elektrik projelerinizi anahtar teslim gerçekleştiriyoruz.</p>
         </div>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="card p-4 shadow-sm h-100">
-          <h5>Projelendirme</h5>
-          <p>Modern mühendislik çözümleri ile projeler üretiyoruz.</p>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card p-4 shadow-sm h-100 text-center">
+          <div class="mb-3">
+            <i class="bi bi-cpu" style="font-size: 40px; color: var(--accent);"></i>
+          </div>
+          <h5 class="fw-bold">Projelendirme</h5>
+          <p class="text-muted">Ulusal ve uluslararası standartlara uygun, modern mühendislik çözümleri ile projeler üretiyoruz.</p>
         </div>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="card p-4 shadow-sm h-100">
-          <h5>Danışmanlık</h5>
-          <p>Uzman ekibimiz ile profesyonel danışmanlık sunuyoruz.</p>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="card p-4 shadow-sm h-100 text-center">
+          <div class="mb-3">
+            <i class="bi bi-graph-up-arrow" style="font-size: 40px; color: var(--accent);"></i>
+          </div>
+          <h5 class="fw-bold">Danışmanlık</h5>
+          <p class="text-muted">SMM ve YG İşletme yetki belgelerimizle profesyonel mühendislik danışmanlığı sunuyoruz.</p>
         </div>
       </div>
 
     </div>
   <div class="text-center mt-5">
     <a href="hizmetlerimiz.html" class="btn btn-primary">
-      Devamını Oku
+      Tüm Hizmetlerimiz
     </a>
   </div>
   </div>
@@ -117,35 +120,49 @@
   <section id="hakkimizda" class="py-5">
   <div class="container text-center">
 
-    <h2 class="mb-4">Hakkımızda</h2>
-    <p>
-      Aksis Mühendislik, üst yapı ve altyapı elektrik sektöründe proje, 
-      müşavirlik ve uygulama alanlarında profesyonel çözümler sunmaktadır.
-    </p>
+    <h2 class="mb-2">Hakkımızda</h2>
+    <p class="text-muted mb-5">20 yılı aşkın sektör deneyimi</p>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <p style="font-size: 17px; line-height: 1.9;">
+          Aksis Mühendislik, üst yapı ve altyapı elektrik sektöründe proje, 
+          müşavirlik ve uygulama alanlarında profesyonel çözümler sunmaktadır. 
+          2 Milyon m²'yi aşan proje deneyimi ve 25 MVA üzeri trafo kurulumu ile 
+          sektörün güvenilir markalarından biri olmayı hedeflemektedir.
+        </p>
+      </div>
+    </div>
     <a href="hakkimizda.html" class="btn btn-primary mt-3">
-      Devamını Oku
+      Kurumsal Bilgilerimiz
     </a>
 
   </div>
 </section>
 
-  <section id="projeler" class="py-5">
+  <section id="projeler" class="py-5 bg-light">
   <div class="container text-center">
 
-    <h2 class="mb-5">Referans Projelerimiz</h2>
+    <h2 class="mb-2">Referans Projelerimiz</h2>
+    <p class="text-muted mb-5">Başarıyla tamamladığımız ve devam eden projelerimiz</p>
 
     <!-- TAMAMLANAN PROJELER -->
-    <h4 class="mb-4">Tamamlanan Projeler</h4>
-    <div class="row g-4 mb-5" id="tamamlanan-projeler-alani">
-        <!-- Firebase'den gelen projeler buraya eklenecek -->
-        <div class="col-12"><p class="text-muted">Yükleniyor...</p></div>
+    <div class="d-flex align-items-center justify-content-center mb-4">
+      <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(37,99,235,0.08); color: var(--accent); font-weight: 600; font-size: 16px; padding: 8px 20px; border-radius: 50px;">
+        <i class="bi bi-check-circle-fill"></i> Tamamlanan Projeler
+      </span>
+    </div>
+    <div class="mb-5" id="tamamlanan-projeler-alani">
+        <p class="text-muted">Yükleniyor...</p>
     </div>
 
     <!-- DEVAM EDEN PROJELER -->
-    <h4 class="mb-4">Devam Eden Projeler</h4>
-    <div class="row g-4" id="devam-eden-projeler-alani">
-        <!-- Firebase'den gelen projeler buraya eklenecek -->
-        <div class="col-12"><p class="text-muted">Yükleniyor...</p></div>
+    <div class="d-flex align-items-center justify-content-center mb-4">
+      <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(245,158,11,0.08); color: #D97706; font-weight: 600; font-size: 16px; padding: 8px 20px; border-radius: 50px;">
+        <i class="bi bi-clock-history"></i> Devam Eden Projeler
+      </span>
+    </div>
+    <div id="devam-eden-projeler-alani">
+        <p class="text-muted">Yükleniyor...</p>
     </div>
 
   </div>
@@ -171,11 +188,11 @@
 
         <!-- Form -->
         <div class="col-md-6" data-aos="fade-left">
-          <form>
-            <input type="text" class="form-control mb-3" placeholder="Adınız">
-            <input type="email" class="form-control mb-3" placeholder="Email">
-            <textarea class="form-control mb-3" rows="4" placeholder="Mesajınız"></textarea>
-        <button class="btn btn-dark w-100">Gönder</button>
+          <form id="contact-form">
+            <input type="text" name="user_name" class="form-control mb-3" placeholder="Adınız" required>
+            <input type="email" name="user_email" class="form-control mb-3" placeholder="Email Adresiniz" required>
+            <textarea name="message" class="form-control mb-3" rows="4" placeholder="Mesajınız" required></textarea>
+            <button type="submit" class="btn btn-dark w-100" id="submit-btn">Gönder</button>
           </form>
         </div>
 
@@ -192,51 +209,63 @@
   </iframe>
   </section>
 
-  <footer class="footer bg-dark text-white pt-5 pb-3">
+<footer class="footer mt-auto">
   <div class="container">
-
-    <div class="row">
-
+    <div class="row gy-4">
       <!-- LOGO + AÇIKLAMA -->
-      <div class="col-md-4 mb-4">
-        <img src="images/logo.jpg" height="60" class="mb-3">
-        <p>
-          Aksis Mühendislik, modern mühendislik çözümleri ile
-          projelerinizi güvenle hayata geçirir.
+      <div class="col-lg-4 col-md-6 mb-4">
+        <a href="index.html" class="d-inline-block mb-4">
+          <img src="images/logo.png" height="70" class="footer-logo" alt="Aksis Logo">
+        </a>
+        <p class="pe-lg-4">
+          Aksis Mühendislik, güçlü teknik altyapısı ve modern vizyonu ile 
+          üst yapı ve altyapı projelerinizi güvenle hayata geçirir.
         </p>
       </div>
 
       <!-- MENÜ -->
-      <div class="col-md-4 mb-4">
-        <h5>Menü</h5>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h5>Hızlı Menü</h5>
         <ul class="list-unstyled">
-          <li><a href="#anasayfa">Ana Sayfa</a></li>
-          <li><a href="#hizmetler">Hizmetler</a></li>
-          <li><a href="#hakkimizda">Hakkımızda</a></li>
-          <li><a href="#projeler">Projeler</a></li>
-          <li><a href="#iletisim">İletişim</a></li>
+          <li><a href="index.html#anasayfa"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Ana Sayfa</a></li>
+          <li><a href="hizmetlerimiz.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Hizmetlerimiz</a></li>
+          <li><a href="hakkimizda.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Hakkımızda</a></li>
+          <li><a href="index.html#projeler"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Projeler</a></li>
         </ul>
       </div>
 
       <!-- İLETİŞİM -->
-      <div class="col-md-4 mb-4">
-        <h5>İletişim</h5>
-        <p><i class="bi bi-geo-alt"></i> İstanbul / Türkiye</p>
-        <p><i class="bi bi-telephone"></i> +90 5XX XXX XX XX</p>
-        <p><i class="bi bi-envelope"></i> info@aksismuhendislik.com</p>
+      <div class="col-lg-5 col-md-12 mb-4 footer-icon-list">
+        <h5>İletişim Bilgileri</h5>
+        <p>
+          <i class="bi bi-geo-alt"></i> 
+          <span><strong>Merkez Ofis:</strong> İstanbul / Türkiye</span>
+        </p>
+        <p>
+          <i class="bi bi-telephone"></i> 
+          <span><strong>Telefon:</strong> +90 5XX XXX XX XX</span>
+        </p>
+        <p>
+          <i class="bi bi-envelope"></i> 
+          <span><strong>E-Posta:</strong> info@aksismuhendislik.com</span>
+        </p>
       </div>
-
     </div>
 
-    <hr class="bg-light">
+    <hr class="footer-divider">
 
-    <!-- ALT -->
-    <div class="text-center">
-      <p class="mb-0">© 2026 Aksis Mühendislik - Tüm Hakları Saklıdır</p>
+    <!-- ALT YAZI -->
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="mb-0 text-muted" style="font-size:13px;">© 2026 Aksis Mühendislik. Tüm Hakları Saklıdır.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+        <a href="#" class="text-muted text-decoration-none me-3" style="font-size:13px;">Gizlilik Politikası</a>
+        <a href="#" class="text-muted text-decoration-none" style="font-size:13px;">Kullanım Şartları</a>
+      </div>
     </div>
-
   </div>
-  </footer>
+</footer>
 
   <script src="js/script.js"></script>
 
@@ -253,10 +282,13 @@
   <!-- Firebase (V8 Compat CDN) -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   
   <script src="js/firebase-config.js"></script>
   <script src="js/projects.js"></script>
+  
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/contact.js"></script>
 
 </body>
 </html>

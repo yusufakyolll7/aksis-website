@@ -1,30 +1,7 @@
-:root {
-  --primary: #0d1b2a;
-  --secondary: #1b263b;
-  --accent: #0077b6;
-  --accent-light: #00b4d8;
-  --bg: #f8f9fa;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg);
-  padding-top: 100px;
-  color: #333;
-}
-
 /* =========================
-   GENEL LAYOUT
+   HAKKIMIZDA SAYFASI
+   (Global stiller style.css'de)
 ========================= */
-
-section {
-  padding: 80px 0;
-}
-
-/* ⚠️ Bootstrap ile uyumlu hale getirildi */
-.container {
-  max-width: 1140px;
-}
 
 /* =========================
    HAKKIMIZDA YAZI BLOĞU
@@ -33,53 +10,50 @@ section {
 .about-full-text {
   background: #fff;
   padding: 50px 60px;
-  border-radius: 18px;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   width: 100%;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
 
-/* hover hafif efekt (abartısız) */
 .about-full-text:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-md);
+  border-color: #CBD5E1;
 }
 
-/* Başlık */
 .about-full-text h3 {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   margin-bottom: 25px;
   color: var(--primary);
   position: relative;
 }
 
-/* alt çizgi */
 .about-full-text h3::after {
   content: "";
   width: 60px;
   height: 4px;
-  background: linear-gradient(to right, var(--accent), var(--accent-light));
+  background: var(--accent);
   position: absolute;
   left: 0;
   bottom: -10px;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
-/* Paragraflar */
 .about-full-text p {
-  font-size: 16px;
-  line-height: 1.9;
-  color: #444;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--secondary);
   margin-bottom: 18px;
   text-align: justify;
 }
 
-/* İlk paragraf vurgusu */
 .about-full-text p:first-of-type {
   font-weight: 500;
-  color: #222;
+  color: var(--primary);
 }
 
 /* =========================
@@ -93,14 +67,9 @@ section {
 
 .about-full-img img {
   width: 100%;
-  border-radius: 18px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  transition: 0.4s ease;
-}
-
-/* hover zoom */
-.about-full-img img:hover {
-  transform: scale(1.02);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #E2E8F0;
 }
 
 /* =========================
@@ -110,15 +79,17 @@ section {
 .about-card {
   background: #fff;
   padding: 40px 50px;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   margin-bottom: 30px;
   transition: 0.3s ease;
 }
 
 .about-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-md);
+  border-color: #CBD5E1;
 }
 
 .about-card h3 {
@@ -129,65 +100,34 @@ section {
 }
 
 /* =========================
-   LİSTE
-========================= */
-
-.mission-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.mission-list li {
-  position: relative;
-  padding-left: 28px;
-  margin-bottom: 10px;
-  line-height: 1.7;
-}
-
-.mission-list li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-weight: bold;
-}
-
-/* =========================
    RESPONSIVE
 ========================= */
 
 @media (max-width: 768px) {
-  .about-full-text {
+  .about-full-text, .about-card {
     padding: 25px;
   }
-
-  .about-card {
-    padding: 25px;
-  }
-
-  .about-full-text h3 {
-    font-size: 22px;
-  }
-
-  .about-full-text p {
-    font-size: 15px;
-  }
+  .about-full-text h3 { font-size: 22px; }
+  .about-full-text p { font-size: 15px; }
 }
+
 .about-hero h1 {
   font-size: 42px;
   font-weight: 800;
   color: var(--primary);
-  letter-spacing: 1px;
+  letter-spacing: -0.02em;
 }
+
 .about-line {
-  width: 90px;
+  width: 80px;
   height: 4px;
-  margin: 12px auto;
-  background: linear-gradient(to right, var(--accent), var(--accent-light));
-  border-radius: 5px;
+  margin: 16px auto;
+  background: var(--accent);
+  border-radius: 2px;
 }
+
 .about-hero p {
-  font-size: 16px;
-  color: #666;
+  font-size: 18px;
+  color: var(--secondary);
   margin-top: 10px;
 }
