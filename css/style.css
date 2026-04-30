@@ -114,6 +114,39 @@ h3.section-title,
   border-color: #CBD5E1;
 }
 
+/* Kurumsal Mavi Overlay Efekti */
+.img-hover-zoom {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.img-hover-zoom::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--accent);
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.img-hover-zoom img {
+  transition: transform 0.6s ease;
+  filter: grayscale(30%);
+}
+
+.card:hover .img-hover-zoom::after,
+.service-card:hover .img-hover-zoom::after {
+  opacity: 0;
+}
+
+.card:hover .img-hover-zoom img,
+.service-card:hover .img-hover-zoom img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
 
 
 /* FOOTER */
@@ -265,17 +298,16 @@ section {
   transform: scale(1.02);
 }
 
-/* FOOTER LOGO: Koyu zeminde görünmesi için tamamen beyaza çevrildi (silüet) */
+/* FOOTER LOGO */
 .footer-logo {
   transition: all 0.3s ease;
-  filter: brightness(0) invert(1);
   opacity: 0.9;
 }
 
 .footer-logo:hover {
   transform: translateY(-2px) scale(1.02);
   opacity: 1;
-  filter: brightness(0) invert(1) drop-shadow(0 4px 10px rgba(255, 255, 255, 0.3));
+  filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.3));
 }
 
 p {
@@ -386,76 +418,11 @@ p {
   }
 }
 
-/* Shine sweep overlay */
-.service-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    transparent 35%,
-    rgba(37, 99, 235, 0.06) 45%,
-    rgba(37, 99, 235, 0.12) 50%,
-    rgba(37, 99, 235, 0.06) 55%,
-    transparent 65%,
-    transparent 100%
-  );
-  transition: left 0.7s ease;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.service-card:hover::before {
-  left: 100%;
-}
-
 .service-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.10), 0 8px 16px rgba(37, 99, 235, 0.08);
-  border-color: rgba(37, 99, 235, 0.15);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08), 0 8px 16px rgba(15, 23, 42, 0.04);
+  border-color: #CBD5E1;
   border-top-color: var(--accent);
-}
-
-/* Subtle inner glow on hover */
-.service-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-md);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  background: radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.04) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.service-card:hover::after {
-  opacity: 1;
-}
-
-.service-icon-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 24px 10px;
-  color: var(--accent);
-  font-size: 42px;
-  position: relative;
-  z-index: 2;
-}
-
-.service-icon-header i {
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  display: inline-block;
-}
-
-.service-card:hover .service-icon-header i {
-  transform: scale(1.18) translateY(-3px);
-  filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.3));
 }
 
 .service-content {

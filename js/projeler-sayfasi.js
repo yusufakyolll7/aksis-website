@@ -63,24 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let btnStyle = 'border: 1px solid var(--accent); color: var(--accent); background-color: transparent;';
         let btnHoverClass = 'proje-incele-btn'; 
 
-        if (index % 3 === 1) {
-            // İkinci Kart: Lacivert (Daha açık ve canlı)
-            cardStyle = 'background-color: #1E3A8A;'; 
-            headerStyle = 'bg-transparent';
-            textStyle = 'text-white';
-            descStyle = 'text-light opacity-75';
-            btnStyle = 'border: none; color: #1E3A8A; background-color: white;';
-            btnHoverClass = 'proje-incele-btn-dark';
-        } else if (index % 3 === 2) {
-            // Üçüncü Kart: Mavi (Accent Color)
-            cardStyle = 'background-color: var(--accent);'; // #2563EB
-            headerStyle = 'bg-transparent';
-            textStyle = 'text-white';
-            descStyle = 'text-white opacity-75';
-            btnStyle = 'border: none; color: var(--accent); background-color: white;';
-            btnHoverClass = 'proje-incele-btn-blue';
-        }
-
+        // Tüm kartlar beyaz temada olacak
         // Bootstrap col-md-4 class'ı ile her satıra 3 adet proje dizeceğiz.
         return `
             <div class="col-md-4 col-sm-6 mb-4">
