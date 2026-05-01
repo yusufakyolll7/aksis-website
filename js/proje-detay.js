@@ -5,11 +5,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const projeId = urlParams.get("id");
 
+    let currentLang = localStorage.getItem('lang') || 'tr';
+
+    // Dil değiştiğinde sayfayı güncelle
+    document.addEventListener('languageChanged', (e) => {
+        currentLang = e.detail.lang;
+        window.location.reload(); // Detay sayfasında içerik çok dinamik olduğu için reload en güvenlisi
+    });
+
     if (!projeId) {
         detayAlani.innerHTML = `
             <div class="alert alert-danger text-center">
-                Geçersiz proje bağlantısı. Lütfen ana sayfaya dönün.
-                <br><a href="index.html" class="btn btn-primary mt-3">Ana Sayfaya Dön</a>
+                ${translations[currentLang]["invalid_link"]}
+                <br><a href="index.html" class="btn btn-primary mt-3">${translations[currentLang]["back_to_home"]}</a>
             </div>`;
         return;
     }
@@ -20,9 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
             detayAlani.innerHTML = `
                 <div class="alert alert-warning text-center shadow-sm rounded-4 border-0 p-5">
                     <i class="bi bi-exclamation-triangle fs-1 text-warning mb-3 d-block"></i>
-                    <h4 class="fw-bold">Proje Bulunamadı</h4>
-                    <p>Aradığınız proje yayından kaldırılmış veya bağlantı hatalı olabilir.</p>
-                    <button onclick="history.back()" class="btn btn-primary mt-3 px-4 rounded-pill">Geri Dön</button>
+                    <h4 class="fw-bold">${translations[currentLang]["project_not_found"]}</h4>
+                    <p>${translations[currentLang]["project_not_found_desc"]}</p>
+                    <button onclick="history.back()" class="btn btn-primary mt-3 px-4 rounded-pill">${translations[currentLang]["project_detail_back"]}</button>
                 </div>`;
             return;
         }
@@ -99,11 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true" style="opacity: 0.9;"></span>
-                        <span class="visually-hidden">Önceki</span>
+                        <span class="visually-hidden">${translations[currentLang]["project_detail_prev"]}</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
                         <span class="carousel-control-next-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true" style="opacity: 0.9;"></span>
-                        <span class="visually-hidden">Sonraki</span>
+                        <span class="visually-hidden">${translations[currentLang]["project_detail_next"]}</span>
                     </button>
                 </div>
                 
@@ -180,9 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
         detayAlani.innerHTML = `
             <div class="alert alert-danger text-center shadow-sm rounded-4 border-0 p-5">
                 <i class="bi bi-x-circle fs-1 text-danger mb-3 d-block"></i>
-                <h4 class="fw-bold">Bağlantı Hatası</h4>
-                <p>Proje bilgileri alınırken veritabanı bağlantısında bir hata oluştu.</p>
-                <button onclick="window.location.reload()" class="btn btn-outline-danger mt-3 rounded-pill px-4">Sayfayı Yenile</button>
+                <h4 class="fw-bold">${translations[currentLang]["connection_error"]}</h4>
+                <p>${translations[currentLang]["connection_error_desc"]}</p>
+                <button onclick="window.location.reload()" class="btn btn-outline-danger mt-3 rounded-pill px-4">${translations[currentLang]["reload_page"]}</button>
             </div>`;
     });
 });

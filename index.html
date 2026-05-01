@@ -37,53 +37,63 @@
       </button>
 
       <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
 
           <li class="nav-item">
-            <a class="nav-link" href="#anasayfa">Ana Sayfa</a>
+            <a class="nav-link" href="#anasayfa" data-i18n="nav_home">Ana Sayfa</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#hizmetler">Hizmetlerimiz</a>
+            <a class="nav-link" href="#hizmetler" data-i18n="nav_services">Hizmetlerimiz</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#hakkimizda">Hakkımızda</a>
+            <a class="nav-link" href="#hakkimizda" data-i18n="nav_about">Hakkımızda</a>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_projects">
               Projeler
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="projeler.html?kategori=tamamlandi">Tamamlanan Projeler</a></li>
-              <li><a class="dropdown-item" href="projeler.html?kategori=devam_ediyor">Devam Eden Projeler</a></li>
+              <li><a class="dropdown-item" href="projeler.html?kategori=tamamlandi" data-i18n="nav_completed_projects">Tamamlanan Projeler</a></li>
+              <li><a class="dropdown-item" href="projeler.html?kategori=devam_ediyor" data-i18n="nav_ongoing_projects">Devam Eden Projeler</a></li>
             </ul>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#iletisim">İletişim</a>
+            <a class="nav-link" href="#iletisim" data-i18n="nav_contact">İletişim</a>
+          </li>
+
+          <!-- Language Switcher -->
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <div class="d-flex align-items-center bg-light rounded-pill px-2 py-1" style="border: 1px solid #e2e8f0;">
+              <a href="#" id="lang-tr" class="text-decoration-none px-2 active fw-bold text-dark" style="font-size: 14px;">TR</a>
+              <span class="text-muted" style="font-size: 14px;">|</span>
+              <a href="#" id="lang-en" class="text-decoration-none px-2 text-muted" style="font-size: 14px;">EN</a>
+            </div>
           </li>
 
         </ul>
       </div>
     </div>
   </nav>
+
   <!-- HERO -->
   <section id="anasayfa" class="hero d-flex align-items-center">
     <div class="overlay"></div>
 
     <div class="container text-center position-relative">
-      <h1>Modern Mühendislik Çözümleri</h1>
-      <p>Geleceği birlikte inşa ediyoruz</p>
-      <a href="#iletisim" class="btn btn-primary mt-3">Bizimle İletişime Geç</a>
+      <h1 data-i18n="hero_title">Modern Mühendislik Çözümleri</h1>
+      <p data-i18n="hero_subtitle">Geleceği birlikte inşa ediyoruz</p>
+      <a href="#iletisim" class="btn btn-primary mt-3" data-i18n="hero_btn">Bizimle İletişime Geç</a>
     </div>
   </section>
 
   <section id="hizmetler" class="py-5 bg-light">
     <div class="container text-center">
-      <h2 class="mb-2">Hizmetlerimiz</h2>
-      <p class="text-muted mb-5">Uzman kadromuzla sunduğumuz profesyonel çözümler</p>
+      <h2 class="mb-2" data-i18n="home_services_title">Hizmetlerimiz</h2>
+      <p class="text-muted mb-5" data-i18n="home_services_subtitle">Uzman kadromuzla sunduğumuz profesyonel çözümler</p>
 
       <div class="row g-4">
 
@@ -93,9 +103,8 @@
               <img src="images/hakkimizda.jpg" alt="Elektrik Taahhüt" class="img-fluid rounded"
                 style="object-fit: cover; height: 200px; width: 100%;">
             </div>
-            <h5 class="fw-bold">Elektrik Taahhüt</h5>
-            <p class="text-muted">Altyapıdan üstyapıya kadar tüm elektrik projelerinizi anahtar teslim
-              gerçekleştiriyoruz.</p>
+            <h5 class="fw-bold" data-i18n="home_service_1_title">Elektrik Taahhüt</h5>
+            <p class="text-muted" data-i18n="home_service_1_desc">Altyapıdan üstyapıya kadar tüm elektrik projelerinizi anahtar teslim gerçekleştiriyoruz.</p>
           </div>
         </div>
 
@@ -105,9 +114,8 @@
               <img src="images/hakkimizda.jpg" alt="Projelendirme" class="img-fluid rounded"
                 style="object-fit: cover; height: 200px; width: 100%;">
             </div>
-            <h5 class="fw-bold">Projelendirme</h5>
-            <p class="text-muted">Ulusal ve uluslararası standartlara uygun, modern mühendislik çözümleri ile projeler
-              üretiyoruz.</p>
+            <h5 class="fw-bold" data-i18n="home_service_2_title">Projelendirme</h5>
+            <p class="text-muted" data-i18n="home_service_2_desc">Ulusal ve uluslararası standartlara uygun, modern mühendislik çözümleri ile projeler üretiyoruz.</p>
           </div>
         </div>
 
@@ -117,15 +125,14 @@
               <img src="images/hakkimizda.jpg" alt="Danışmanlık" class="img-fluid rounded"
                 style="object-fit: cover; height: 200px; width: 100%;">
             </div>
-            <h5 class="fw-bold">Danışmanlık</h5>
-            <p class="text-muted">SMM ve YG İşletme yetki belgelerimizle profesyonel mühendislik danışmanlığı sunuyoruz.
-            </p>
+            <h5 class="fw-bold" data-i18n="home_service_3_title">Danışmanlık</h5>
+            <p class="text-muted" data-i18n="home_service_3_desc">SMM ve YG İşletme yetki belgelerimizle profesyonel mühendislik danışmanlığı sunuyoruz.</p>
           </div>
         </div>
 
       </div>
       <div class="text-center mt-5">
-        <a href="hizmetlerimiz.html" class="btn btn-primary">
+        <a href="hizmetlerimiz.html" class="btn btn-primary" data-i18n="home_services_btn">
           Tüm Hizmetlerimiz
         </a>
       </div>
@@ -135,19 +142,16 @@
   <section id="hakkimizda" class="py-5 bg-white">
     <div class="container text-center">
 
-      <h2 class="mb-2">Hakkımızda</h2>
-      <p class="text-muted mb-5">20 yılı aşkın sektör deneyimi</p>
+      <h2 class="mb-2" data-i18n="home_about_title">Hakkımızda</h2>
+      <p class="text-muted mb-5" data-i18n="home_about_subtitle">20 yılı aşkın sektör deneyimi</p>
       <div class="row justify-content-center">
         <div class="col-lg-8">
-          <p style="font-size: 17px; line-height: 1.9;">
-            Aksis Mühendislik, üst yapı ve altyapı elektrik sektöründe proje,
-            müşavirlik ve uygulama alanlarında profesyonel çözümler sunmaktadır.
-            2 Milyon m²'yi aşan proje deneyimi ve 25 MVA üzeri trafo kurulumu ile
-            sektörün güvenilir markalarından biri olmayı hedeflemektedir.
+          <p style="font-size: 17px; line-height: 1.9;" data-i18n="home_about_desc">
+            Aksis Mühendislik, üst yapı ve altyapı elektrik sektöründe proje, müşavirlik ve uygulama alanlarında profesyonel çözümler sunmaktadır. 2 Milyon m²'yi aşan proje deneyimi ve 25 MVA üzeri trafo kurulumu ile sektörün güvenilir markalarından biri olmayı hedeflemektedir.
           </p>
         </div>
       </div>
-      <a href="hakkimizda.html" class="btn btn-primary mt-3">
+      <a href="hakkimizda.html" class="btn btn-primary mt-3" data-i18n="home_about_btn">
         Kurumsal Bilgilerimiz
       </a>
 
@@ -157,19 +161,19 @@
   <section id="projeler" class="py-4 bg-light">
     <div class="container text-center">
 
-      <h2 class="mb-1">Son Projelerimiz</h2>
-      <p class="text-muted mb-4">Özenle tamamladığımız en güncel çalışmalarımız</p>
+      <h2 class="mb-1" data-i18n="home_projects_title">Son Projelerimiz</h2>
+      <p class="text-muted mb-4" data-i18n="home_projects_subtitle">Özenle tamamladığımız en güncel çalışmalarımız</p>
 
       <!-- PROJELER ALANI -->
       <div id="son-projeler-alani" class="row g-4 text-start">
         <div class="col-12 text-center text-muted py-5">
           <div class="spinner-border text-primary" role="status"></div>
-          <p class="mt-3" style="font-weight: 500;">Projeler Yükleniyor...</p>
+          <p class="mt-3" style="font-weight: 500;" data-i18n="home_projects_loading">Projeler Yükleniyor...</p>
         </div>
       </div>
 
       <div class="text-center mt-4">
-        <a href="projeler.html?kategori=tamamlandi" class="btn btn-primary">
+        <a href="projeler.html?kategori=tamamlandi" class="btn btn-primary" data-i18n="home_projects_btn">
           Tüm Projeleri Gör
         </a>
       </div>
@@ -183,8 +187,8 @@
       <!-- BAŞLIK -->
       <div class="row mb-4" data-aos="fade-up">
         <div class="col-12">
-          <p class="contact-label">BİZE ULAŞIN</p>
-          <h3 class="contact-title">Bize mesaj atın!</h3>
+          <p class="contact-label" data-i18n="contact_label">BİZE ULAŞIN</p>
+          <h3 class="contact-title" data-i18n="contact_title">Bize mesaj atın!</h3>
         </div>
       </div>
 
@@ -194,34 +198,32 @@
         <div class="col-lg-5" data-aos="fade-right">
           <form id="contact-form" class="contact-form">
             <div class="contact-form-group">
-              <input type="text" name="user_name" id="contact-name" class="contact-input" placeholder="Ad" required>
+              <input type="text" name="user_name" id="contact-name" class="contact-input" placeholder="Ad" data-i18n="contact_form_name" required>
             </div>
             <div class="contact-form-group">
-              <input type="email" name="user_email" id="contact-email" class="contact-input" placeholder="E-posta*"
-                required>
+              <input type="email" name="user_email" id="contact-email" class="contact-input" placeholder="E-posta*" data-i18n="contact_form_email" required>
             </div>
             <div class="contact-form-group">
-              <textarea name="message" id="contact-message" class="contact-textarea" rows="5" placeholder="Mesaj"
-                required></textarea>
+              <textarea name="message" id="contact-message" class="contact-textarea" rows="5" placeholder="Mesaj" data-i18n="contact_form_message" required></textarea>
             </div>
 
             <!-- Dosya Ekleme -->
             <div class="contact-file-row">
               <label for="contact-file" class="contact-file-label">
-                <i class="bi bi-paperclip"></i> Dosya Ekle
+                <i class="bi bi-paperclip"></i> <span data-i18n="contact_form_file">Dosya Ekle</span>
               </label>
               <input type="file" id="contact-file" name="attachment" class="contact-file-input" multiple>
               <span class="contact-file-count">Ekler (0)</span>
             </div>
 
-            <button type="submit" class="contact-submit" id="submit-btn">GÖNDER</button>
+            <button type="submit" class="contact-submit" id="submit-btn" data-i18n="contact_form_submit">GÖNDER</button>
           </form>
         </div>
 
         <!-- SAĞ: İLETİŞİM BİLGİLERİ -->
         <div class="col-lg-6 d-flex" data-aos="fade-left">
           <div class="contact-info">
-            <p class="contact-info-label mb-2">İletişim Bilgileri :</p>
+            <p class="contact-info-label mb-2" data-i18n="contact_info_title">İletişim Bilgileri :</p>
             <p class="contact-info-email mb-1"><a href="mailto:info@aksismuhendislik.com">info@aksismuhendislik.com</a></p>
             <p class="contact-info-phone mb-2">+90 532 394 38 86</p>
 
@@ -229,14 +231,14 @@
 
             <h5 class="contact-company mb-1" style="font-size: 1.1rem;">AKSİS PROJE &amp; MÜHENDİSLİK SAN. VE TİC LTD. ŞTİ</h5>
             <p class="contact-address mb-2">
-              <span class="contact-info-label">Adres :</span>
+              <span class="contact-info-label" data-i18n="contact_address_label">Adres :</span>
               MERKEZ MAH. NURHAN SK. NO: 2 İÇ KAPI NO: 18 KAĞITHANE / İSTANBUL
             </p>
 
             <hr class="contact-divider my-2">
 
-            <h5 class="contact-hours-title mb-1">Çalışma Saatleri</h5>
-            <p class="contact-hours mb-0">Pazartesi - Cumartesi 09:00 / 17:30</p>
+            <h5 class="contact-hours-title mb-1" data-i18n="contact_hours_title">Çalışma Saatleri</h5>
+            <p class="contact-hours mb-0" data-i18n="contact_hours_desc">Pazartesi - Cumartesi 09:00 / 17:30</p>
           </div>
         </div>
 
@@ -258,41 +260,36 @@
           <a href="index.html" class="d-inline-block mb-4">
             <img src="images/footer-logo-yeni.png" height="60" class="footer-logo" alt="Aksis Logo">
           </a>
-          <p class="pe-lg-4">
-            Aksis Mühendislik, güçlü teknik altyapısı ve modern vizyonu ile
-            üst yapı ve altyapı projelerinizi güvenle hayata geçirir.
+          <p class="pe-lg-4" data-i18n="footer_desc">
+            Aksis Mühendislik, güçlü teknik altyapısı ve modern vizyonu ile üst yapı ve altyapı projelerinizi güvenle hayata geçirir.
           </p>
         </div>
 
         <!-- MENÜ -->
         <div class="col-lg-3 col-md-6 mb-4">
-          <h5>Hızlı Menü</h5>
+          <h5 data-i18n="footer_menu_title">Hızlı Menü</h5>
           <ul class="list-unstyled">
-            <li><a href="index.html#anasayfa"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Ana
-                Sayfa</a></li>
-            <li><a href="hizmetlerimiz.html"><i class="bi bi-chevron-right me-2"
-                  style="font-size:10px;"></i>Hizmetlerimiz</a></li>
-            <li><a href="hakkimizda.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Hakkımızda</a>
-            </li>
-            <li><a href="index.html#projeler"><i class="bi bi-chevron-right me-2"
-                  style="font-size:10px;"></i>Projeler</a></li>
+            <li><a href="index.html#anasayfa"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_home">Ana Sayfa</span></a></li>
+            <li><a href="hizmetlerimiz.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_services">Hizmetlerimiz</span></a></li>
+            <li><a href="hakkimizda.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_about">Hakkımızda</span></a></li>
+            <li><a href="index.html#projeler"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_projects">Projeler</span></a></li>
           </ul>
         </div>
 
         <!-- İLETİŞİM -->
         <div class="col-lg-5 col-md-12 mb-4 footer-icon-list">
-          <h5>İletişim Bilgileri</h5>
+          <h5 data-i18n="footer_contact_title">İletişim Bilgileri</h5>
           <p>
             <i class="bi bi-geo-alt"></i>
-            <span><strong>Merkez Ofis:</strong> Altunizade Mah. Kısıklı Cad. No: 19 Üsküdar/İstanbul</span>
+            <span><strong data-i18n="footer_address">Merkez Ofis:</strong> Altunizade Mah. Kısıklı Cad. No: 19 Üsküdar/İstanbul</span>
           </p>
           <p>
             <i class="bi bi-telephone"></i>
-            <span><strong>Telefon:</strong> +90 5XX XXX XX XX</span>
+            <span><strong data-i18n="footer_phone">Telefon:</strong> +90 5XX XXX XX XX</span>
           </p>
           <p>
             <i class="bi bi-envelope"></i>
-            <span><strong>E-Posta:</strong> info@aksismuhendislik.com</span>
+            <span><strong data-i18n="footer_email">E-Posta:</strong> info@aksismuhendislik.com</span>
           </p>
         </div>
       </div>
@@ -302,15 +299,17 @@
       <!-- ALT YAZI -->
       <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
-          <p class="mb-0 text-muted" style="font-size:13px;">© 2026 Aksis Mühendislik. Tüm Hakları Saklıdır.</p>
+          <p class="mb-0 text-muted" style="font-size:13px;" data-i18n="footer_copyright">© 2026 Aksis Mühendislik. Tüm Hakları Saklıdır.</p>
         </div>
         <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-          <a href="#" class="text-muted text-decoration-none me-3" style="font-size:13px;">Gizlilik Politikası</a>
-          <a href="#" class="text-muted text-decoration-none" style="font-size:13px;">Kullanım Şartları</a>
+          <a href="#" class="text-muted text-decoration-none me-3" style="font-size:13px;" data-i18n="footer_privacy">Gizlilik Politikası</a>
+          <a href="#" class="text-muted text-decoration-none" style="font-size:13px;" data-i18n="footer_terms">Kullanım Şartları</a>
         </div>
       </div>
   </footer>
 
+  <script src="js/translations.js"></script>
+  <script src="js/lang.js"></script>
   <script src="js/script.js"></script>
 
   <!-- Bootstrap JS -->

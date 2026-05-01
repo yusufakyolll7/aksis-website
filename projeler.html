@@ -29,27 +29,36 @@
     </button>
 
     <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item">
-          <a class="nav-link" href="index.html#anasayfa">Ana Sayfa</a>
+          <a class="nav-link" href="index.html#anasayfa" data-i18n="nav_home">Ana Sayfa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="hizmetlerimiz.html">Hizmetlerimiz</a>
+          <a class="nav-link" href="hizmetlerimiz.html" data-i18n="nav_services">Hizmetlerimiz</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="hakkimizda.html">Hakkımızda</a>
+          <a class="nav-link" href="hakkimizda.html" data-i18n="nav_about">Hakkımızda</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_projects">
             Projeler
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="projeler.html?kategori=tamamlandi">Tamamlanan Projeler</a></li>
-            <li><a class="dropdown-item" href="projeler.html?kategori=devam_ediyor">Devam Eden Projeler</a></li>
+            <li><a class="dropdown-item" href="projeler.html?kategori=tamamlandi" data-i18n="nav_completed_projects">Tamamlanan Projeler</a></li>
+            <li><a class="dropdown-item" href="projeler.html?kategori=devam_ediyor" data-i18n="nav_ongoing_projects">Devam Eden Projeler</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.html#iletisim">İletişim</a>
+          <a class="nav-link" href="index.html#iletisim" data-i18n="nav_contact">İletişim</a>
+        </li>
+
+        <!-- Language Switcher -->
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+          <div class="d-flex align-items-center bg-light rounded-pill px-2 py-1" style="border: 1px solid #e2e8f0;">
+            <a href="#" id="lang-tr" class="text-decoration-none px-2 active fw-bold text-dark" style="font-size: 14px;">TR</a>
+            <span class="text-muted" style="font-size: 14px;">|</span>
+            <a href="#" id="lang-en" class="text-decoration-none px-2 text-muted" style="font-size: 14px;">EN</a>
+          </div>
         </li>
       </ul>
     </div>
@@ -60,9 +69,9 @@
 <section class="projeler-banner">
   <div class="overlay"></div>
   <div class="container">
-    <h1 class="mb-4" id="sayfa-basligi">Projelerimiz</h1>
-    <p class="mx-auto" style="max-width: 800px;">
-      Aksis Mühendislik olarak gurur duyduğumuz ve üstün kalite standartlarıyla yürüttüğümüz projelerimizi detaylıca inceleyebilirsiniz.
+    <h1 class="mb-4" id="sayfa-basligi" data-i18n="projects_page_title">Projelerimiz</h1>
+    <p class="mx-auto" style="max-width: 800px;" data-i18n="projects_page_subtitle">
+      Tüm projelerimizi kategorilerine göre inceleyebilirsiniz
     </p>
   </div>
 </section>
@@ -74,7 +83,7 @@
       <!-- Projeler JS ile buraya eklenecek -->
       <div class="col-12 text-center py-5" id="yukleniyor-yazisi">
         <div class="spinner-border text-primary" role="status"></div>
-        <p class="mt-3 text-muted" style="font-weight: 500;">Projeler Yükleniyor...</p>
+        <p class="mt-3 text-muted" style="font-weight: 500;" data-i18n="home_projects_loading">Projeler Yükleniyor...</p>
       </div>
     </div>
   </div>
@@ -88,34 +97,35 @@
         <a href="index.html" class="d-inline-block mb-4">
           <img src="images/footer-logo-yeni.png" height="60" class="footer-logo" alt="Aksis Logo">
         </a>
-        <p class="pe-lg-4">
+        <p class="pe-lg-4" data-i18n="footer_desc">
           Aksis Mühendislik, güçlü teknik altyapısı ve modern vizyonu ile 
           üst yapı ve altyapı projelerinizi güvenle hayata geçirir.
         </p>
       </div>
 
       <div class="col-lg-3 col-md-6 mb-4">
-        <h5>Hızlı Menü</h5>
+        <h5 data-i18n="footer_menu_title">Hızlı Menü</h5>
         <ul class="list-unstyled">
-          <li><a href="index.html#anasayfa"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Ana Sayfa</a></li>
-          <li><a href="hizmetlerimiz.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Hizmetlerimiz</a></li>
-          <li><a href="hakkimizda.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Hakkımızda</a></li>
+          <li><a href="index.html#anasayfa"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_home">Ana Sayfa</span></a></li>
+          <li><a href="hizmetlerimiz.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_services">Hizmetlerimiz</span></a></li>
+          <li><a href="hakkimizda.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_about">Hakkımızda</span></a></li>
+          <li><a href="index.html#projeler"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_projects">Projeler</span></a></li>
         </ul>
       </div>
 
       <div class="col-lg-5 col-md-12 mb-4 footer-icon-list">
-        <h5>İletişim Bilgileri</h5>
+        <h5 data-i18n="footer_contact_title">İletişim Bilgileri</h5>
         <p>
           <i class="bi bi-geo-alt"></i> 
-          <span><strong>Merkez Ofis:</strong> İstanbul / Türkiye</span>
+          <span><strong data-i18n="footer_address">Merkez Ofis:</strong> İstanbul / Türkiye</span>
         </p>
         <p>
           <i class="bi bi-telephone"></i> 
-          <span><strong>Telefon:</strong> +90 5XX XXX XX XX</span>
+          <span><strong data-i18n="footer_phone">Telefon:</strong> +90 5XX XXX XX XX</span>
         </p>
         <p>
           <i class="bi bi-envelope"></i> 
-          <span><strong>E-Posta:</strong> info@aksismuhendislik.com</span>
+          <span><strong data-i18n="footer_email">E-Posta:</strong> info@aksismuhendislik.com</span>
         </p>
       </div>
     </div>
@@ -124,16 +134,18 @@
 
     <div class="row align-items-center">
       <div class="col-md-6 text-center text-md-start">
-        <p class="mb-0 text-muted" style="font-size:13px;">© 2026 Aksis Mühendislik. Tüm Hakları Saklıdır.</p>
+        <p class="mb-0 text-muted" style="font-size:13px;" data-i18n="footer_copyright">© 2026 Aksis Mühendislik. Tüm Hakları Saklıdır.</p>
       </div>
       <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-        <a href="#" class="text-muted text-decoration-none me-3" style="font-size:13px;">Gizlilik Politikası</a>
-        <a href="#" class="text-muted text-decoration-none" style="font-size:13px;">Kullanım Şartları</a>
+        <a href="#" class="text-muted text-decoration-none me-3" style="font-size:13px;" data-i18n="footer_privacy">Gizlilik Politikası</a>
+        <a href="#" class="text-muted text-decoration-none" style="font-size:13px;" data-i18n="footer_terms">Kullanım Şartları</a>
       </div>
     </div>
   </div>
 </footer>
 
+<script src="js/translations.js"></script>
+<script src="js/lang.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Firebase (V8 Compat CDN) -->

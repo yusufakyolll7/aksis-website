@@ -1,55 +1,94 @@
 document.addEventListener("DOMContentLoaded", () => {
+    let currentLang = localStorage.getItem('lang') || 'tr';
+
     // 1. HTML Yapısını Sayfaya Enjekte Et
-    const fcpHTML = `
-    <div class="floating-contact-popup" id="fcp-popup">
-        <div class="fcp-header">
-            <div class="fcp-header-title">
-                <i class="bi bi-headset"></i> Aksis Mühendislik
+    const injectFCP = () => {
+        // Varsa eskiyi temizle
+        const oldPopup = document.getElementById('fcp-popup');
+        const oldBtn = document.getElementById('fcp-toggle-btn');
+        if (oldPopup) oldPopup.remove();
+        if (oldBtn) oldBtn.remove();
+
+        const fcpHTML = `
+        <div class="floating-contact-popup" id="fcp-popup">
+            <div class="fcp-header">
+                <div class="fcp-header-title">
+                    <i class="bi bi-headset"></i> Aksis Mühendislik
+                </div>
+                <div class="fcp-header-subtitle">${translations[currentLang]["floating_contact_subtitle"]}</div>
             </div>
-            <div class="fcp-header-subtitle">Size nasıl yardımcı olabiliriz?</div>
+            <div class="fcp-body">
+                <p class="fcp-intro">${translations[currentLang]["floating_contact_intro"]}</p>
+                <form id="fcp-form">
+                    <div class="fcp-form-group">
+                        <input type="text" name="user_name" class="fcp-input" placeholder="${translations[currentLang]["floating_contact_name_placeholder"]}" required>
+                    </div>
+                    <div class="fcp-form-group">
+                        <input type="email" name="user_email" class="fcp-input" placeholder="${translations[currentLang]["floating_contact_email_placeholder"]}" required>
+                    </div>
+                    <div class="fcp-form-group">
+                        <textarea name="message" class="fcp-textarea" placeholder="${translations[currentLang]["floating_contact_msg_placeholder"]}" required></textarea>
+                    </div>
+                    <button type="submit" class="fcp-submit" id="fcp-submit-btn">${translations[currentLang]["floating_contact_submit"]} <i class="bi bi-send-fill ms-1"></i></button>
+                </form>
+            </div>
         </div>
-        <div class="fcp-body">
-            <p class="fcp-intro">Mesajınızı bırakın, uzman ekibimiz en kısa sürede size dönüş yapsın.</p>
-            <form id="fcp-form">
-                <div class="fcp-form-group">
-                    <input type="text" name="user_name" class="fcp-input" placeholder="Adınız Soyadınız" required>
-                </div>
-                <div class="fcp-form-group">
-                    <input type="email" name="user_email" class="fcp-input" placeholder="E-posta Adresiniz" required>
-                </div>
-                <div class="fcp-form-group">
-                    <textarea name="message" class="fcp-textarea" placeholder="Mesajınız..." required></textarea>
-                </div>
-                <button type="submit" class="fcp-submit" id="fcp-submit-btn">Gönder <i class="bi bi-send-fill ms-1"></i></button>
-            </form>
-        </div>
-    </div>
-    <button class="floating-contact-btn" id="fcp-toggle-btn">
-        <i class="bi bi-chat-quote-fill"></i>
-    </button>
-    `;
+        <button class="floating-contact-btn" id="fcp-toggle-btn">
+            <i class="bi bi-chat-quote-fill"></i>
+        </button>
+        `;
 
-    document.body.insertAdjacentHTML('beforeend', fcpHTML);
+        document.body.insertAdjacentHTML('beforeend', fcpHTML);
+        setupEventListeners();
+    };
 
-    const toggleBtn = document.getElementById('fcp-toggle-btn');
-    const popup = document.getElementById('fcp-popup');
-    const form = document.getElementById('fcp-form');
-    const submitBtn = document.getElementById('fcp-submit-btn');
+    const setupEventListeners = () => {
+        const toggleBtn = document.getElementById('fcp-toggle-btn');
+        const popup = document.getElementById('fcp-popup');
+        const form = document.getElementById('fcp-form');
+        const submitBtn = document.getElementById('fcp-submit-btn');
 
-    // Pencereyi Aç/Kapat
-    toggleBtn.addEventListener('click', () => {
-        popup.classList.toggle('active');
-        const icon = toggleBtn.querySelector('i');
-        if (popup.classList.contains('active')) {
-            icon.classList.remove('bi-chat-quote-fill');
-            icon.classList.add('bi-x-lg');
-        } else {
-            icon.classList.remove('bi-x-lg');
-            icon.classList.add('bi-chat-quote-fill');
-        }
-    });
+        // Pencereyi Aç/Kapat
+        toggleBtn.addEventListener('click', () => {
+            popup.classList.toggle('active');
+            const icon = toggleBtn.querySelector('i');
+            if (popup.classList.contains('active')) {
+                icon.classList.remove('bi-chat-quote-fill');
+                icon.classList.add('bi-x-lg');
+            } else {
+                icon.classList.remove('bi-x-lg');
+                icon.classList.add('bi-chat-quote-fill');
+            }
+        });
 
-    // EmailJS kütüphanesini dinamik yükle (her sayfada olmayabilir)
+        // Form Gönderim İşlemi
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            submitBtn.textContent = translations[currentLang]["floating_contact_sending"];
+            submitBtn.disabled = true;
+
+            loadEmailJS(() => {
+                emailjs.sendForm("service_xciakzj", "template_bo62p8e", form)
+                    .then(() => {
+                        alert(translations[currentLang]["floating_contact_success"]);
+                        form.reset();
+                        popup.classList.remove('active');
+                        toggleBtn.querySelector('i').className = 'bi bi-chat-quote-fill';
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        alert(translations[currentLang]["floating_contact_error"]);
+                    })
+                    .finally(() => {
+                        submitBtn.innerHTML = `${translations[currentLang]["floating_contact_submit"]} <i class="bi bi-send-fill ms-1"></i>`;
+                        submitBtn.disabled = false;
+                    });
+            });
+        });
+    };
+
+    // EmailJS kütüphanesini dinamik yükle
     function loadEmailJS(callback) {
         if (typeof emailjs !== 'undefined') {
             callback();
@@ -64,30 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Form Gönderim İşlemi
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = "GÖNDERİLİYOR...";
-        submitBtn.disabled = true;
+    // İlk yükleme
+    injectFCP();
 
-        loadEmailJS(() => {
-            emailjs.sendForm("service_xciakzj", "template_bo62p8e", form)
-                .then(() => {
-                    alert("Mesajınız başarıyla gönderildi! En kısa sürede dönüş yapacağız.");
-                    form.reset();
-                    popup.classList.remove('active');
-                    toggleBtn.querySelector('i').className = 'bi bi-chat-quote-fill';
-                })
-                .catch((err) => {
-                    console.error(err);
-                    alert("Bir hata oluştu, lütfen daha sonra tekrar deneyin.");
-                })
-                .finally(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                });
-        });
+    // Dil değiştiğinde içeriği güncelle
+    document.addEventListener('languageChanged', (e) => {
+        currentLang = e.detail.lang;
+        injectFCP(); // HTML'i yeni dille tekrar enjekte et
     });
 });

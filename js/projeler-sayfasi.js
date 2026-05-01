@@ -5,12 +5,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const baslikEl = document.getElementById("sayfa-basligi");
     const gridEl = document.getElementById("projeler-grid");
     
+    let currentLang = localStorage.getItem('lang') || 'tr';
+
     // Sayfa başlığını ayarla
     if (kategori === 'tamamlandi') {
-        baslikEl.textContent = "Tamamlanan Projeler";
+        baslikEl.setAttribute("data-i18n", "nav_completed_projects");
+        baslikEl.textContent = typeof translations !== 'undefined' ? translations[currentLang]["nav_completed_projects"] : "Tamamlanan Projeler";
     } else {
-        baslikEl.textContent = "Devam Eden Projeler";
+        baslikEl.setAttribute("data-i18n", "nav_ongoing_projects");
+        baslikEl.textContent = typeof translations !== 'undefined' ? translations[currentLang]["nav_ongoing_projects"] : "Devam Eden Projeler";
     }
+
+    // Dil değiştiğinde başlığı ve kartları da güncelle
+    document.addEventListener('languageChanged', (e) => {
+        currentLang = e.detail.lang;
+        const key = kategori === 'tamamlandi' ? 'nav_completed_projects' : 'nav_ongoing_projects';
+        baslikEl.textContent = translations[currentLang][key];
+        
+        // Kartların içindeki çevirileri de güncelle
+        document.querySelectorAll('.proje-incele-btn span[data-i18n]').forEach(span => {
+            span.textContent = translations[currentLang]["project_view_btn"];
+        });
+    });
 
     // Proje kartı HTML'ini oluştur
     function projeKartiOlustur(proje, id, index = 0) {
@@ -74,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${imgHtml}
                     <div class="card-body d-flex flex-column p-4">
                         <p class="${descStyle} flex-grow-1" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 15px; line-height: 1.6;">${proje.aciklama}</p>
-                        <a href="proje-detay.html?id=${id}" class="btn mt-4 w-100 ${btnHoverClass}" style="border-radius: 8px; font-weight: 600; padding: 12px; ${btnStyle} transition: all 0.3s ease;">Projeyi İncele <i class="bi bi-arrow-right ms-2"></i></a>
+                        <a href="proje-detay.html?id=${id}" class="btn mt-4 w-100 ${btnHoverClass}" style="border-radius: 8px; font-weight: 600; padding: 12px; ${btnStyle} transition: all 0.3s ease;"><span data-i18n="project_view_btn">${typeof translations !== 'undefined' ? translations[currentLang]['project_view_btn'] : 'Projeyi İncele'}</span> <i class="bi bi-arrow-right ms-2"></i></a>
                     </div>
                 </div>
             </div>

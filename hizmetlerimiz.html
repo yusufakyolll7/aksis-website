@@ -32,27 +32,35 @@
     </button>
 
     <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item">
-          <a class="nav-link" href="index.html#anasayfa">Ana Sayfa</a>
+          <a class="nav-link" href="index.html#anasayfa" data-i18n="nav_home">Ana Sayfa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Hizmetler</a>
+          <a class="nav-link active" href="#" data-i18n="nav_services">Hizmetler</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.html#hakkimizda">Hakkımızda</a>
+          <a class="nav-link" href="index.html#hakkimizda" data-i18n="nav_about">Hakkımızda</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_projects">
             Projeler
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="projeler.html?kategori=tamamlandi">Tamamlanan Projeler</a></li>
-            <li><a class="dropdown-item" href="projeler.html?kategori=devam_ediyor">Devam Eden Projeler</a></li>
+            <li><a class="dropdown-item" href="projeler.html?kategori=tamamlandi" data-i18n="nav_completed_projects">Tamamlanan Projeler</a></li>
+            <li><a class="dropdown-item" href="projeler.html?kategori=devam_ediyor" data-i18n="nav_ongoing_projects">Devam Eden Projeler</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.html#iletisim">İletişim</a>
+          <a class="nav-link" href="index.html#iletisim" data-i18n="nav_contact">İletişim</a>
+        </li>
+        <!-- Language Switcher -->
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+          <div class="d-flex align-items-center bg-light rounded-pill px-2 py-1" style="border: 1px solid #e2e8f0;">
+            <a href="#" id="lang-tr" class="text-decoration-none px-2 active fw-bold text-dark" style="font-size: 14px;">TR</a>
+            <span class="text-muted" style="font-size: 14px;">|</span>
+            <a href="#" id="lang-en" class="text-decoration-none px-2 text-muted" style="font-size: 14px;">EN</a>
+          </div>
         </li>
       </ul>
     </div>
@@ -63,8 +71,8 @@
 <section class="page-banner">
   <div class="overlay"></div>
   <div class="container">
-    <h1 class="mb-4">Hizmetlerimiz</h1>
-    <p class="mx-auto" style="max-width: 800px;">
+    <h1 class="mb-4" data-i18n="services_hero_title">Hizmetlerimiz</h1>
+    <p class="mx-auto" style="max-width: 800px;" data-i18n="services_hero_desc">
       Güçlü teknik bilgi birikimi ve deneyimli ekibiyle AKSİS, her ölçekteki projeleriniz için 
       yüksek kaliteli, enerji verimli ve sürdürülebilir elektrik çözümleri üretir.
     </p>
@@ -72,24 +80,23 @@
     <div class="d-flex flex-wrap justify-content-center gap-4 mt-5" style="font-size: 17px; font-weight: 500; color: #F8FAFC;">
       <div class="d-flex align-items-center">
         <i class="bi bi-circle-fill me-2" style="font-size: 8px; color: var(--accent-light);"></i>
-        Elektrik Taahhüt Hizmetleri
+        <span data-i18n="services_hero_tag_1">Elektrik Taahhüt Hizmetleri</span>
       </div>
       <div class="d-flex align-items-center">
         <i class="bi bi-circle-fill me-2" style="font-size: 8px; color: var(--accent-light);"></i>
-        Yüksek Gerilim Hizmetleri
+        <span data-i18n="services_hero_tag_2">Yüksek Gerilim Hizmetleri</span>
       </div>
       <div class="d-flex align-items-center">
         <i class="bi bi-circle-fill me-2" style="font-size: 8px; color: var(--accent-light);"></i>
-        Alçak Gerilim Hizmetleri
+        <span data-i18n="services_hero_tag_3">Alçak Gerilim Hizmetleri</span>
       </div>
       <div class="d-flex align-items-center">
         <i class="bi bi-circle-fill me-2" style="font-size: 8px; color: var(--accent-light);"></i>
-        Zayıf Akım Hizmetleri
+        <span data-i18n="services_hero_tag_4">Zayıf Akım Hizmetleri</span>
       </div>
     </div>
   </div>
 </section>
-
 
 <section class="py-5 bg-light">
   <div class="container">
@@ -103,16 +110,16 @@
             <img src="images/hakkimizda.jpg" alt="Yüksek Gerilim Hizmetleri" class="img-fluid rounded" style="object-fit: cover; height: 200px; width: 100%;">
           </div>
           <div class="service-content">
-            <h5>Yüksek Gerilim Hizmetleri</h5>
+            <h5 data-i18n="service_1_title">Yüksek Gerilim Hizmetleri</h5>
             <ul>
-              <li>Dağıtım ve Güç Trafoları</li>
-              <li>Orta Gerilim ve Yüksek Gerilim Enerji Dağıtımı</li>
-              <li>OG ve YG Hücreleri Montaj, Test ve Devreye Alma</li>
-              <li>Orta Gerilim Motor Blokları Montaj, Test ve Devreye Alma</li>
-              <li>Nötr Direnci Montaj, Test ve Devreye Alma</li>
-              <li>Enerji Nakil Hattı</li>
-              <li>Enerji Müsaade Belgesi Temini</li>
-              <li>Elektrik İdaresi Kabul İşleri</li>
+              <li data-i18n="s1_item_1">Dağıtım ve Güç Trafoları</li>
+              <li data-i18n="s1_item_2">Orta Gerilim ve Yüksek Gerilim Enerji Dağıtımı</li>
+              <li data-i18n="s1_item_3">OG ve YG Hücreleri Montaj, Test ve Devreye Alma</li>
+              <li data-i18n="s1_item_4">Orta Gerilim Motor Blokları Montaj, Test ve Devreye Alma</li>
+              <li data-i18n="s1_item_5">Nötr Direnci Montaj, Test ve Devreye Alma</li>
+              <li data-i18n="s1_item_6">Enerji Nakil Hattı</li>
+              <li data-i18n="s1_item_7">Enerji Müsaade Belgesi Temini</li>
+              <li data-i18n="s1_item_8">Elektrik İdaresi Kabul İşleri</li>
             </ul>
           </div>
         </div>
@@ -125,20 +132,20 @@
             <img src="images/hakkimizda.jpg" alt="Alçak Gerilim Hizmetleri" class="img-fluid rounded" style="object-fit: cover; height: 200px; width: 100%;">
           </div>
           <div class="service-content">
-            <h5>Alçak Gerilim Hizmetleri</h5>
+            <h5 data-i18n="service_2_title">Alçak Gerilim Hizmetleri</h5>
             <ul>
-              <li>Busbar Dağıtım Sistemi</li>
-              <li>Alçak Gerilim Enerji Dağıtımı</li>
-              <li>MCC ve Kompanzasyon Panoları</li>
-              <li>Kablo Taşıma Sistemleri</li>
-              <li>Alçak Gerilim Tali Panoları</li>
-              <li>Aydınlatma Armatür ve Priz Tesisatları</li>
-              <li>Dekoratif ve Endüstriyel Çevre Aydınlatma</li>
-              <li>İklimlendirme Sistemleri</li>
-              <li>SCADA ve Enerji İzleme Sistemleri</li>
-              <li>Kesintisiz Güç Kaynağı (UPS) Sistemleri</li>
-              <li>Yedek Güç (Jeneratör) Sistemleri</li>
-              <li>Topraklama ve Yıldırımdan Korunma Sistemleri</li>
+              <li data-i18n="s2_item_1">Busbar Dağıtım Sistemi</li>
+              <li data-i18n="s2_item_2">Alçak Gerilim Enerji Dağıtımı</li>
+              <li data-i18n="s2_item_3">MCC ve Kompanzasyon Panoları</li>
+              <li data-i18n="s2_item_4">Kablo Taşıma Sistemleri</li>
+              <li data-i18n="s2_item_5">Alçak Gerilim Tali Panoları</li>
+              <li data-i18n="s2_item_6">Aydınlatma Armatür ve Priz Tesisatları</li>
+              <li data-i18n="s2_item_7">Dekoratif ve Endüstriyel Çevre Aydınlatma</li>
+              <li data-i18n="s2_item_8">İklimlendirme Sistemleri</li>
+              <li data-i18n="s2_item_9">SCADA ve Enerji İzleme Sistemleri</li>
+              <li data-i18n="s2_item_10">Kesintisiz Güç Kaynağı (UPS) Sistemleri</li>
+              <li data-i18n="s2_item_11">Yedek Güç (Jeneratör) Sistemleri</li>
+              <li data-i18n="s2_item_12">Topraklama ve Yıldırımdan Korunma Sistemleri</li>
             </ul>
           </div>
         </div>
@@ -151,15 +158,15 @@
             <img src="images/hakkimizda.jpg" alt="Zayıf Akım Hizmetleri" class="img-fluid rounded" style="object-fit: cover; height: 200px; width: 100%;">
           </div>
           <div class="service-content">
-            <h5>Zayıf Akım Hizmetleri</h5>
+            <h5 data-i18n="service_3_title">Zayıf Akım Hizmetleri</h5>
             <ul>
-              <li>Yangın Algılama ve İhbar Sistemleri</li>
-              <li>Telefon, Data Sistemleri</li>
-              <li>Seslendirme ve Acil Anons Sistemleri</li>
-              <li>CCTV – Kapalı Devre Kamera Sistemleri</li>
-              <li>Kartlı Geçiş Sistemleri</li>
-              <li>Enstrümantasyon ve Proses Uygulamaları</li>
-              <li>PLC, SCADA ve Endüstriyel Otomasyon</li>
+              <li data-i18n="s3_item_1">Yangın Algılama ve İhbar Sistemleri</li>
+              <li data-i18n="s3_item_2">Telefon, Data Sistemleri</li>
+              <li data-i18n="s3_item_3">Seslendirme ve Acil Anons Sistemleri</li>
+              <li data-i18n="s3_item_4">CCTV – Kapalı Devre Kamera Sistemleri</li>
+              <li data-i18n="s3_item_5">Kartlı Geçiş Sistemleri</li>
+              <li data-i18n="s3_item_6">Enstrümantasyon ve Proses Uygulamaları</li>
+              <li data-i18n="s3_item_7">PLC, SCADA ve Endüstriyel Otomasyon</li>
             </ul>
           </div>
         </div>
@@ -172,17 +179,17 @@
             <img src="images/hakkimizda.jpg" alt="Elektrik Proje Hizmetleri" class="img-fluid rounded" style="object-fit: cover; height: 200px; width: 100%;">
           </div>
           <div class="service-content">
-            <h5>Elektrik Proje Hizmetleri</h5>
+            <h5 data-i18n="service_4_title">Elektrik Proje Hizmetleri</h5>
             <ul>
-              <li>Trafo Merkezleri ve Enerji Nakil Hattı Projeleri</li>
-              <li>YG, OG, AG ve Zayıf Akım Projeleri</li>
-              <li>Yangın Algılama ve İhbar Tesisatı Projeleri</li>
-              <li>Acil Anons Sistemi Projeleri</li>
-              <li>Telefon, Data, Network Projeleri</li>
-              <li>CCTV Projeleri</li>
-              <li>Şantiye ve Güç Artırım Projeleri</li>
-              <li>Otel, AVM, Fabrika, Hastane Ruhsat Projeleri</li>
-              <li>Topraklama ve Paratoner Projeleri</li>
+              <li data-i18n="s4_item_1">Trafo Merkezleri ve Enerji Nakil Hattı Projeleri</li>
+              <li data-i18n="s4_item_2">YG, OG, AG ve Zayıf Akım Projeleri</li>
+              <li data-i18n="s4_item_3">Yangın Algılama ve İhbar Tesisatı Projeleri</li>
+              <li data-i18n="s4_item_4">Acil Anons Sistemi Projeleri</li>
+              <li data-i18n="s4_item_5">Telefon, Data, Network Projeleri</li>
+              <li data-i18n="s4_item_6">CCTV Projeleri</li>
+              <li data-i18n="s4_item_7">Şantiye ve Güç Artırım Projeleri</li>
+              <li data-i18n="s4_item_8">Otel, AVM, Fabrika, Hastane Ruhsat Projeleri</li>
+              <li data-i18n="s4_item_9">Topraklama ve Paratoner Projeleri</li>
             </ul>
           </div>
         </div>
@@ -195,13 +202,13 @@
             <img src="images/hakkimizda.jpg" alt="YG Tesisleri İşletme Sorumluluğu" class="img-fluid rounded" style="object-fit: cover; height: 200px; width: 100%;">
           </div>
           <div class="service-content">
-            <h5>YG Tesisleri İşletme Sorumluluğu</h5>
+            <h5 data-i18n="service_5_title">YG Tesisleri İşletme Sorumluluğu</h5>
             <ul>
-              <li>7 Gün 24 Saat Müdahale</li>
-              <li>Kompanzasyon ve Sayaç Takip Sistemi</li>
-              <li>Trafo ve OG Hücre Bakımları</li>
-              <li>Planlı Periyodik Bakım</li>
-              <li>Topraklama Ölçümü ve Raporlanması</li>
+              <li data-i18n="s5_item_1">7 Gün 24 Saat Müdahale</li>
+              <li data-i18n="s5_item_2">Kompanzasyon ve Sayaç Takip Sistemi</li>
+              <li data-i18n="s5_item_3">Trafo ve OG Hücre Bakımları</li>
+              <li data-i18n="s5_item_4">Planlı Periyodik Bakım</li>
+              <li data-i18n="s5_item_5">Topraklama Ölçümü ve Raporlanması</li>
             </ul>
           </div>
         </div>
@@ -214,15 +221,15 @@
             <img src="images/hakkimizda.jpg" alt="Raporlama ve Ölçüm Hizmetleri" class="img-fluid rounded" style="object-fit: cover; height: 200px; width: 100%;">
           </div>
           <div class="service-content">
-            <h5>Raporlama ve Ölçüm Hizmetleri</h5>
+            <h5 data-i18n="service_6_title">Raporlama ve Ölçüm Hizmetleri</h5>
             <ul>
-              <li>Topraklama (Empedans) Ölçümü</li>
-              <li>Kaçak Akım Rölesi Fonksiyon Testleri</li>
-              <li>Paratoner Tesisatı ve Ölçüm Raporu</li>
-              <li>İç Tesisat Uygunluk Belgesi</li>
-              <li>Toprak Özdirenci Ölçüm Raporu</li>
-              <li>Termal Kamera Ölçüm Kontrolü</li>
-              <li>Trafo Yağ Analizi Test Raporu</li>
+              <li data-i18n="s6_item_1">Topraklama (Empedans) Ölçümü</li>
+              <li data-i18n="s6_item_2">Kaçak Akım Rölesi Fonksiyon Testleri</li>
+              <li data-i18n="s6_item_3">Paratoner Tesisatı ve Ölçüm Raporu</li>
+              <li data-i18n="s6_item_4">İç Tesisat Uygunluk Belgesi</li>
+              <li data-i18n="s6_item_5">Toprak Özdirenci Ölçüm Raporu</li>
+              <li data-i18n="s6_item_6">Termal Kamera Ölçüm Kontrolü</li>
+              <li data-i18n="s6_item_7">Trafo Yağ Analizi Test Raporu</li>
             </ul>
           </div>
         </div>
@@ -235,13 +242,13 @@
             <img src="images/hakkimizda.jpg" alt="Danışmanlık ve Müşavirlik" class="img-fluid rounded" style="object-fit: cover; height: 200px; width: 100%;">
           </div>
           <div class="service-content">
-            <h5>Danışmanlık ve Müşavirlik</h5>
-            <p class="mt-1 mb-2 fw-semibold" style="font-size: 14px;">Sahip Olduğumuz Yetki Belgeleri</p>
+            <h5 data-i18n="service_7_title">Danışmanlık ve Müşavirlik</h5>
+            <p class="mt-1 mb-2 fw-semibold" style="font-size: 14px;" data-i18n="service_7_subtitle">Sahip Olduğumuz Yetki Belgeleri</p>
             <ul>
-              <li>SMM (Serbest Müşavir ve Mühendis) Belgesi</li>
-              <li>YG Tesislerinde İşletme Sorumluluğu Yetki Belgesi</li>
-              <li>Elektrik İç Tesisleri Denetimi Yetkilendirme Belgesi</li>
-              <li>Topraklama Yetkilendirme Belgesi</li>
+              <li data-i18n="s7_item_1">SMM (Serbest Müşavir ve Mühendis) Belgesi</li>
+              <li data-i18n="s7_item_2">YG Tesislerinde İşletme Sorumluluğu Yetki Belgesi</li>
+              <li data-i18n="s7_item_3">Elektrik İç Tesisleri Denetimi Yetkilendirme Belgesi</li>
+              <li data-i18n="s7_item_4">Topraklama Yetkilendirme Belgesi</li>
             </ul>
           </div>
         </div>
@@ -254,15 +261,15 @@
             <img src="images/hakkimizda.jpg" alt="Diğer Hizmetlerimiz" class="img-fluid rounded" style="object-fit: cover; height: 200px; width: 100%;">
           </div>
           <div class="service-content">
-            <h5>Diğer Hizmetlerimiz</h5>
+            <h5 data-i18n="service_8_title">Diğer Hizmetlerimiz</h5>
             <ul>
-              <li>İhale Dosyası Hazırlanması</li>
-              <li>Etüt ve Yapılabilirlik Hizmetleri</li>
-              <li>Proje Hizmetleri</li>
-              <li>Keşif ve Metraj Düzenleme</li>
-              <li>Enerji İhtiyacının Belirlenmesi</li>
-              <li>Enerji Müsaadesi ve Bağlantı Görüşü</li>
-              <li>Yatırım Maliyet Hesabı</li>
+              <li data-i18n="s8_item_1">İhale Dosyası Hazırlanması</li>
+              <li data-i18n="s8_item_2">Etüt ve Yapılabilirlik Hizmetleri</li>
+              <li data-i18n="s8_item_3">Proje Hizmetleri</li>
+              <li data-i18n="s8_item_4">Keşif ve Metraj Düzenleme</li>
+              <li data-i18n="s8_item_5">Enerji İhtiyacının Belirlenmesi</li>
+              <li data-i18n="s8_item_6">Enerji Müsaadesi ve Bağlantı Görüşü</li>
+              <li data-i18n="s8_item_7">Yatırım Maliyet Hesabı</li>
             </ul>
           </div>
         </div>
@@ -280,37 +287,36 @@
         <a href="index.html" class="d-inline-block mb-4">
           <img src="images/footer-logo-yeni.png" height="60" class="footer-logo" alt="Aksis Logo">
         </a>
-        <p class="pe-lg-4">
-          Aksis Mühendislik, güçlü teknik altyapısı ve modern vizyonu ile 
-          üst yapı ve altyapı projelerinizi güvenle hayata geçirir.
+        <p class="pe-lg-4" data-i18n="footer_desc">
+          Aksis Mühendislik, güçlü teknik altyapısı ve modern vizyonu ile üst yapı ve altyapı projelerinizi güvenle hayata geçirir.
         </p>
       </div>
 
       <!-- MENÜ -->
       <div class="col-lg-3 col-md-6 mb-4">
-        <h5>Hızlı Menü</h5>
+        <h5 data-i18n="footer_menu_title">Hızlı Menü</h5>
         <ul class="list-unstyled">
-          <li><a href="index.html#anasayfa"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Ana Sayfa</a></li>
-          <li><a href="hizmetlerimiz.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Hizmetlerimiz</a></li>
-          <li><a href="hakkimizda.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Hakkımızda</a></li>
-          <li><a href="index.html#projeler"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Projeler</a></li>
+          <li><a href="index.html#anasayfa"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_home">Ana Sayfa</span></a></li>
+          <li><a href="hizmetlerimiz.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_services">Hizmetlerimiz</span></a></li>
+          <li><a href="hakkimizda.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_about">Hakkımızda</span></a></li>
+          <li><a href="index.html#projeler"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_projects">Projeler</span></a></li>
         </ul>
       </div>
 
       <!-- İLETİŞİM -->
       <div class="col-lg-5 col-md-12 mb-4 footer-icon-list">
-        <h5>İletişim Bilgileri</h5>
+        <h5 data-i18n="footer_contact_title">İletişim Bilgileri</h5>
         <p>
-          <i class="bi bi-geo-alt"></i> 
-          <span><strong>Merkez Ofis:</strong> İstanbul / Türkiye</span>
+          <i class="bi bi-geo-alt"></i>
+          <span><strong data-i18n="footer_address">Merkez Ofis:</strong> Altunizade Mah. Kısıklı Cad. No: 19 Üsküdar/İstanbul</span>
         </p>
         <p>
-          <i class="bi bi-telephone"></i> 
-          <span><strong>Telefon:</strong> +90 5XX XXX XX XX</span>
+          <i class="bi bi-telephone"></i>
+          <span><strong data-i18n="footer_phone">Telefon:</strong> +90 5XX XXX XX XX</span>
         </p>
         <p>
-          <i class="bi bi-envelope"></i> 
-          <span><strong>E-Posta:</strong> info@aksismuhendislik.com</span>
+          <i class="bi bi-envelope"></i>
+          <span><strong data-i18n="footer_email">E-Posta:</strong> info@aksismuhendislik.com</span>
         </p>
       </div>
     </div>
@@ -320,20 +326,22 @@
     <!-- ALT YAZI -->
     <div class="row align-items-center">
       <div class="col-md-6 text-center text-md-start">
-        <p class="mb-0 text-muted" style="font-size:13px;">© 2026 Aksis Mühendislik. Tüm Hakları Saklıdır.</p>
+        <p class="mb-0 text-muted" style="font-size:13px;" data-i18n="footer_copyright">© 2026 Aksis Mühendislik. Tüm Hakları Saklıdır.</p>
       </div>
       <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-        <a href="#" class="text-muted text-decoration-none me-3" style="font-size:13px;">Gizlilik Politikası</a>
-        <a href="#" class="text-muted text-decoration-none" style="font-size:13px;">Kullanım Şartları</a>
+        <a href="#" class="text-muted text-decoration-none me-3" style="font-size:13px;" data-i18n="footer_privacy">Gizlilik Politikası</a>
+        <a href="#" class="text-muted text-decoration-none" style="font-size:13px;" data-i18n="footer_terms">Kullanım Şartları</a>
       </div>
     </div>
   </div>
 </footer>
 
+<script src="js/translations.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Floating Contact Form -->
-  <script src="js/floating-contact.js"></script>
+<!-- Floating Contact Form -->
+<script src="js/floating-contact.js"></script>
 </body>
 </html>

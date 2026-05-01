@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const sonProjelerAlani = document.getElementById("son-projeler-alani");
     if (!sonProjelerAlani) return;
 
+    let currentLang = localStorage.getItem('lang') || 'tr';
+
+    // Dil değiştiğinde kartlardaki butonları güncelle
+    document.addEventListener('languageChanged', (e) => {
+        currentLang = e.detail.lang;
+        document.querySelectorAll('#son-projeler-alani .btn span[data-i18n]').forEach(span => {
+            span.textContent = translations[currentLang]["project_view_btn"];
+        });
+    });
+
     function projeKartiOlustur(proje, id) {
         // Ana sayfada sade görünüm için sadece ilk fotoğrafı alıyoruz
         const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
@@ -27,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         
                         <!-- Butonu her zaman en alta sabitle -->
                         <div class="mt-auto pt-3">
-                            <a href="proje-detay.html?id=${id}" class="btn w-100" style="border-radius: 8px; font-weight: 600; padding: 12px; border: 1px solid var(--accent); color: var(--accent); transition: all 0.3s ease;" onmouseover="this.style.background='var(--accent)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent)';">İncele <i class="bi bi-arrow-right ms-2"></i></a>
+                            <a href="proje-detay.html?id=${id}" class="btn w-100" style="border-radius: 8px; font-weight: 600; padding: 12px; border: 1px solid var(--accent); color: var(--accent); transition: all 0.3s ease;" onmouseover="this.style.background='var(--accent)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent)';"><span data-i18n="project_view_btn">${typeof translations !== 'undefined' ? translations[currentLang]['project_view_btn'] : 'İncele'}</span> <i class="bi bi-arrow-right ms-2"></i></a>
                         </div>
                     </div>
                 </div>

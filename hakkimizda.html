@@ -30,71 +30,55 @@
     </button>
 
     <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html#anasayfa">Ana Sayfa</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#hizmetler">Hizmetler</a></li>
-        <li class="nav-item"><a class="nav-link active" href="#">Hakkımızda</a></li>
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html#anasayfa" data-i18n="nav_home">Ana Sayfa</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#hizmetler" data-i18n="nav_services">Hizmetler</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#" data-i18n="nav_about">Hakkımızda</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_projects">
             Projeler
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="projeler.html?kategori=tamamlandi">Tamamlanan Projeler</a></li>
-            <li><a class="dropdown-item" href="projeler.html?kategori=devam_ediyor">Devam Eden Projeler</a></li>
+            <li><a class="dropdown-item" href="projeler.html?kategori=tamamlandi" data-i18n="nav_completed_projects">Tamamlanan Projeler</a></li>
+            <li><a class="dropdown-item" href="projeler.html?kategori=devam_ediyor" data-i18n="nav_ongoing_projects">Devam Eden Projeler</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" href="index.html#iletisim">İletişim</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#iletisim" data-i18n="nav_contact">İletişim</a></li>
+
+        <!-- Language Switcher -->
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+          <div class="d-flex align-items-center bg-light rounded-pill px-2 py-1" style="border: 1px solid #e2e8f0;">
+            <a href="#" id="lang-tr" class="text-decoration-none px-2 active fw-bold text-dark" style="font-size: 14px;">TR</a>
+            <span class="text-muted" style="font-size: 14px;">|</span>
+            <a href="#" id="lang-en" class="text-decoration-none px-2 text-muted" style="font-size: 14px;">EN</a>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-
-
 <section class="py-5">
   <div class="container">
 
     <div class="about-hero text-center mb-5">
-      <h1>Hakkımızda</h1>
+      <h1 data-i18n="about_hero_title">Hakkımızda</h1>
       <div class="about-line"></div>
-      <p>Kurumsal kimliğimizi ve mühendislik yaklaşımımızı tanıyın</p>
+      <p data-i18n="about_hero_subtitle">Kurumsal kimliğimizi ve mühendislik yaklaşımımızı tanıyın</p>
     </div>
 
     <!-- KURUM PROFİLİ -->
     <div class="about-full-text mb-5">
-      <h3 class="mb-4">Kurum Profilimiz</h3>
+      <h3 class="mb-4" data-i18n="about_profile_title">Kurum Profilimiz</h3>
 
-      <p>
-        AKSİS MÜHENDİSLİK, üst yapı ve altyapı elektrik sektöründe; proje, müşavirlik ve uygulama alanlarında edinilmiş tecrübeleri farklı bir anlayış ile müşterileri ve iş ortaklarıyla paylaşabilmek amacıyla hizmet vermektedir. Kendi iş alanımızda yatırımların planlanmasından kesin kabule kadar olan tüm süreçte, müşterimizin ihtiyaç duyabileceği her konuda projeye özel ve anahtar teslimi hizmet vermek temel amacımızdır.
-      </p>
-
-      <p>
-        Uygulama tecrübesi olarak pek çok projeyi başarıyla bitirmiş şirketimizin bünyesinde, tasarım ve uygulama alanlarında deneyimli elektrik mühendisleri, teknisyenler ve teknik ressamlar bulunmaktadır.
-      </p>
-
-      <p>
-        Saha kadrolarımız ise, şirketin kadrolu personelleri ile proje bazlı çalıştığımız uzman ekiplerden oluşmaktadır. Şirketimizin kurucusu BAKİ AKYOL meslek hayatına başladığı günden bu yana oldukça büyük ve prestijli projelerin tasarım, uygulama ve müşavirlik hizmetlerini gerçekleştirmiştir.
-      </p>
-
-      <p>
-        Uygulaması yapılan bina veya tesislerin toplam yapı alanı 2 Milyon m²’yi, müşavirliği ve şantiye sorumluluğu yürütülen toplam yapı alanı 3 Milyon m²’yi aşmıştır. Bunun yanında taahhüt olarak kurulumu gerçekleştirilen O.G. trafo tesisi 12 MVA’nın, şantiye sorumlusu olarak kurulumu gerçekleştirilen O.G. trafo tesisi ise 25 MVA’nın üzerindedir.
-      </p>
-
-      <p>
-        AKSİS MÜHENDİSLİK olarak, teknolojinin yakından takibini, enerji verimliliğini destekleyen çevre dostu tasarımları, ulusal ve uluslararası normlara hakim olmayı, kaliteli mühendislik ve işçilik hizmetini fark yaratabileceğimiz alanlar olarak görmekteyiz.
-      </p>
-
-      <p>
-        Rekabetin çok yoğun olduğu sektörde, düşük fiyat ile rekabet etmek yerine güven ve kalıcı farklar yaratarak var olmayı ilke edinen şirketimiz, tamamladığı ve halen devam ettiği projeler ile bu yaklaşımını kanıtlamaktadır.
-      </p>
-
-      <p>
-        Bu bağlamda kaliteli ve hızlı hizmet sunarak, hem bulunduğumuz projelere katma değer yaratmak hem de müşteri memnuniyetini sağlamak amacındayız.
-      </p>
-
-      <p>
-        Sahip olduğumuz etik ve mesleki sorumluluk bilinci ile mühendislik kalitesini artırmayı, enerji verimliliğini destekleyen çevre dostu çözümler üretmeyi ve sektörde güvenilir bir marka olarak yer almayı hedeflemekteyiz.
-      </p>
+      <p data-i18n="about_profile_p1">AKSİS MÜHENDİSLİK, üst yapı ve altyapı elektrik sektöründe; proje, müşavirlik ve uygulama alanlarında edinilmiş tecrübeleri farklı bir anlayış ile müşterileri ve iş ortaklarıyla paylaşabilmek amacıyla hizmet vermektedir. Kendi iş alanımızda yatırımların planlanmasından kesin kabule kadar olan tüm süreçte, müşterimizin ihtiyaç duyabileceği her konuda projeye özel ve anahtar teslimi hizmet vermek temel amacımızdır.</p>
+      <p data-i18n="about_profile_p2">Uygulama tecrübesi olarak pek çok projeyi başarıyla bitirmiş şirketimizin bünyesinde, tasarım ve uygulama alanlarında deneyimli elektrik mühendisleri, teknisyenler ve teknik ressamlar bulunmaktadır.</p>
+      <p data-i18n="about_profile_p3">Saha kadrolarımız ise, şirketin kadrolu personelleri ile proje bazlı çalıştığımız uzman ekiplerden oluşmaktadır. Şirketimizin kurucusu BAKİ AKYOL meslek hayatına başladığı günden bu yana oldukça büyük ve prestijli projelerin tasarım, uygulama ve müşavirlik hizmetlerini gerçekleştirmiştir.</p>
+      <p data-i18n="about_profile_p4">Uygulaması yapılan bina veya tesislerin toplam yapı alanı 2 Milyon m²’yi, müşavirliği ve şantiye sorumluluğu yürütülen toplam yapı alanı 3 Milyon m²’yi aşmıştır. Bunun yanında taahhüt olarak kurulumu gerçekleştirilen O.G. trafo tesisi 12 MVA’nın, şantiye sorumlusu olarak kurulumu gerçekleştirilen O.G. trafo tesisi ise 25 MVA’nın üzerindedir.</p>
+      <p data-i18n="about_profile_p5">AKSİS MÜHENDİSLİK olarak, teknolojinin yakından takibini, enerji verimliliğini destekleyen çevre dostu tasarımları, ulusal ve uluslararası normlara hakim olmayı, kaliteli mühendislik ve işçilik hizmetini fark yaratabileceğimiz alanlar olarak görmekteyiz.</p>
+      <p data-i18n="about_profile_p6">Rekabetin çok yoğun olduğu sektörde, düşük fiyat ile rekabet etmek yerine güven ve kalıcı farklar yaratarak var olmayı ilke edinen şirketimiz, tamamladığı ve halen devam ettiği projeler ile bu yaklaşımını kanıtlamaktadır.</p>
+      <p data-i18n="about_profile_p7">Bu bağlamda kaliteli ve hızlı hizmet sunarak, hem bulunduğumuz projelere katma değer yaratmak hem de müşteri memnuniyetini sağlamak amacındayız.</p>
+      <p data-i18n="about_profile_p8">Sahip olduğumuz etik ve mesleki sorumluluk bilinci ile mühendislik kalitesini artırmayı, enerji verimliliğini destekleyen çevre dostu çözümler üretmeyi ve sektörde güvenilir bir marka olarak yer almayı hedeflemekteyiz.</p>
     </div>
 
     <!-- FOTO -->
@@ -104,71 +88,60 @@
 
     <!-- KALİTE -->
     <div class="about-card mb-5">
-      <h3 class="mb-4">Kalite Politikamız</h3>
+      <h3 class="mb-4" data-i18n="about_quality_title">Kalite Politikamız</h3>
 
-      <p>
-        AKSİS MÜHENDİSLİK, ISO 9001 Kalite Yönetim Sistemi, ISO 14001 Çevre Yönetim Sistemi ve OHSAS 18001 İşçi Sağlığı ve İş Güvenliği sistemleri konusunda bilgi sahibidir ve bu sistemlerin şirket yapısında uygulanmasını benimsemiştir.
-      </p>
-
-      <p>
-        Çalışanlarını bu sistemler hakkında sürekli eğitmekte ve bu standartların şirket uygulamalarında aktif olarak yer almasını sağlamaktadır. Uygulanan prosedürler, tedarikçilerimiz ve müşterilerimiz nezdinde kabul görmüş ve önemli faydalar sağlamıştır.
-      </p>
-
-      <p>
-        Özellikle işçi sağlığı ve iş güvenliği kapsamındaki yasal gereksinimler büyük bir titizlikle takip edilmekte ve eksiksiz uygulanmaktadır.
-      </p>
-
-      <p>
-        Çevre dostu ve enerji verimliliği sağlayan uygulamalar doğrultusunda çalışmalar yapılmaktadır.
-      </p>
+      <p data-i18n="about_quality_p1">AKSİS MÜHENDİSLİK, ISO 9001 Kalite Yönetim Sistemi, ISO 14001 Çevre Yönetim Sistemi ve OHSAS 18001 İşçi Sağlığı ve İş Güvenliği sistemleri konusunda bilgi sahibidir ve bu sistemlerin şirket yapısında uygulanmasını benimsemiştir.</p>
+      <p data-i18n="about_quality_p2">Çalışanlarını bu sistemler hakkında sürekli eğitmekte ve bu standartların şirket uygulamalarında aktif olarak yer almasını sağlamaktadır. Uygulanan prosedürler, tedarikçilerimiz ve müşterilerimiz nezdinde kabul görmüş ve önemli faydalar sağlamıştır.</p>
+      <p data-i18n="about_quality_p3">Özellikle işçi sağlığı ve iş güvenliği kapsamındaki yasal gereksinimler büyük bir titizlikle takip edilmekte ve eksiksiz uygulanmaktadır.</p>
+      <p data-i18n="about_quality_p4">Çevre dostu ve enerji verimliliği sağlayan uygulamalar doğrultusunda çalışmalar yapılmaktadır.</p>
     </div>
 
     <!-- MİSYON -->
     <div class="about-card mb-5">
-      <h3 class="mb-4">Misyon ve Hedeflerimiz</h3>
+      <h3 class="mb-4" data-i18n="about_mission_title">Misyon ve Hedeflerimiz</h3>
 
       <ul class="mission-list">
-        <li>Dünya standartlarında en iyi kalitede hizmeti en uygun fiyatlarla sunmak</li>
-        <li>Müşterilerimizi doğru yönlendirerek desteklemek ve menfaatlerini gözetmek</li>
-        <li>Tamamladığımız tüm projelerin sorumluluğunu taşımak ve işlerimizin arkasında durmak</li>
-        <li>Faaliyetlerimizin yerel ve uluslararası kanunlara ve etik kurallara uygunluğunu sağlamak</li>
-        <li>Yeni yatırımlar ve iş alanları oluşturarak istihdamı artırmak</li>
-        <li>Güvenilir ve tercih edilen bir elektrik taahhüt firması olmak</li>
+        <li data-i18n="about_mission_1">Dünya standartlarında en iyi kalitede hizmeti en uygun fiyatlarla sunmak</li>
+        <li data-i18n="about_mission_2">Müşterilerimizi doğru yönlendirerek desteklemek ve menfaatlerini gözetmek</li>
+        <li data-i18n="about_mission_3">Tamamladığımız tüm projelerin sorumluluğunu taşımak ve işlerimizin arkasında durmak</li>
+        <li data-i18n="about_mission_4">Faaliyetlerimizin yerel ve uluslararası kanunlara ve etik kurallara uygunluğunu sağlamak</li>
+        <li data-i18n="about_mission_5">Yeni yatırımlar ve iş alanları oluşturarak istihdamı artırmak</li>
+        <li data-i18n="about_mission_6">Güvenilir ve tercih edilen bir elektrik taahhüt firması olmak</li>
       </ul>
     </div>
 
   </div>
   <div class="mt-5 text-center">
 
-  <h3 class="mb-5">Başarılarımız</h3>
+  <h3 class="mb-5" data-i18n="about_stats_title">Başarılarımız</h3>
 
   <div class="row g-4">
 
     <div class="col-md-3">
       <div class="stat-box">
         <h2 class="counter" data-target="2000000">0</h2>
-        <p>m² Proje Alanı</p>
+        <p data-i18n="about_stat_1">m² Proje Alanı</p>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="stat-box">
         <h2 class="counter" data-target="25">0</h2>
-        <p>MVA Trafo</p>
+        <p data-i18n="about_stat_2">MVA Trafo</p>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="stat-box">
         <h2 class="counter" data-target="100">0</h2>
-        <p>Tamamlanan Proje</p>
+        <p data-i18n="about_stat_3">Tamamlanan Proje</p>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="stat-box">
         <h2 class="counter" data-target="10">0</h2>
-        <p>Devam Eden Proje</p>
+        <p data-i18n="about_stat_4">Devam Eden Proje</p>
       </div>
     </div>
 
@@ -186,37 +159,36 @@
         <a href="index.html" class="d-inline-block mb-4">
           <img src="images/footer-logo-yeni.png" height="60" class="footer-logo" alt="Aksis Logo">
         </a>
-        <p class="pe-lg-4">
-          Aksis Mühendislik, güçlü teknik altyapısı ve modern vizyonu ile 
-          üst yapı ve altyapı projelerinizi güvenle hayata geçirir.
+        <p class="pe-lg-4" data-i18n="footer_desc">
+          Aksis Mühendislik, güçlü teknik altyapısı ve modern vizyonu ile üst yapı ve altyapı projelerinizi güvenle hayata geçirir.
         </p>
       </div>
 
       <!-- MENÜ -->
       <div class="col-lg-3 col-md-6 mb-4">
-        <h5>Hızlı Menü</h5>
+        <h5 data-i18n="footer_menu_title">Hızlı Menü</h5>
         <ul class="list-unstyled">
-          <li><a href="index.html#anasayfa"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Ana Sayfa</a></li>
-          <li><a href="hizmetlerimiz.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Hizmetlerimiz</a></li>
-          <li><a href="hakkimizda.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Hakkımızda</a></li>
-          <li><a href="index.html#projeler"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i>Projeler</a></li>
+          <li><a href="index.html#anasayfa"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_home">Ana Sayfa</span></a></li>
+          <li><a href="hizmetlerimiz.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_services">Hizmetlerimiz</span></a></li>
+          <li><a href="hakkimizda.html"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_about">Hakkımızda</span></a></li>
+          <li><a href="index.html#projeler"><i class="bi bi-chevron-right me-2" style="font-size:10px;"></i><span data-i18n="nav_projects">Projeler</span></a></li>
         </ul>
       </div>
 
       <!-- İLETİŞİM -->
       <div class="col-lg-5 col-md-12 mb-4 footer-icon-list">
-        <h5>İletişim Bilgileri</h5>
+        <h5 data-i18n="footer_contact_title">İletişim Bilgileri</h5>
         <p>
-          <i class="bi bi-geo-alt"></i> 
-          <span><strong>Merkez Ofis:</strong> İstanbul / Türkiye</span>
+          <i class="bi bi-geo-alt"></i>
+          <span><strong data-i18n="footer_address">Merkez Ofis:</strong> Altunizade Mah. Kısıklı Cad. No: 19 Üsküdar/İstanbul</span>
         </p>
         <p>
-          <i class="bi bi-telephone"></i> 
-          <span><strong>Telefon:</strong> +90 5XX XXX XX XX</span>
+          <i class="bi bi-telephone"></i>
+          <span><strong data-i18n="footer_phone">Telefon:</strong> +90 5XX XXX XX XX</span>
         </p>
         <p>
-          <i class="bi bi-envelope"></i> 
-          <span><strong>E-Posta:</strong> info@aksismuhendislik.com</span>
+          <i class="bi bi-envelope"></i>
+          <span><strong data-i18n="footer_email">E-Posta:</strong> info@aksismuhendislik.com</span>
         </p>
       </div>
     </div>
@@ -226,20 +198,22 @@
     <!-- ALT YAZI -->
     <div class="row align-items-center">
       <div class="col-md-6 text-center text-md-start">
-        <p class="mb-0 text-muted" style="font-size:13px;">© 2026 Aksis Mühendislik. Tüm Hakları Saklıdır.</p>
+        <p class="mb-0 text-muted" style="font-size:13px;" data-i18n="footer_copyright">© 2026 Aksis Mühendislik. Tüm Hakları Saklıdır.</p>
       </div>
       <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-        <a href="#" class="text-muted text-decoration-none me-3" style="font-size:13px;">Gizlilik Politikası</a>
-        <a href="#" class="text-muted text-decoration-none" style="font-size:13px;">Kullanım Şartları</a>
+        <a href="#" class="text-muted text-decoration-none me-3" style="font-size:13px;" data-i18n="footer_privacy">Gizlilik Politikası</a>
+        <a href="#" class="text-muted text-decoration-none" style="font-size:13px;" data-i18n="footer_terms">Kullanım Şartları</a>
       </div>
     </div>
   </div>
 </footer>
 
+<script src="js/translations.js"></script>
+<script src="js/lang.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
 
-  <!-- Floating Contact Form -->
-  <script src="js/floating-contact.js"></script>
+<!-- Floating Contact Form -->
+<script src="js/floating-contact.js"></script>
 </body>
 </html>
