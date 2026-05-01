@@ -4,6 +4,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!contactForm) return;
 
+    // Dosya sayacı - birden fazla seçimde birikerek artar
+    const fileInput = document.getElementById("contact-file");
+    const fileCount = document.querySelector(".contact-file-count");
+    const accumulatedFiles = new DataTransfer();
+
+    if (fileInput && fileCount) {
+        fileInput.addEventListener("change", () => {
+            // Yeni seçilen dosyaları mevcut listeye ekle (aynı isimde olanları atla)
+            const existingNames = Array.from(accumulatedFiles.files).map(f => f.name);
+            Array.from(fileInput.files).forEach(file => {
+                if (!existingNames.includes(file.name)) {
+                    accumulatedFiles.items.add(file);
+                }
+            });
+            // Input'u güncel toplam listeyle güncelle
+            fileInput.files = accumulatedFiles.files;
+            fileCount.textContent = `Ekler (${accumulatedFiles.files.length})`;
+        });
+    }
+
     contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
 

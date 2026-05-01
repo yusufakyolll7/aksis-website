@@ -265,14 +265,14 @@ section {
 /* NAVBAR */
 .navbar {
   transition: all 0.3s ease;
-  padding: 18px 0;
+  padding: 12px 0;
   border-bottom: 1px solid rgba(15, 23, 42, 0.05);
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(10px);
 }
 
 .navbar.scrolled {
-  padding: 12px 0;
+  padding: 8px 0;
   box-shadow: var(--shadow-md);
 }
 
@@ -301,13 +301,12 @@ section {
 /* FOOTER LOGO */
 .footer-logo {
   transition: all 0.3s ease;
-  opacity: 0.9;
+  filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.3)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.15));
 }
 
 .footer-logo:hover {
-  transform: translateY(-2px) scale(1.02);
-  opacity: 1;
-  filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.3));
+  filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.6)) drop-shadow(0 0 15px rgba(0, 0, 0, 0.2));
+  transform: scale(1.02);
 }
 
 p {
@@ -507,6 +506,197 @@ p {
 /* Utility Classes */
 .transition-all { transition: all 0.3s ease-in-out; }
 .hover-shadow:hover { transform: translateY(-3px); box-shadow: var(--shadow-md) !important; }
+
+/* CONTACT SECTION */
+.contact-section {
+  padding: 80px 0;
+}
+
+.contact-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.contact-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 32px;
+}
+
+.contact-form-group {
+  margin-bottom: 16px;
+}
+
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #CBD5E1;
+  border-radius: 0;
+  padding: 12px 4px;
+  font-size: 14px;
+  color: var(--primary);
+  background: transparent;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+  color: #94A3B8;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  border-bottom-color: var(--accent);
+}
+
+.contact-textarea {
+  resize: vertical;
+  min-height: 120px;
+  border: 1px solid #CBD5E1 !important;
+  border-radius: 6px;
+  padding: 12px 14px !important;
+}
+
+.contact-textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.contact-submit {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 14px 48px;
+  background: transparent;
+  border: 1.5px solid var(--primary);
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.contact-submit:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.contact-info {
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.contact-info-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.contact-info-email a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.contact-info-email a:hover {
+  text-decoration: underline;
+}
+
+.contact-info-phone {
+  font-size: 16px;
+  color: var(--secondary);
+  margin-bottom: 0;
+}
+
+.contact-divider {
+  border-color: #E2E8F0;
+  margin: 24px 0;
+}
+
+.contact-company {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  letter-spacing: 0;
+}
+
+.contact-address {
+  font-size: 15px;
+  color: var(--secondary);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.contact-address .contact-info-label {
+  display: inline;
+}
+
+.contact-hours-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.contact-hours {
+  font-size: 15px;
+  color: var(--secondary);
+  margin-bottom: 0;
+}
+
+/* Contact File Upload */
+.contact-file-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #CBD5E1;
+  padding: 10px 4px;
+  margin-bottom: 4px;
+}
+
+.contact-file-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  margin: 0;
+}
+
+.contact-file-label:hover {
+  color: var(--accent);
+}
+
+.contact-file-label i {
+  font-size: 15px;
+}
+
+.contact-file-input {
+  display: none;
+}
+
+.contact-file-count {
+  font-size: 12px;
+  color: #94A3B8;
+}
 
 /* Proje Carousel */
 #tamamlanan-projeler-alani .carousel-indicators button,
