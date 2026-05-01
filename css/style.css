@@ -40,13 +40,119 @@ h1, h2, h3, h4, h5, h6 {
 /* HERO */
 .hero {
   height: 90vh;
-  background: url('../images/hero.jpg') center/cover no-repeat;
   position: relative;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../images/hero.jpg') center/cover no-repeat;
+  z-index: 0;
+  animation: heroZoomOut 6s linear forwards;
+}
+
+@keyframes heroZoomOut {
+  0% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* PAGE BANNER */
+.page-banner {
+  height: 350px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.page-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../images/hizmetler-bg.jpg') center/cover no-repeat;
+  z-index: 0;
+  animation: heroZoomOut 6s linear forwards;
+}
+
+.page-banner .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  z-index: 1;
+}
+
+.page-banner .container {
+  z-index: 2;
+  position: relative;
+}
+
+.page-banner h1 {
+  color: #fff;
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.page-banner p {
+  color: #E2E8F0;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+/* PROJELER BANNER */
+.projeler-banner {
+  height: 350px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.projeler-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../images/projeler-bg.png') center/cover no-repeat;
+  z-index: 0;
+  animation: heroZoomOut 6s linear forwards;
+}
+
+.projeler-banner .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  z-index: 1;
+}
+
+.projeler-banner .container {
+  z-index: 2;
+  position: relative;
+}
+
+.projeler-banner h1 {
+  color: #fff;
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.projeler-banner p {
+  color: #E2E8F0;
+  font-size: 18px;
+  font-weight: 300;
 }
 
 .overlay {
@@ -152,7 +258,7 @@ h3.section-title,
 /* FOOTER */
 footer {
   font-size: 14px;
-  background-color: var(--primary) !important;
+  background-color: #051022 !important;
   color: #94A3B8;
   border-top: 1px solid #1E293B;
   padding-top: 70px;
@@ -301,11 +407,9 @@ section {
 /* FOOTER LOGO */
 .footer-logo {
   transition: all 0.3s ease;
-  filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.3)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.15));
 }
 
 .footer-logo:hover {
-  filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.6)) drop-shadow(0 0 15px rgba(0, 0, 0, 0.2));
   transform: scale(1.02);
 }
 
@@ -595,8 +699,8 @@ p {
   padding-top: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 .contact-info-label {
