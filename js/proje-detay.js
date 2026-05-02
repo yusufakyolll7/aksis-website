@@ -51,9 +51,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 .proje-detay-img {
                     animation: kenBurnsEffect 20s infinite alternate linear;
                 }
+                .back-btn-custom {
+                    color: var(--primary) !important;
+                    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+                }
+                .back-btn-custom:hover {
+                    color: var(--accent) !important;
+                    transform: translateX(-5px);
+                    text-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
+                }
+                .thumb-gallery-container {
+                    display: flex;
+                    gap: 1rem;
+                    overflow-x: auto;
+                    padding: 10px 0;
+                    margin: 0 auto;
+                    max-width: 100%;
+                    scroll-behavior: smooth;
+                    -webkit-overflow-scrolling: touch;
+                    scrollbar-width: none; /* Firefox */
+                }
+                .thumb-gallery-container::-webkit-scrollbar {
+                    display: none; /* Chrome, Safari, Opera */
+                }
                 .thumb-btn {
-                    width: 90px; 
-                    height: 65px; 
+                    flex: 0 0 auto;
+                    width: 70px; 
+                    height: 50px; 
                     text-indent: 0; 
                     background: transparent; 
                     border: 3px solid transparent; 
@@ -63,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     transition: all 0.3s ease;
                     padding: 0;
                     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                    cursor: pointer;
                 }
                 .thumb-btn:hover {
                     opacity: 0.8;
@@ -96,14 +121,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
                 
                 items += `
-                    <div class="carousel-item ${activeClass} h-100 d-flex align-items-center justify-content-center">
-                        <img src="${url}" class="d-block w-100 proje-detay-img" style="max-height: 750px; height: auto; object-fit: contain;" alt="${baslik}">
+                    <div class="carousel-item ${activeClass} h-100 position-relative">
+                        <div class="position-absolute w-100 h-100" style="background-image: url('${url}'); background-size: cover; background-position: center; filter: blur(25px) brightness(0.6); z-index: 0; transform: scale(1.1);"></div>
+                        <div class="d-flex align-items-center justify-content-center h-100 position-relative z-1">
+                            <img src="${url}" class="d-block proje-detay-img shadow-lg" style="max-height: 55vh; max-width: 100%; object-fit: contain;" alt="${baslik}">
+                        </div>
                     </div>
                 `;
             });
 
             imgHtml = `
-                <div id="${carouselId}" class="carousel slide carousel-fade shadow-sm rounded-4 overflow-hidden bg-light border" data-bs-ride="carousel" data-bs-interval="4000">
+                <div id="${carouselId}" class="carousel slide carousel-fade shadow-sm rounded-4 overflow-hidden bg-dark border-0" data-bs-ride="carousel" data-bs-interval="4000">
                     <div class="carousel-inner">
                         ${items}
                     </div>
@@ -118,16 +146,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 
                 <!-- Küçük Resimler (Thumbnails) Alt Galeri -->
-                <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
-                    ${indicators}
+                <div class="w-100 d-flex justify-content-center">
+                    <div class="thumb-gallery-container mt-3">
+                        ${indicators}
+                    </div>
                 </div>
             `;
         } else {
             // Tek resim
             const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
             imgHtml = `
-                <div class="shadow-lg rounded-4 overflow-hidden d-flex align-items-center justify-content-center bg-light border" style="min-height: 300px;">
-                    <img src="${tekResim}" class="img-fluid w-100 proje-detay-img" style="max-height: 750px; height: auto; object-fit: contain;" alt="${baslik}">
+                <div class="shadow-lg rounded-4 overflow-hidden position-relative border-0" style="min-height: 300px; background-color: #0f172a;">
+                    <div class="position-absolute w-100 h-100" style="background-image: url('${tekResim}'); background-size: cover; background-position: center; filter: blur(25px) brightness(0.6); z-index: 0; transform: scale(1.1);"></div>
+                    <div class="d-flex align-items-center justify-content-center position-relative z-1" style="min-height: 300px;">
+                        <img src="${tekResim}" class="img-fluid proje-detay-img shadow-lg" style="max-height: 55vh; max-width: 100%; object-fit: contain;" alt="${baslik}">
+                    </div>
                 </div>
             `;
         }
@@ -141,18 +174,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="col-lg-11">
 
                     <!-- Üst Navigasyon ve Başlık -->
-                    <div class="d-flex align-items-center mb-5">
-                        <button onclick="history.back()" class="btn btn-white shadow-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 55px; height: 55px; border: 1px solid #eee; transition: all 0.3s ease;" onmouseover="this.style.background='var(--accent)'; this.style.color='white';" onmouseout="this.style.background='white'; this.style.color='var(--dark)';">
-                            <i class="bi bi-arrow-left fs-4"></i>
+                    <div class="d-flex align-items-center mb-3">
+                        <button onclick="history.back()" class="btn btn-link p-0 border-0 text-decoration-none d-flex align-items-center justify-content-center back-btn-custom" style="width: 40px; height: 40px;">
+                            <i class="bi bi-arrow-left fs-3"></i>
                         </button>
-                        <div class="text-center flex-grow-1 px-4">
-                            <h1 class="fw-bold mb-0" style="font-size: 2.2rem; letter-spacing: -0.02em; color: var(--primary);">${baslik}</h1>
+                        <div class="text-center flex-grow-1 px-3" style="min-width: 0;">
+                            <h1 class="fw-bold mb-0 text-truncate" style="font-size: clamp(1.2rem, 2.5vw, 1.8rem); letter-spacing: -0.02em; color: var(--primary); width: 100%;" title="${baslik}">${baslik}</h1>
                         </div>
-                        <div style="width: 55px;"></div> <!-- Dengeleyici -->
+                        <div style="width: 40px;"></div> <!-- Dengeleyici -->
                     </div>
                     
                     <!-- Resim Galerisi -->
-                    <div class="row justify-content-center mb-5">
+                    <div class="row justify-content-center mb-4">
                         <div class="col-lg-12">
                             ${imgHtml}
                         </div>

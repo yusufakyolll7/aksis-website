@@ -42,14 +42,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 indicators += `<button type="button" data-bs-target="#${carouselId}" data-bs-slide-to="${index}" class="${activeClass}"></button>`;
                 items += `
                     <div class="carousel-item ${activeClass}">
-                        <img src="${url}" class="d-block w-100" style="height: 280px; object-fit: cover;" alt="${baslik}">
+                        <img src="${url}" class="d-block w-100 proje-card-img" style="height: 280px; object-fit: cover;" alt="${baslik}">
                     </div>
                 `;
             });
 
             imgHtml = `
-                <div class="px-4">
-                    <div id="${carouselId}" class="carousel slide shadow-sm rounded-4 overflow-hidden" data-bs-ride="carousel">
+                <div class="px-4 proje-img-wrapper">
+                    <div id="${carouselId}" class="carousel slide carousel-fade shadow-sm rounded-4 overflow-hidden" data-bs-ride="carousel">
                         <div class="carousel-indicators">${indicators}</div>
                         <div class="carousel-inner">${items}</div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
@@ -64,9 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
             imgHtml = `
-                <div class="px-4">
+                <div class="px-4 proje-img-wrapper">
                     <div class="overflow-hidden shadow-sm rounded-4">
-                        <img src="${tekResim}" class="w-100 proje-card-img" style="height: 280px; object-fit: cover; transition: transform 0.5s ease;" alt="${baslik}">
+                        <img src="${tekResim}" class="w-100 proje-card-img" style="height: 280px; object-fit: cover;" alt="${baslik}">
                     </div>
                 </div>
             `;
@@ -84,14 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Bootstrap col-md-4 class'ı ile her satıra 3 adet proje dizeceğiz.
         return `
             <div class="col-md-4 col-sm-6 mb-4">
-                <div class="card h-100 shadow-sm border-0 proje-card" style="${cardStyle} transition: transform 0.3s ease, box-shadow 0.3s ease; border-radius: 12px; overflow: hidden;">
+                <div class="card h-100 shadow-sm border-0 proje-card-modern" style="${cardStyle}">
                     <div class="${headerStyle} px-4 pt-4 pb-3 text-center">
                         <h5 class="fw-bold ${textStyle} mb-0" style="font-size: 20px;">${baslik}</h5>
                     </div>
                     ${imgHtml}
                     <div class="card-body d-flex flex-column p-4">
                         <p class="${descStyle} flex-grow-1" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 15px; line-height: 1.6;">${aciklama}</p>
-                        <a href="proje-detay.html?id=${id}" class="btn mt-4 w-100 ${btnHoverClass}" style="border-radius: 8px; font-weight: 600; padding: 12px; ${btnStyle} transition: all 0.3s ease;"><span data-i18n="project_view_btn">${typeof translations !== 'undefined' && translations[currentLang] ? translations[currentLang]['project_view_btn'] : 'Projeyi İncele'}</span> <i class="bi bi-arrow-right ms-2"></i></a>
+                        <a href="proje-detay.html?id=${id}" class="btn mt-4 w-100 proje-incele-btn" style="border-radius: 8px; font-weight: 600; padding: 12px; ${btnStyle}"><span data-i18n="project_view_btn">${typeof translations !== 'undefined' && translations[currentLang] ? translations[currentLang]['project_view_btn'] : 'Projeyi İncele'}</span> <i class="bi bi-arrow-right ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         
         gridEl.innerHTML = html;
-        bindHoverEffects();
+        // JS hover effects are removed in favor of CSS .proje-card-modern
     }
 
     // Firebase'den Verileri Çek (Sıralama ve filtrelemeyi JS ile yapıyoruz, onSnapshot ile anında yüklenir)
@@ -143,58 +143,4 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Projeler yüklenirken hata oluştu:", error);
         gridEl.innerHTML = `<div class="col-12 text-center text-danger py-5"><p>Projeler yüklenirken bir hata oluştu.</p></div>`;
     });
-
-    function bindHoverEffects() {
-
-        // Hover efektleri için JS müdahalesi
-        const cards = gridEl.querySelectorAll('.proje-card');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-                card.style.boxShadow = '0 20px 40px rgba(15, 23, 42, 0.12)';
-                
-                const img = card.querySelector('.proje-card-img');
-                if (img) img.style.transform = 'scale(1.05)';
-
-                const btn = card.querySelector('.proje-incele-btn');
-                if (btn) {
-                    btn.style.backgroundColor = 'var(--accent)';
-                    btn.style.color = 'white';
-                }
-
-                const btnDark = card.querySelector('.proje-incele-btn-dark');
-                if (btnDark) {
-                    btnDark.style.boxShadow = '0 6px 15px rgba(255,255,255,0.2)';
-                }
-
-                const btnBlue = card.querySelector('.proje-incele-btn-blue');
-                if (btnBlue) {
-                    btnBlue.style.boxShadow = '0 6px 15px rgba(255,255,255,0.2)';
-                }
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-                card.style.boxShadow = '0 2px 4px rgba(15, 23, 42, 0.04)';
-                
-                const img = card.querySelector('.proje-card-img');
-                if (img) img.style.transform = 'scale(1)';
-
-                const btn = card.querySelector('.proje-incele-btn');
-                if (btn) {
-                    btn.style.backgroundColor = 'transparent';
-                    btn.style.color = 'var(--accent)';
-                }
-
-                const btnDark = card.querySelector('.proje-incele-btn-dark');
-                if (btnDark) {
-                    btnDark.style.boxShadow = 'none';
-                }
-
-                const btnBlue = card.querySelector('.proje-incele-btn-blue');
-                if (btnBlue) {
-                    btnBlue.style.boxShadow = 'none';
-                }
-            });
-        });
-    }
 });

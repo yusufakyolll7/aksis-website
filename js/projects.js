@@ -21,16 +21,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
         
         let imgHtml = `
-            <div class="px-4 pt-3">
+            <div class="px-4 pt-3 proje-img-wrapper">
                 <div class="overflow-hidden shadow-sm rounded-4">
-                    <img src="${tekResim}" class="w-100" style="height: 250px; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="${baslik}">
+                    <img src="${tekResim}" class="w-100 proje-card-img" style="height: 250px; object-fit: cover;" alt="${baslik}">
                 </div>
             </div>
         `;
 
         return `
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 shadow-sm border-0" style="border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-sm)';">
+                <div class="card h-100 shadow-sm border-0 proje-card-modern">
                     <div class="bg-white px-4 pt-4 pb-2 text-center">
                         <h5 class="fw-bold mb-0 text-dark" style="font-size: 20px;">${baslik}</h5>
                     </div>
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         
                         <!-- Butonu her zaman en alta sabitle -->
                         <div class="mt-auto pt-3">
-                            <a href="proje-detay.html?id=${id}" class="btn w-100" style="border-radius: 8px; font-weight: 600; padding: 12px; border: 1px solid var(--accent); color: var(--accent); transition: all 0.3s ease;" onmouseover="this.style.background='var(--accent)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent)';"><span data-i18n="project_view_btn">${typeof translations !== 'undefined' && translations[currentLang] ? translations[currentLang]['project_view_btn'] : 'İncele'}</span> <i class="bi bi-arrow-right ms-2"></i></a>
+                            <a href="proje-detay.html?id=${id}" class="btn w-100 proje-incele-btn" style="border-radius: 8px; font-weight: 600; padding: 12px; border: 1px solid var(--accent); color: var(--accent);"><span data-i18n="project_view_btn">${typeof translations !== 'undefined' && translations[currentLang] ? translations[currentLang]['project_view_btn'] : 'İncele'}</span> <i class="bi bi-arrow-right ms-2"></i></a>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Get default language or stored language
   let currentLang = localStorage.getItem("lang") || "tr";
-  
+
   // Set initial language
   setLanguage(currentLang);
 
@@ -32,11 +32,15 @@ function setLanguage(lang) {
 
   if (langTrBtn && langEnBtn) {
     if (lang === "tr") {
-      langTrBtn.classList.add("active");
-      langEnBtn.classList.remove("active");
+      langTrBtn.classList.add("active", "fw-bold", "text-dark");
+      langTrBtn.classList.remove("text-muted");
+      langEnBtn.classList.remove("active", "fw-bold", "text-dark");
+      langEnBtn.classList.add("text-muted");
     } else {
-      langEnBtn.classList.add("active");
-      langTrBtn.classList.remove("active");
+      langEnBtn.classList.add("active", "fw-bold", "text-dark");
+      langEnBtn.classList.remove("text-muted");
+      langTrBtn.classList.remove("active", "fw-bold", "text-dark");
+      langTrBtn.classList.add("text-muted");
     }
   }
 
