@@ -36,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const proje = doc.data();
+        let baslik = currentLang === 'en' ? (proje.baslik_en || proje.baslik) : (proje.baslik_tr || proje.baslik);
+        let aciklama = currentLang === 'en' ? (proje.aciklama_en || proje.aciklama) : (proje.aciklama_tr || proje.aciklama);
 
         // CSS animasyonlarını ve Thumbnail stillerini enjekte et
         if (!document.getElementById("projeDetayStilleri")) {
@@ -95,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 items += `
                     <div class="carousel-item ${activeClass} h-100 d-flex align-items-center justify-content-center">
-                        <img src="${url}" class="d-block w-100 proje-detay-img" style="max-height: 750px; height: auto; object-fit: contain;" alt="${proje.baslik}">
+                        <img src="${url}" class="d-block w-100 proje-detay-img" style="max-height: 750px; height: auto; object-fit: contain;" alt="${baslik}">
                     </div>
                 `;
             });
@@ -125,13 +127,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
             imgHtml = `
                 <div class="shadow-lg rounded-4 overflow-hidden d-flex align-items-center justify-content-center bg-light border" style="min-height: 300px;">
-                    <img src="${tekResim}" class="img-fluid w-100 proje-detay-img" style="max-height: 750px; height: auto; object-fit: contain;" alt="${proje.baslik}">
+                    <img src="${tekResim}" class="img-fluid w-100 proje-detay-img" style="max-height: 750px; height: auto; object-fit: contain;" alt="${baslik}">
                 </div>
             `;
         }
 
         // Sayfa başlığını güncelle
-        document.title = proje.baslik + ' | Aksis Mühendislik';
+        document.title = baslik + ' | Aksis Mühendislik';
 
         // Detay Sayfası HTML Enjeksiyonu
         detayAlani.innerHTML = `
@@ -144,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <i class="bi bi-arrow-left fs-4"></i>
                         </button>
                         <div class="text-center flex-grow-1 px-4">
-                            <h1 class="fw-bold mb-0" style="font-size: 2.2rem; letter-spacing: -0.02em; color: var(--primary);">${proje.baslik}</h1>
+                            <h1 class="fw-bold mb-0" style="font-size: 2.2rem; letter-spacing: -0.02em; color: var(--primary);">${baslik}</h1>
                         </div>
                         <div style="width: 55px;"></div> <!-- Dengeleyici -->
                     </div>
@@ -160,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="row justify-content-center">
                         <div class="col-lg-10">
                             <div class="py-4 mt-3" style="border-top: 1px solid rgba(0,0,0,0.05);">
-                                <p class="mb-0 text-start" style="line-height: 1.8; font-size: 1.25rem; color: #111827; white-space: pre-wrap; font-weight: 500;">${proje.aciklama}</p>
+                                <p class="mb-0 text-start" style="line-height: 1.8; font-size: 1.25rem; color: #111827; white-space: pre-wrap; font-weight: 500;">${aciklama}</p>
                             </div>
                         </div>
                     </div>

@@ -16,20 +16,21 @@ document.addEventListener("DOMContentLoaded", () => {
         baslikEl.textContent = typeof translations !== 'undefined' ? translations[currentLang]["nav_ongoing_projects"] : "Devam Eden Projeler";
     }
 
+    let projelerData = [];
+
     // Dil değiştiğinde başlığı ve kartları da güncelle
     document.addEventListener('languageChanged', (e) => {
         currentLang = e.detail.lang;
         const key = kategori === 'tamamlandi' ? 'nav_completed_projects' : 'nav_ongoing_projects';
         baslikEl.textContent = translations[currentLang][key];
-        
-        // Kartların içindeki çevirileri de güncelle
-        document.querySelectorAll('.proje-incele-btn span[data-i18n]').forEach(span => {
-            span.textContent = translations[currentLang]["project_view_btn"];
-        });
+        renderProjects();
     });
 
     // Proje kartı HTML'ini oluştur
     function projeKartiOlustur(proje, id, index = 0) {
+        let baslik = currentLang === 'en' ? (proje.baslik_en || proje.baslik) : (proje.baslik_tr || proje.baslik);
+        let aciklama = currentLang === 'en' ? (proje.aciklama_en || proje.aciklama) : (proje.aciklama_tr || proje.aciklama);
+
         let imgHtml = '';
         if (proje.resimUrls && proje.resimUrls.length > 1) {
             const carouselId = `carousel-${id}`;
@@ -41,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 indicators += `<button type="button" data-bs-target="#${carouselId}" data-bs-slide-to="${index}" class="${activeClass}"></button>`;
                 items += `
                     <div class="carousel-item ${activeClass}">
-                        <img src="${url}" class="d-block w-100" style="height: 280px; object-fit: cover;" alt="${proje.baslik}">
+                        <img src="${url}" class="d-block w-100" style="height: 280px; object-fit: cover;" alt="${baslik}">
                     </div>
                 `;
             });
@@ -65,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             imgHtml = `
                 <div class="px-4">
                     <div class="overflow-hidden shadow-sm rounded-4">
-                        <img src="${tekResim}" class="w-100 proje-card-img" style="height: 280px; object-fit: cover; transition: transform 0.5s ease;" alt="${proje.baslik}">
+                        <img src="${tekResim}" class="w-100 proje-card-img" style="height: 280px; object-fit: cover; transition: transform 0.5s ease;" alt="${baslik}">
                     </div>
                 </div>
             `;
@@ -85,39 +86,20 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card h-100 shadow-sm border-0 proje-card" style="${cardStyle} transition: transform 0.3s ease, box-shadow 0.3s ease; border-radius: 12px; overflow: hidden;">
                     <div class="${headerStyle} px-4 pt-4 pb-3 text-center">
-                        <h5 class="fw-bold ${textStyle} mb-0" style="font-size: 20px;">${proje.baslik}</h5>
+                        <h5 class="fw-bold ${textStyle} mb-0" style="font-size: 20px;">${baslik}</h5>
                     </div>
                     ${imgHtml}
                     <div class="card-body d-flex flex-column p-4">
-                        <p class="${descStyle} flex-grow-1" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 15px; line-height: 1.6;">${proje.aciklama}</p>
-                        <a href="proje-detay.html?id=${id}" class="btn mt-4 w-100 ${btnHoverClass}" style="border-radius: 8px; font-weight: 600; padding: 12px; ${btnStyle} transition: all 0.3s ease;"><span data-i18n="project_view_btn">${typeof translations !== 'undefined' ? translations[currentLang]['project_view_btn'] : 'Projeyi İncele'}</span> <i class="bi bi-arrow-right ms-2"></i></a>
+                        <p class="${descStyle} flex-grow-1" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 15px; line-height: 1.6;">${aciklama}</p>
+                        <a href="proje-detay.html?id=${id}" class="btn mt-4 w-100 ${btnHoverClass}" style="border-radius: 8px; font-weight: 600; padding: 12px; ${btnStyle} transition: all 0.3s ease;"><span data-i18n="project_view_btn">${typeof translations !== 'undefined' && translations[currentLang] ? translations[currentLang]['project_view_btn'] : 'Projeyi İncele'}</span> <i class="bi bi-arrow-right ms-2"></i></a>
                     </div>
                 </div>
             </div>
         `;
     }
 
-    // Firebase'den Verileri Çek (Sıralama ve filtrelemeyi JS ile yapıyoruz, onSnapshot ile anında yüklenir)
-    db.collection("projects").onSnapshot((querySnapshot) => {
-        let projeler = [];
-
-        querySnapshot.forEach((doc) => {
-            const proje = doc.data();
-            if (proje.durum === kategori) {
-                projeler.push({ id: doc.id, data: proje });
-            }
-        });
-
-        // Tarihe göre sıralama (Eğer tarih verisi eksikse 0 kabul edip en sona atar, hata vermez)
-        projeler.sort((a, b) => {
-            const timeA = (a.data.createdAt && typeof a.data.createdAt.toMillis === 'function') 
-                            ? a.data.createdAt.toMillis() : 0;
-            const timeB = (b.data.createdAt && typeof b.data.createdAt.toMillis === 'function') 
-                            ? b.data.createdAt.toMillis() : 0;
-            return timeB - timeA;
-        });
-
-        if (projeler.length === 0) {
+    function renderProjects() {
+        if (projelerData.length === 0) {
             gridEl.innerHTML = `
                 <div class="col-12 text-center text-muted py-5 mt-5">
                     <i class="bi bi-inbox text-secondary mb-3" style="font-size: 60px; opacity: 0.5;"></i>
@@ -128,11 +110,41 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         let html = '';
-        projeler.forEach((p, index) => {
+        projelerData.forEach((p, index) => {
             html += projeKartiOlustur(p.data, p.id, index);
         });
         
         gridEl.innerHTML = html;
+        bindHoverEffects();
+    }
+
+    // Firebase'den Verileri Çek (Sıralama ve filtrelemeyi JS ile yapıyoruz, onSnapshot ile anında yüklenir)
+    db.collection("projects").onSnapshot((querySnapshot) => {
+        projelerData = [];
+
+        querySnapshot.forEach((doc) => {
+            const proje = doc.data();
+            if (proje.durum === kategori) {
+                projelerData.push({ id: doc.id, data: proje });
+            }
+        });
+
+        // Tarihe göre sıralama (Eğer tarih verisi eksikse 0 kabul edip en sona atar, hata vermez)
+        projelerData.sort((a, b) => {
+            const timeA = (a.data.createdAt && typeof a.data.createdAt.toMillis === 'function') 
+                            ? a.data.createdAt.toMillis() : 0;
+            const timeB = (b.data.createdAt && typeof b.data.createdAt.toMillis === 'function') 
+                            ? b.data.createdAt.toMillis() : 0;
+            return timeB - timeA;
+        });
+
+        renderProjects();
+    }, (error) => {
+        console.error("Projeler yüklenirken hata oluştu:", error);
+        gridEl.innerHTML = `<div class="col-12 text-center text-danger py-5"><p>Projeler yüklenirken bir hata oluştu.</p></div>`;
+    });
+
+    function bindHoverEffects() {
 
         // Hover efektleri için JS müdahalesi
         const cards = gridEl.querySelectorAll('.proje-card');
@@ -184,8 +196,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         });
-    }, (error) => {
-        console.error("Projeler yüklenirken hata oluştu:", error);
-        gridEl.innerHTML = `<div class="col-12 text-center text-danger py-5"><p>Projeler yüklenirken bir hata oluştu.</p></div>`;
-    });
+    }
 });

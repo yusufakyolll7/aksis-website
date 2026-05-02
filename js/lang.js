@@ -32,15 +32,11 @@ function setLanguage(lang) {
 
   if (langTrBtn && langEnBtn) {
     if (lang === "tr") {
-      langTrBtn.classList.add("active", "fw-bold");
-      langTrBtn.classList.remove("text-muted");
-      langEnBtn.classList.remove("active", "fw-bold");
-      langEnBtn.classList.add("text-muted");
+      langTrBtn.classList.add("active");
+      langEnBtn.classList.remove("active");
     } else {
-      langEnBtn.classList.add("active", "fw-bold");
-      langEnBtn.classList.remove("text-muted");
-      langTrBtn.classList.remove("active", "fw-bold");
-      langTrBtn.classList.add("text-muted");
+      langEnBtn.classList.add("active");
+      langTrBtn.classList.remove("active");
     }
   }
 

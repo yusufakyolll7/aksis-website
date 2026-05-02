@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><img src="${ilkResim}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;"></td>
-                <td class="fw-bold">${proje.baslik}</td>
+                <td class="fw-bold">${proje.baslik_tr || proje.baslik || ''}</td>
                 <td>${durumBadge}</td>
                 <td>
                     ${durumButton}
@@ -68,8 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         
         saveProjectBtn.disabled = true;
-        const baslik = document.getElementById('proje-baslik').value;
-        const aciklama = document.getElementById('proje-aciklama').value;
+        const baslik_tr = document.getElementById('proje-baslik-tr').value;
+        const baslik_en = document.getElementById('proje-baslik-en').value;
+        const aciklama_tr = document.getElementById('proje-aciklama-tr').value;
+        const aciklama_en = document.getElementById('proje-aciklama-en').value;
         const durum = document.getElementById('proje-durum').value;
         const gorselText = document.getElementById('proje-gorsel').value;
         const resimUrls = gorselText.split('\n').map(url => url.trim()).filter(url => url !== '');
@@ -77,8 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // Firestore'a kaydet
             await db.collection("projects").add({
-                baslik: baslik,
-                aciklama: aciklama,
+                baslik_tr: baslik_tr,
+                baslik_en: baslik_en,
+                aciklama_tr: aciklama_tr,
+                aciklama_en: aciklama_en,
+                baslik: baslik_tr, // fallback for older structure
+                aciklama: aciklama_tr, // fallback for older structure
                 durum: durum,
                 resimUrls: resimUrls, // Artık dizi olarak kaydediyoruz
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -105,8 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             updateProjectBtn.disabled = true;
             const id = document.getElementById('edit-proje-id').value;
-            const baslik = document.getElementById('edit-proje-baslik').value;
-            const aciklama = document.getElementById('edit-proje-aciklama').value;
+            const baslik_tr = document.getElementById('edit-proje-baslik-tr').value;
+            const baslik_en = document.getElementById('edit-proje-baslik-en').value;
+            const aciklama_tr = document.getElementById('edit-proje-aciklama-tr').value;
+            const aciklama_en = document.getElementById('edit-proje-aciklama-en').value;
             const durum = document.getElementById('edit-proje-durum').value;
             const gorselText = document.getElementById('edit-proje-gorsel').value;
             
@@ -114,8 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 await db.collection("projects").doc(id).update({
-                    baslik: baslik,
-                    aciklama: aciklama,
+                    baslik_tr: baslik_tr,
+                    baslik_en: baslik_en,
+                    aciklama_tr: aciklama_tr,
+                    aciklama_en: aciklama_en,
+                    baslik: baslik_tr,
+                    aciklama: aciklama_tr,
                     durum: durum,
                     resimUrls: resimUrls
                 });
@@ -146,8 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!proje) return;
 
         document.getElementById('edit-proje-id').value = id;
-        document.getElementById('edit-proje-baslik').value = proje.baslik;
-        document.getElementById('edit-proje-aciklama').value = proje.aciklama;
+        document.getElementById('edit-proje-baslik-tr').value = proje.baslik_tr || proje.baslik || '';
+        document.getElementById('edit-proje-baslik-en').value = proje.baslik_en || '';
+        document.getElementById('edit-proje-aciklama-tr').value = proje.aciklama_tr || proje.aciklama || '';
+        document.getElementById('edit-proje-aciklama-en').value = proje.aciklama_en || '';
         document.getElementById('edit-proje-durum').value = proje.durum;
         
         // Varsa resimUrls arrayini satır satır birleştirip textarea'ya yaz, yoksa eski resimUrl'i yaz
