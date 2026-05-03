@@ -320,7 +320,7 @@ h3.section-title,
 /* FOOTER */
 footer {
   font-size: 14px;
-  background-color: #051022 !important;
+  background-color: #010D22 !important;
   color: #94A3B8;
   border-top: 1px solid #1E293B;
   padding-top: 70px;
@@ -1214,4 +1214,25 @@ p {
 /* Carousel Fade Transition Override for Premium Feel */
 .carousel-fade .carousel-item {
   transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Responsive SVG Logo Ayarı */
+.aksis-footer-svg {
+  height: 80px;
+  /* Masaüstü yüksekliği */
+  width: auto;
+  max-width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .aksis-footer-svg {
+    height: 60px;
+    /* Mobil için biraz daha küçük */
+  }
+}
+
+.aksis-footer-svg:hover {
+  transform: scale(1.02);
 }

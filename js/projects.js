@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
         
         let imgHtml = `
-            <div class="px-4 pt-3 proje-img-wrapper">
+            <div class="px-4 pt-4 proje-img-wrapper">
                 <div class="overflow-hidden shadow-sm rounded-4">
                     <img src="${tekResim}" class="w-100 proje-card-img" style="height: 250px; object-fit: cover;" alt="${baslik}">
                 </div>
@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return `
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100 shadow-sm border-0 proje-card-modern">
-                    <div class="bg-white px-4 pt-4 pb-2 text-center">
-                        <h5 class="fw-bold mb-0 text-dark" style="font-size: 20px;">${baslik}</h5>
+                    <div class="bg-white px-4 pt-4 pb-3 text-center d-flex align-items-center justify-content-center" style="height: 100px;">
+                        <h5 class="fw-bold mb-0 text-dark" style="font-size: 20px; line-height: 1.3;">${baslik}</h5>
                     </div>
                     ${imgHtml}
                     <div class="card-body d-flex flex-column p-4">
