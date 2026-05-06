@@ -99,6 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     transform: scale(1.05);
                     box-shadow: 0 8px 15px rgba(37,99,235,0.3);
                 }
+                /* Hızlı geçiş için carousel animasyon süresini kısaltıyoruz */
+                .carousel-item {
+                    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out !important;
+                }
             `;
             document.head.appendChild(style);
         }
