@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     db.collection("projects").orderBy("createdAt", "desc").onSnapshot((snapshot) => {
         tableBody.innerHTML = '';
         allProjectsData = {};
-        
+
         if (snapshot.empty) {
             tableBody.innerHTML = '<tr><td colspan="4" class="text-center text-muted">Henüz proje eklenmemiş.</td></tr>';
             return;
@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const proje = doc.data();
             const id = doc.id;
             allProjectsData[id] = proje; // Hafızaya al
-            
-            const durumBadge = proje.durum === 'tamamlandi' 
-                ? '<span class="badge bg-success">Tamamlandı</span>' 
+
+            const durumBadge = proje.durum === 'tamamlandi'
+                ? '<span class="badge bg-success">Tamamlandı</span>'
                 : '<span class="badge bg-warning text-dark">Devam Ediyor</span>';
-                
+
             const durumButton = proje.durum === 'devam_ediyor'
                 ? `<button class="btn btn-sm btn-success me-2" onclick="tamamlandiIsaretle('${id}')" title="Tamamlandı Olarak İşaretle"><i class="bi bi-check-circle"></i></button>`
                 : '';
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Yeni Proje Ekle
     addProjectForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         saveProjectBtn.disabled = true;
         const baslik_tr = document.getElementById('proje-baslik-tr').value;
         const baslik_en = document.getElementById('proje-baslik-en').value;
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Formu temizle ve modalı kapat
             addProjectForm.reset();
-            
+
             const modal = bootstrap.Modal.getInstance(document.getElementById('addProjectModal'));
             modal.hide();
 
@@ -105,10 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Proje Güncelleme
-    if(editProjectForm) {
+    if (editProjectForm) {
         editProjectForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             updateProjectBtn.disabled = true;
             const id = document.getElementById('edit-proje-id').value;
             const baslik_tr = document.getElementById('edit-proje-baslik-tr').value;
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const aciklama_en = document.getElementById('edit-proje-aciklama-en').value;
             const durum = document.getElementById('edit-proje-durum').value;
             const gorselText = document.getElementById('edit-proje-gorsel').value;
-            
+
             const resimUrls = gorselText.split('\n').map(url => url.trim()).filter(url => url !== '');
 
             try {
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Global fonksiyonlar (HTML'den onClick ile erişilebilmesi için window objesine ekliyoruz)
     window.tamamlandiIsaretle = async (id) => {
-        if(confirm("Bu projeyi 'Tamamlandı' olarak işaretlemek istediğinize emin misiniz?")) {
+        if (confirm("Bu projeyi 'Tamamlandı' olarak işaretlemek istediğinize emin misiniz?")) {
             await db.collection("projects").doc(id).update({
                 durum: 'tamamlandi'
             });
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.projeDuzenle = (id) => {
         const proje = allProjectsData[id];
-        if(!proje) return;
+        if (!proje) return;
 
         document.getElementById('edit-proje-id').value = id;
         document.getElementById('edit-proje-baslik-tr').value = proje.baslik_tr || proje.baslik || '';
@@ -163,9 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('edit-proje-aciklama-tr').value = proje.aciklama_tr || proje.aciklama || '';
         document.getElementById('edit-proje-aciklama-en').value = proje.aciklama_en || '';
         document.getElementById('edit-proje-durum').value = proje.durum;
-        
+
         // Varsa resimUrls arrayini satır satır birleştirip textarea'ya yaz, yoksa eski resimUrl'i yaz
-        if(proje.resimUrls && proje.resimUrls.length > 0) {
+        if (proje.resimUrls && proje.resimUrls.length > 0) {
             document.getElementById('edit-proje-gorsel').value = proje.resimUrls.join('\n');
         } else {
             document.getElementById('edit-proje-gorsel').value = proje.resimUrl || '';
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.projeSil = async (id) => {
-        if(confirm("Bu projeyi silmek istediğinize emin misiniz? Bu işlem geri alınamaz.")) {
+        if (confirm("Bu projeyi silmek istediğinize emin misiniz? Bu işlem geri alınamaz.")) {
             await db.collection("projects").doc(id).delete();
         }
     };
