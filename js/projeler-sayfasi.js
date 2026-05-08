@@ -131,6 +131,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Tarihe göre sıralama (Eğer tarih verisi eksikse 0 kabul edip en sona atar, hata vermez)
         projelerData.sort((a, b) => {
+            const extractYear = (item) => {
+                // Başlık veya açıklamada 2000-2099 arası bir yıl ara
+                const text = (item.baslik_tr || item.baslik || "") + " " + (item.aciklama_tr || item.aciklama || "");
+                const match = text.match(/\b20\d{2}\b/);
+                return match ? parseInt(match[0]) : 0;
+            };
+
+            const yearA = extractYear(a.data);
+            const yearB = extractYear(b.data);
+
+            if (yearA !== yearB) {
+                return yearB - yearA; // Büyük olan yıl (en yeni) üstte
+            }
+
             const timeA = (a.data.createdAt && typeof a.data.createdAt.toMillis === 'function') 
                             ? a.data.createdAt.toMillis() : 0;
             const timeB = (b.data.createdAt && typeof b.data.createdAt.toMillis === 'function') 

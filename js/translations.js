@@ -32,8 +32,8 @@ const translations = {
     "home_about_btn": "Kurumsal Bilgilerimiz",
 
     // Home - Projects
-    "home_projects_title": "Son Projelerimiz",
-    "home_projects_subtitle": "Özenle tamamladığımız en güncel çalışmalarımız",
+    "home_projects_title": "Referans Projelerimiz",
+    "home_projects_subtitle": "Hayata geçirdiğimiz referans çalışmalarımızı keşfedin",
     "home_projects_loading": "Projeler Yükleniyor...",
     "home_projects_btn": "Tüm Projeleri Gör",
     "project_view_btn": "İncele", // from projects.js
@@ -245,8 +245,8 @@ const translations = {
     "home_about_btn": "Corporate Information",
 
     // Home - Projects
-    "home_projects_title": "Our Latest Projects",
-    "home_projects_subtitle": "Our most recent works completed with care",
+    "home_projects_title": "Our Reference Projects",
+    "home_projects_subtitle": "Our reference works brought to life with our strong technical infrastructure",
     "home_projects_loading": "Loading Projects...",
     "home_projects_btn": "View All Projects",
     "project_view_btn": "View Details",

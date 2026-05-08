@@ -327,6 +327,30 @@ h3.section-title,
 }
 
 
+.section-header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-header h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.section-header h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent);
+  border-radius: 2px;
+}
+
+
 /* FOOTER */
 footer {
   font-size: 14px;
@@ -335,6 +359,10 @@ footer {
   border-top: 1px solid #1E293B;
   padding-top: 70px;
   padding-bottom: 25px;
+}
+
+.footer .col-lg-4:first-child {
+  margin-top: -15px;
 }
 
 .footer h5 {
@@ -599,6 +627,7 @@ p {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
   gap: 24px;
 }
 
