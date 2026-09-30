@@ -89,9 +89,9 @@ const translations = {
     "about_mission_5": "Yeni yatırımlar ve iş alanları oluşturarak istihdamı artırmak",
     "about_mission_6": "Güvenilir ve tercih edilen bir elektrik taahhüt firması olmak",
 
-    "about_stats_title": "Başarılarımız",
+    "about_stats_title": "Referanslarımız",
     "about_stat_1": "m² Proje Alanı",
-    "about_stat_2": "MVA Trafo",
+    "about_stat_2": "Güç Tesisi",
     "about_stat_3": "Tamamlanan Proje",
     "about_stat_4": "Devam Eden Proje",
 
@@ -302,9 +302,9 @@ const translations = {
     "about_mission_5": "To increase employment by creating new investments and business areas",
     "about_mission_6": "To be a reliable and preferred electrical contracting company",
 
-    "about_stats_title": "Our Achievements",
+    "about_stats_title": "Our References",
     "about_stat_1": "m² Project Area",
-    "about_stat_2": "MVA Transformer",
+    "about_stat_2": "Power Facility",
     "about_stat_3": "Completed Projects",
     "about_stat_4": "Ongoing Projects",
 
