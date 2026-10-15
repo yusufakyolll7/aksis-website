@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const sonProjelerAlani = document.getElementById("son-projeler-alani");
     if (!sonProjelerAlani) return;
 
+    // 15 sn içinde projeler gelmezse bağlantı hatası göster
+    yuklemeZamanAsimiKur(sonProjelerAlani, () => !sonProjelerAlani.querySelector('.spinner-border'));
+
     let currentLang = localStorage.getItem('lang') || 'tr';
 
     let sonProjelerData = [];

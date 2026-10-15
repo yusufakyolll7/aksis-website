@@ -14,16 +14,26 @@ firebase.initializeApp(firebaseConfig);
 // Servisleri dışa aktarma
 const db = firebase.firestore();
 
-// ÇEVRİMDIŞI ÖNBELLEK (OFFLINE PERSISTENCE) AKTİVASYONU
-// Bu sayede sayfa geçişlerinde veriler sunucu yerine direkt anında önbellekten gelir (Sıfır bekleme süresi)
-db.enablePersistence({ synchronizeTabs: true })
-  .catch((err) => {
-      if (err.code == 'failed-precondition') {
-          console.log("Birden fazla sekme açık olduğu için cache senkronizasyonu yapılamadı.");
-      } else if (err.code == 'unimplemented') {
-          console.log("Tarayıcı offline cache desteklemiyor.");
-      }
-  });
+// Bazı mobil ağlar/tarayıcılar Firestore'un sürekli açık bağlantısını (WebChannel) kesiyor;
+// gerekirse otomatik olarak her yerde çalışan long-polling yöntemine geçilsin.
+// Not: Çevrimdışı önbellek (enablePersistence) bazı iOS Safari sürümlerinde sorgu takılmasına yol açtığı için kapalı.
+db.settings({ experimentalAutoDetectLongPolling: true, merge: true });
+
+// Veriler belirli sürede gelmezse sonsuz yükleniyor göstergesi yerine bağlantı hatası göster
+const YUKLEME_ZAMAN_ASIMI_MS = 15000;
+function yuklemeZamanAsimiKur(alan, yuklendiMi) {
+    setTimeout(() => {
+        if (yuklendiMi()) return;
+        const t = translations[localStorage.getItem('lang') || 'tr'];
+        alan.innerHTML = `
+            <div class="col-12 text-center text-muted py-5">
+                <i class="bi bi-wifi-off fs-1 d-block mb-3"></i>
+                <h5 class="fw-bold text-dark">${t["connection_error"]}</h5>
+                <p>${t["connection_error_desc"]}</p>
+                <button onclick="window.location.reload()" class="btn btn-outline-primary rounded-pill px-4 mt-2">${t["reload_page"]}</button>
+            </div>`;
+    }, YUKLEME_ZAMAN_ASIMI_MS);
+}
 
 // Auth SDK sadece admin sayfalarında yükleniyor; diğer sayfalarda hata vermemesi için kontrol ediyoruz
 const auth = typeof firebase.auth === 'function' ? firebase.auth() : null;

@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Projeyi çek (onSnapshot ile anında yükleme)
+    // 15 sn içinde proje gelmezse bağlantı hatası göster
+    yuklemeZamanAsimiKur(detayAlani, () => !detayAlani.querySelector('.spinner-border'));
+
     db.collection("projects").doc(projeId).onSnapshot((doc) => {
         // Önbellekte yoksa sunucunun cevabını bekle; "proje bulunamadı" sadece sunucu öyle derse gösterilsin
         if (!doc.exists && doc.metadata.fromCache) return;

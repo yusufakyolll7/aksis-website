@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const baslikEl = document.getElementById("sayfa-basligi");
     const gridEl = document.getElementById("projeler-grid");
+
+    // 15 sn içinde projeler gelmezse bağlantı hatası göster
+    yuklemeZamanAsimiKur(gridEl, () => !gridEl.querySelector('.spinner-border'));
     
     let currentLang = localStorage.getItem('lang') || 'tr';
 
