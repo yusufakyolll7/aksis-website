@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
 function setLanguage(lang) {
   // Save to local storage
   localStorage.setItem("lang", lang);
+  // Tarayıcı ve arama motorları sayfanın dilini doğru algılasın
+  document.documentElement.lang = lang;
 
   // Update Active Button Style
   const langTrBtn = document.getElementById("lang-tr");

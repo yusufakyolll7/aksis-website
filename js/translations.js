@@ -44,7 +44,7 @@ const translations = {
     "contact_form_name": "Ad",
     "contact_form_email": "E-posta*",
     "contact_form_message": "Mesaj",
-    "contact_form_file": "Dosya Ekle",
+    "contact_form_file_note": "Dosya göndermek için <a href=\"mailto:info@aksismuhendislik.com\">info@aksismuhendislik.com</a> adresine e-posta atabilirsiniz.",
     "contact_form_submit": "GÖNDER",
     "contact_info_title": "İletişim Bilgileri :",
     "contact_address_label": "Adres :",
@@ -59,8 +59,6 @@ const translations = {
     "footer_phone": "Telefon:",
     "footer_email": "E-Posta:",
     "footer_copyright": "© 2026 Aksis Mühendislik. Tüm Hakları Saklıdır.",
-    "footer_privacy": "Gizlilik Politikası",
-    "footer_terms": "Kullanım Şartları",
 
     // Hakkımızda Page
     "about_hero_title": "Hakkımızda",
@@ -185,6 +183,7 @@ const translations = {
     "projects_filter_all": "Tümü",
     "projects_filter_completed": "Tamamlananlar",
     "projects_filter_ongoing": "Devam Edenler",
+    "projects_empty_title": "Kayıt Bulunamadı",
     "projects_empty": "Bu kategoride henüz proje bulunmuyor.",
     "projects_error": "Projeler yüklenirken bir hata oluştu.",
     
@@ -257,7 +256,7 @@ const translations = {
     "contact_form_name": "Name",
     "contact_form_email": "Email*",
     "contact_form_message": "Message",
-    "contact_form_file": "Add File",
+    "contact_form_file_note": "To send files, please email us at <a href=\"mailto:info@aksismuhendislik.com\">info@aksismuhendislik.com</a>.",
     "contact_form_submit": "SEND",
     "contact_info_title": "Contact Information:",
     "contact_address_label": "Address:",
@@ -272,8 +271,6 @@ const translations = {
     "footer_phone": "Phone:",
     "footer_email": "Email:",
     "footer_copyright": "© 2026 Aksis Mühendislik. All Rights Reserved.",
-    "footer_privacy": "Privacy Policy",
-    "footer_terms": "Terms of Use",
 
     // Hakkımızda Page
     "about_hero_title": "About Us",
@@ -398,6 +395,7 @@ const translations = {
     "projects_filter_all": "All",
     "projects_filter_completed": "Completed",
     "projects_filter_ongoing": "Ongoing",
+    "projects_empty_title": "No Records Found",
     "projects_empty": "No projects found in this category yet.",
     "projects_error": "An error occurred while loading projects.",
 

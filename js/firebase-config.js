@@ -25,4 +25,23 @@ db.enablePersistence({ synchronizeTabs: true })
       }
   });
 
-const auth = firebase.auth();
+// Auth SDK sadece admin sayfalarında yükleniyor; diğer sayfalarda hata vermemesi için kontrol ediyoruz
+const auth = typeof firebase.auth === 'function' ? firebase.auth() : null;
+
+// Firestore'dan gelen metinleri innerHTML ile basmadan önce HTML karakterlerini kaçır (XSS koruması)
+function escapeHtml(value) {
+    return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+// Sadece http(s) ve site içi görsel yollarına izin ver (javascript: vb. engellenir)
+function safeUrl(url) {
+    const value = String(url == null ? '' : url).trim();
+    if (!/^(https?:\/\/|\.{0,2}\/|images\/)/i.test(value)) return '';
+    // Tırnak, parantez ve boşluklar CSS url('...') içinden kaçmayı sağlayabileceği için kodlanıyor
+    return value.replace(/['"()<>\s]/g, c => '%' + c.charCodeAt(0).toString(16).toUpperCase());
+}

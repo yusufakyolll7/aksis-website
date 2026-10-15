@@ -5,7 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Aksis Mühendislik</title>
+  <title>Aksis Mühendislik | Elektrik Taahhüt ve Proje</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Aksis Mühendislik; elektrik taahhüt, YG/AG ve zayıf akım tesisleri, elektrik proje, YG işletme sorumluluğu ve müşavirlik hizmetleri sunan İstanbul merkezli mühendislik firmasıdır.">
+  <link rel="canonical" href="https://aksismuhendislik.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aksis Mühendislik">
+  <meta property="og:title" content="Aksis Mühendislik | Elektrik Taahhüt ve Proje">
+  <meta property="og:description" content="Aksis Mühendislik; elektrik taahhüt, YG/AG ve zayıf akım tesisleri, elektrik proje, YG işletme sorumluluğu ve müşavirlik hizmetleri sunan İstanbul merkezli mühendislik firmasıdır.">
+  <meta property="og:url" content="https://aksismuhendislik.com/">
+  <meta property="og:image" content="https://aksismuhendislik.com/images/anasayfa.jpg">
+  <meta property="og:locale" content="tr_TR">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google için firma bilgileri -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Aksis Proje & Mühendislik San. ve Tic. Ltd. Şti.",
+    "alternateName": "Aksis Mühendislik",
+    "url": "https://aksismuhendislik.com/",
+    "logo": "https://aksismuhendislik.com/images/logo.png",
+    "image": "https://aksismuhendislik.com/images/anasayfa.jpg",
+    "email": "info@aksismuhendislik.com",
+    "telephone": "+90 216 651 72 32",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Altunizade Mah. Kısıklı Cad. No: 19 İç Kapı No: 3",
+      "addressLocality": "Üsküdar",
+      "addressRegion": "İstanbul",
+      "addressCountry": "TR"
+    },
+    "openingHours": "Mo-Sa 09:00-17:30"
+  }
+  </script>
 
   <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -190,7 +225,7 @@
       <div id="son-projeler-alani" class="row g-4 text-start">
         <div class="col-12 text-center text-muted py-5">
           <div class="spinner-border text-primary" role="status"></div>
-          <p class="mt-3" style="font-weight: 500;" data-i18n="home_projects_loading">Projeler YÃ¼kleniyor...</p>
+          <p class="mt-3" style="font-weight: 500;" data-i18n="home_projects_loading">Projeler Yükleniyor...</p>
         </div>
       </div>
 
@@ -232,21 +267,18 @@
                 data-i18n="contact_form_message" required></textarea>
             </div>
 
-            <!-- Dosya Ekleme -->
-            <div class="contact-file-row">
-              <label for="contact-file" class="contact-file-label">
-                <i class="bi bi-paperclip"></i> <span data-i18n="contact_form_file">Dosya Ekle</span>
-              </label>
-              <input type="file" id="contact-file" name="attachment" class="contact-file-input" multiple>
-              <span class="contact-file-count">Ekler (0)</span>
-            </div>
+            <!-- Dosya gönderimi: EmailJS ücretsiz planı ek desteklemediği için e-posta adresine yönlendiriliyor -->
+            <p class="contact-file-note">
+              <i class="bi bi-paperclip"></i>
+              <span data-i18n="contact_form_file_note">Dosya göndermek için <a href="mailto:info@aksismuhendislik.com">info@aksismuhendislik.com</a> adresine e-posta atabilirsiniz.</span>
+            </p>
 
             <button type="submit" class="contact-submit" id="submit-btn"
               data-i18n="contact_form_submit">GÖNDER</button>
           </form>
         </div>
 
-        <!-- SAÄ: Ä°LETÄ°ÅÄ°M BÄ°LGÄ°LERÄ° -->
+        <!-- SAĞ: İLETİŞİM BİLGİLERİ -->
         <div class="col-lg-6 d-flex" data-aos="fade-left">
           <div class="contact-info">
             <p class="contact-info-label mb-2" data-i18n="contact_info_title">İletişim Bilgileri :</p>

@@ -46,12 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 : '';
 
             // İlk resmi al (çoklu resim destekleniyorsa ilkini, desteklenmiyorsa eski yapıyı kullan)
-            const ilkResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || '../images/logo.png');
+            const ilkResim = safeUrl((proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : proje.resimUrl) || '../images/logo.png';
 
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><img src="${ilkResim}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;"></td>
-                <td class="fw-bold">${proje.baslik_tr || proje.baslik || ''}</td>
+                <td class="fw-bold">${escapeHtml(proje.baslik_tr || proje.baslik || '')}</td>
                 <td>${durumBadge}</td>
                 <td>
                     ${durumButton}

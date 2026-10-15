@@ -960,42 +960,28 @@ p {
   margin-bottom: 0;
 }
 
-/* Contact File Upload */
-.contact-file-row {
+/* Contact File Note */
+.contact-file-note {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #CBD5E1;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--secondary);
   padding: 10px 4px;
   margin-bottom: 4px;
 }
 
-.contact-file-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: var(--secondary);
-  cursor: pointer;
-  transition: color 0.2s ease;
-  margin: 0;
-}
-
-.contact-file-label:hover {
-  color: var(--accent);
-}
-
-.contact-file-label i {
+.contact-file-note i {
   font-size: 15px;
 }
 
-.contact-file-input {
-  display: none;
+.contact-file-note a {
+  color: var(--accent);
+  text-decoration: none;
 }
 
-.contact-file-count {
-  font-size: 12px;
-  color: #94A3B8;
+.contact-file-note a:hover {
+  text-decoration: underline;
 }
 
 /* Proje Carousel */

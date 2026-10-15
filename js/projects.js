@@ -14,11 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function projeKartiOlustur(proje, id) {
         // Dil seçimine göre başlık ve açıklama
-        let baslik = currentLang === 'en' ? (proje.baslik_en || proje.baslik) : (proje.baslik_tr || proje.baslik);
-        let aciklama = currentLang === 'en' ? (proje.aciklama_en || proje.aciklama) : (proje.aciklama_tr || proje.aciklama);
+        let baslik = escapeHtml(currentLang === 'en' ? (proje.baslik_en || proje.baslik) : (proje.baslik_tr || proje.baslik));
+        let aciklama = escapeHtml(currentLang === 'en' ? (proje.aciklama_en || proje.aciklama) : (proje.aciklama_tr || proje.aciklama));
+        id = encodeURIComponent(id);
 
         // Ana sayfada sade görünüm için sadece ilk fotoğrafı alıyoruz
-        const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
+        const tekResim = safeUrl((proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : proje.resimUrl) || 'images/logo.png';
         
         let imgHtml = `
             <div class="px-4 pt-4 proje-img-wrapper">
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderProjects() {
         if (sonProjelerData.length === 0) {
-            sonProjelerAlani.innerHTML = `<div class="col-12 text-center text-muted py-4"><p>Henüz proje bulunmuyor.</p></div>`;
+            sonProjelerAlani.innerHTML = `<div class="col-12 text-center text-muted py-4"><p>${translations[currentLang]["projects_empty"]}</p></div>`;
             return;
         }
 
@@ -74,6 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
         renderProjects();
     }, (error) => {
         console.error("Projeler yüklenirken hata oluştu:", error);
-        sonProjelerAlani.innerHTML = `<div class="col-12 text-center text-danger py-4"><p>Projeler yüklenirken bir hata oluştu.</p></div>`;
+        sonProjelerAlani.innerHTML = `<div class="col-12 text-center text-danger py-4"><p>${translations[currentLang]["projects_error"]}</p></div>`;
     });
 });

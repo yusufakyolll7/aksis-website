@@ -36,8 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const proje = doc.data();
-        let baslik = currentLang === 'en' ? (proje.baslik_en || proje.baslik) : (proje.baslik_tr || proje.baslik);
-        let aciklama = currentLang === 'en' ? (proje.aciklama_en || proje.aciklama) : (proje.aciklama_tr || proje.aciklama);
+        const hamBaslik = currentLang === 'en' ? (proje.baslik_en || proje.baslik) : (proje.baslik_tr || proje.baslik);
+        let baslik = escapeHtml(hamBaslik);
+        let aciklama = escapeHtml(currentLang === 'en' ? (proje.aciklama_en || proje.aciklama) : (proje.aciklama_tr || proje.aciklama));
+        const resimler = (proje.resimUrls || []).map(safeUrl).filter(url => url !== '');
 
         // CSS animasyonlarını ve Thumbnail stillerini enjekte et
         if (!document.getElementById("projeDetayStilleri")) {
@@ -109,12 +111,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Çoklu resim kontrolü ve Galeri oluşturma
         let imgHtml = '';
-        if (proje.resimUrls && proje.resimUrls.length > 1) {
+        if (resimler.length > 1) {
             const carouselId = 'projeDetayCarousel';
             let indicators = '';
             let items = '';
-            
-            proje.resimUrls.forEach((url, index) => {
+
+            resimler.forEach((url, index) => {
                 const activeClass = index === 0 ? 'active' : '';
                 
                 // Küçük resim (Thumbnail) butonları
@@ -158,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         } else {
             // Tek resim
-            const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
+            const tekResim = resimler[0] || safeUrl(proje.resimUrl) || 'images/logo.png';
             imgHtml = `
                 <div class="shadow-lg rounded-4 overflow-hidden position-relative border-0" style="min-height: 300px; background-color: #0f172a;">
                     <div class="position-absolute w-100 h-100" style="background-image: url('${tekResim}'); background-size: cover; background-position: center; filter: blur(25px) brightness(0.6); z-index: 0; transform: scale(1.1);"></div>
@@ -170,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Sayfa başlığını güncelle
-        document.title = baslik + ' | Aksis Mühendislik';
+        document.title = hamBaslik + ' | Aksis Mühendislik';
 
         // Detay Sayfası HTML Enjeksiyonu
         detayAlani.innerHTML = `
@@ -209,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         // Küçük resim (thumbnail) aktiflik durumu senkronizasyonu
-        if (proje.resimUrls && proje.resimUrls.length > 1) {
+        if (resimler.length > 1) {
             const carouselElement = document.getElementById('projeDetayCarousel');
             if (carouselElement) {
                 carouselElement.addEventListener('slide.bs.carousel', function (e) {

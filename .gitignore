@@ -1,0 +1,24 @@
+# Ortam değişkenleri / gizli bilgiler
+.env
+.env.*
+*.pem
+*.key
+serviceAccount*.json
+*-firebase-adminsdk-*.json
+
+# Firebase CLI
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+
+# Node (ileride build aracı eklenirse)
+node_modules/
+dist/
+npm-debug.log*
+
+# Editör / işletim sistemi
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

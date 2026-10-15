@@ -28,16 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Proje kartı HTML'ini oluştur
     function projeKartiOlustur(proje, id, index = 0) {
-        let baslik = currentLang === 'en' ? (proje.baslik_en || proje.baslik) : (proje.baslik_tr || proje.baslik);
-        let aciklama = currentLang === 'en' ? (proje.aciklama_en || proje.aciklama) : (proje.aciklama_tr || proje.aciklama);
+        let baslik = escapeHtml(currentLang === 'en' ? (proje.baslik_en || proje.baslik) : (proje.baslik_tr || proje.baslik));
+        let aciklama = escapeHtml(currentLang === 'en' ? (proje.aciklama_en || proje.aciklama) : (proje.aciklama_tr || proje.aciklama));
+        id = encodeURIComponent(id);
+        const resimler = (proje.resimUrls || []).map(safeUrl).filter(url => url !== '');
 
         let imgHtml = '';
-        if (proje.resimUrls && proje.resimUrls.length > 1) {
-            const carouselId = `carousel-${id}`;
+        if (resimler.length > 1) {
+            const carouselId = `carousel-${id.replace(/[^A-Za-z0-9_-]/g, '')}`;
             let indicators = '';
             let items = '';
 
-            proje.resimUrls.forEach((url, index) => {
+            resimler.forEach((url, index) => {
                 const activeClass = index === 0 ? 'active' : '';
                 indicators += `<button type="button" data-bs-target="#${carouselId}" data-bs-slide-to="${index}" class="${activeClass}"></button>`;
                 items += `
@@ -62,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
         } else {
-            const tekResim = (proje.resimUrls && proje.resimUrls.length > 0) ? proje.resimUrls[0] : (proje.resimUrl || 'images/logo.png');
+            const tekResim = resimler[0] || safeUrl(proje.resimUrl) || 'images/logo.png';
             imgHtml = `
                 <div class="px-4 pt-4 proje-img-wrapper">
                     <div class="overflow-hidden shadow-sm rounded-4">
@@ -103,8 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
             gridEl.innerHTML = `
                 <div class="col-12 text-center text-muted py-5 mt-5">
                     <i class="bi bi-inbox text-secondary mb-3" style="font-size: 60px; opacity: 0.5;"></i>
-                    <h4 class="text-dark">Kayıt Bulunamadı</h4>
-                    <p>Bu kategoride henüz yayınlanmış bir proje bulunmuyor.</p>
+                    <h4 class="text-dark">${translations[currentLang]["projects_empty_title"]}</h4>
+                    <p>${translations[currentLang]["projects_empty"]}</p>
                 </div>`;
             return;
         }
@@ -155,6 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
         renderProjects();
     }, (error) => {
         console.error("Projeler yüklenirken hata oluştu:", error);
-        gridEl.innerHTML = `<div class="col-12 text-center text-danger py-5"><p>Projeler yüklenirken bir hata oluştu.</p></div>`;
+        gridEl.innerHTML = `<div class="col-12 text-center text-danger py-5"><p>${translations[currentLang]["projects_error"]}</p></div>`;
     });
 });
