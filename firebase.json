@@ -9,6 +9,7 @@
       "firestore.rules",
       "scripts/**",
       "**/.*",
+      "**/.*/**",
       "**/node_modules/**"
     ],
     "redirects": [
