@@ -267,6 +267,9 @@
                 data-i18n="contact_form_message" required></textarea>
             </div>
 
+            <!-- reCAPTCHA (js/recaptcha.js tarafından çiziliyor) -->
+            <div id="contact-recaptcha" class="contact-recaptcha"></div>
+
             <!-- Dosya gönderimi: EmailJS ücretsiz planı ek desteklemediği için e-posta adresine yönlendiriliyor -->
             <p class="contact-file-note">
               <i class="bi bi-paperclip"></i>
@@ -395,6 +398,7 @@
 
   <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/recaptcha.js"></script>
   <script src="js/contact.js"></script>
 
   <!-- Floating Contact Form -->

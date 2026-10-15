@@ -1128,6 +1128,31 @@ p {
   margin-bottom: 16px;
 }
 
+/* reCAPTCHA kutusu sabit 304px; dar pencereye sığması için biraz küçültülüyor */
+.fcp-recaptcha {
+  transform: scale(0.9);
+  transform-origin: left top;
+  height: 70px;
+  margin-bottom: 16px;
+}
+
+.contact-recaptcha {
+  margin-top: 8px;
+}
+
+/* Telefonda yüzen pencere ekrandan taşmasın */
+@media (max-width: 420px) {
+  .floating-contact-popup {
+    right: 16px;
+    width: calc(100vw - 32px);
+  }
+
+  .fcp-recaptcha {
+    transform: scale(0.85);
+    height: 66px;
+  }
+}
+
 .fcp-input,
 .fcp-textarea {
   width: 100%;

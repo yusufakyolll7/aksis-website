@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="fcp-form-group">
                         <textarea name="message" class="fcp-textarea" placeholder="${translations[currentLang]["floating_contact_msg_placeholder"]}" required></textarea>
                     </div>
+                    <div class="fcp-recaptcha" id="fcp-recaptcha"></div>
                     <button type="submit" class="fcp-submit" id="fcp-submit-btn">${translations[currentLang]["floating_contact_submit"]} <i class="bi bi-send-fill ms-1"></i></button>
                 </form>
             </div>
@@ -47,10 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const popup = document.getElementById('fcp-popup');
         const form = document.getElementById('fcp-form');
         const submitBtn = document.getElementById('fcp-submit-btn');
+        let recaptchaId;
 
         // Pencereyi Aç/Kapat
         toggleBtn.addEventListener('click', () => {
             popup.classList.toggle('active');
+            // reCAPTCHA'yı pencere ilk açıldığında çiz (açılmayan sayfalarda gereksiz yükleme olmasın)
+            if (popup.classList.contains('active') && recaptchaId === undefined) {
+                recaptchaId = null;
+                recaptchaCiz(document.getElementById('fcp-recaptcha')).then(id => { recaptchaId = id; });
+            }
             const icon = toggleBtn.querySelector('i');
             if (popup.classList.contains('active')) {
                 icon.classList.remove('bi-chat-quote-fill');
@@ -64,7 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Form Gönderim İşlemi
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
+            if (!recaptchaKontrol(recaptchaId)) return;
+
             submitBtn.textContent = translations[currentLang]["floating_contact_sending"];
             submitBtn.disabled = true;
 
@@ -81,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         alert(translations[currentLang]["floating_contact_error"]);
                     })
                     .finally(() => {
+                        recaptchaSifirla(recaptchaId);
                         submitBtn.innerHTML = `${translations[currentLang]["floating_contact_submit"]} <i class="bi bi-send-fill ms-1"></i>`;
                         submitBtn.disabled = false;
                     });

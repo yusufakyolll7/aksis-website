@@ -4,8 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!contactForm) return;
 
+    // "Ben robot değilim" kutusu
+    let recaptchaId;
+    recaptchaCiz(document.getElementById("contact-recaptcha")).then(id => { recaptchaId = id; });
+
     contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        if (!recaptchaKontrol(recaptchaId)) return;
 
         // Mesajlar o anki seçili dile göre gösterilsin
         const t = translations[localStorage.getItem("lang") || "tr"];
@@ -32,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert(t["floating_contact_error"]);
             })
             .finally(() => {
+                recaptchaSifirla(recaptchaId);
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalBtnText;
             });
