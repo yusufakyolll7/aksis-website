@@ -5,6 +5,9 @@ const translations = {
     "page_title_about": "Hakkımızda - Aksis Mühendislik",
     "page_title_services": "Hizmetlerimiz - Aksis Mühendislik",
     "page_title_projects": "Projeler - Aksis Mühendislik",
+    "page_title_404": "Sayfa Bulunamadı - Aksis Mühendislik",
+    "notfound_title": "Sayfa Bulunamadı",
+    "notfound_desc": "Aradığınız sayfa taşınmış, kaldırılmış veya adresi hatalı yazılmış olabilir.",
 
     // Navbar
     "nav_home": "Ana Sayfa",
@@ -224,6 +227,9 @@ const translations = {
     "page_title_about": "About Us - Aksis Mühendislik",
     "page_title_services": "Our Services - Aksis Mühendislik",
     "page_title_projects": "Projects - Aksis Mühendislik",
+    "page_title_404": "Page Not Found - Aksis Mühendislik",
+    "notfound_title": "Page Not Found",
+    "notfound_desc": "The page you are looking for may have been moved, removed, or the address may be mistyped.",
 
     // Navbar
     "nav_home": "Home",

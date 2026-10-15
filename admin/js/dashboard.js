@@ -86,10 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         saveProjectBtn.disabled = true;
-        const baslik_tr = document.getElementById('proje-baslik-tr').value;
-        const baslik_en = document.getElementById('proje-baslik-en').value;
-        const aciklama_tr = document.getElementById('proje-aciklama-tr').value;
-        const aciklama_en = document.getElementById('proje-aciklama-en').value;
+        const baslik_tr = document.getElementById('proje-baslik-tr').value.trim();
+        const baslik_en = document.getElementById('proje-baslik-en').value.trim();
+        const aciklama_tr = document.getElementById('proje-aciklama-tr').value.trim();
+        const aciklama_en = document.getElementById('proje-aciklama-en').value.trim();
         const durum = document.getElementById('proje-durum').value;
         const gorselText = document.getElementById('proje-gorsel').value;
         const resimUrls = gorselText.split('\n').map(url => url.trim()).filter(url => url !== '');
@@ -136,10 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             updateProjectBtn.disabled = true;
-            const baslik_tr = document.getElementById('edit-proje-baslik-tr').value;
-            const baslik_en = document.getElementById('edit-proje-baslik-en').value;
-            const aciklama_tr = document.getElementById('edit-proje-aciklama-tr').value;
-            const aciklama_en = document.getElementById('edit-proje-aciklama-en').value;
+            const baslik_tr = document.getElementById('edit-proje-baslik-tr').value.trim();
+            const baslik_en = document.getElementById('edit-proje-baslik-en').value.trim();
+            const aciklama_tr = document.getElementById('edit-proje-aciklama-tr').value.trim();
+            const aciklama_en = document.getElementById('edit-proje-aciklama-en').value.trim();
             const durum = document.getElementById('edit-proje-durum').value;
             const gorselText = document.getElementById('edit-proje-gorsel').value;
 

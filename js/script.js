@@ -15,7 +15,7 @@ document.querySelectorAll("#menu .nav-link:not(.dropdown-toggle), #menu .dropdow
 
 const counters = document.querySelectorAll('.counter');
 
-counters.forEach(counter => {
+const startCounter = (counter) => {
   const target = +counter.getAttribute('data-target');
   const increment = target / 100;
   // Binlik ayırıcı dile göre: TR "2.000.000", EN "2,000,000"
@@ -32,4 +32,20 @@ counters.forEach(counter => {
   };
 
   updateCounter();
-});
+};
+
+// Sayaçlar ekrana geldiğinde bir kez saysın (sayfa açılır açılmaz değil)
+if ('IntersectionObserver' in window) {
+  const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(counter => counterObserver.observe(counter));
+} else {
+  counters.forEach(startCounter);
+}

@@ -1,0 +1,42 @@
+# GoDaddy (Apache/cPanel) hosting için ayarlar.
+# Firebase Hosting kullanılırsa bu dosya yok sayılır; aynı kurallar firebase.json içinde.
+
+Options -Indexes
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Her zaman https ve www'siz adres
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://aksismuhendislik.com%{REQUEST_URI} [L,R=301]
+
+  # Eski site (GoDaddy Website Builder) adreslerinden yeni sayfalara
+  RewriteRule ^ana-sayfa/?$ / [L,R=301]
+  RewriteRule ^hakkimizda/?$ /hakkimizda.html [L,R=301]
+  RewriteRule ^(hizmetlerimiz|hi̇zmetleri̇mi̇z)/?$ /hizmetlerimiz.html [L,R=301]
+  RewriteRule ^tamamlanan-projeler/?$ /projeler.html?kategori=tamamlandi [L,R=301]
+  RewriteRule ^devam-eden-projeler/?$ /projeler.html?kategori=devam_ediyor [L,R=301]
+  RewriteRule ^(iletisim|i̇leti̇şi̇m)/?$ /#iletisim [NE,L,R=301]
+  RewriteRule ^hesaplamalar/?$ / [L,R=301]
+
+  # Repoda olup sitede açılmaması gereken dosyalar
+  RewriteRule ^(firebase\.json|firestore\.rules)$ - [F,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://www.gstatic.com https://www.google.com https://apis.google.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://*.googleapis.com https://api.emailjs.com https://www.google.com; frame-src https://www.google.com https://maps.google.com https://aksis-website-f5868.firebaseapp.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+
+  <FilesMatch "\.(jpe?g|png|ico|webp|svg)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>
