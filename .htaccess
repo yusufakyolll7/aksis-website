@@ -23,6 +23,7 @@ ErrorDocument 404 /404.html
 
   # Repoda olup sitede açılmaması gereken dosyalar
   RewriteRule ^(firebase\.json|firestore\.rules)$ - [F,L]
+  RewriteRule ^scripts/ - [F,L]
 </IfModule>
 
 <IfModule mod_headers.c>

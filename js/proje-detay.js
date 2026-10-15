@@ -174,6 +174,22 @@ document.addEventListener("DOMContentLoaded", () => {
         // Sayfa başlığını güncelle
         document.title = hamBaslik + ' | Aksis Mühendislik';
 
+        // Arama motorları için sayfa açıklaması ve kalıcı adres bu projeye göre
+        const hamAciklama = (currentLang === 'en' ? (proje.aciklama_en || proje.aciklama) : (proje.aciklama_tr || proje.aciklama)) || '';
+        const metaAciklama = hamAciklama.replace(/\s+/g, ' ').trim().slice(0, 155);
+        if (metaAciklama) {
+            document.querySelector('meta[name="description"]')?.setAttribute('content', metaAciklama);
+            document.querySelector('meta[property="og:description"]')?.setAttribute('content', metaAciklama);
+        }
+        document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
+        let canonical = document.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+            canonical = document.createElement('link');
+            canonical.rel = 'canonical';
+            document.head.appendChild(canonical);
+        }
+        canonical.href = 'https://aksismuhendislik.com/proje-detay.html?id=' + encodeURIComponent(projeId);
+
         // Detay Sayfası HTML Enjeksiyonu
         detayAlani.innerHTML = `
             <div class="row justify-content-center">

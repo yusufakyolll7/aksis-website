@@ -1,10 +1,10 @@
 const translations = {
   tr: {
     // Sekme başlıkları
-    "page_title_home": "Aksis Mühendislik | Elektrik Taahhüt ve Proje",
-    "page_title_about": "Hakkımızda - Aksis Mühendislik",
-    "page_title_services": "Hizmetlerimiz - Aksis Mühendislik",
-    "page_title_projects": "Projeler - Aksis Mühendislik",
+    "page_title_home": "Aksis Mühendislik | Elektrik Taahhüt ve Proje – İstanbul",
+    "page_title_about": "Hakkımızda | Aksis Mühendislik – Elektrik Taahhüt Firması",
+    "page_title_services": "Elektrik Taahhüt ve Proje Hizmetleri | Aksis Mühendislik",
+    "page_title_projects": "Referans Projeler | Aksis Mühendislik",
     "page_title_404": "Sayfa Bulunamadı - Aksis Mühendislik",
     "notfound_title": "Sayfa Bulunamadı",
     "notfound_desc": "Aradığınız sayfa taşınmış, kaldırılmış veya adresi hatalı yazılmış olabilir.",
@@ -19,8 +19,8 @@ const translations = {
     "nav_contact": "İletişim",
 
     // Hero
-    "hero_title": "Modern Mühendislik Çözümleri",
-    "hero_subtitle": "Geleceği birlikte inşa ediyoruz",
+    "hero_title": "Elektrik Taahhüt ve Mühendislik Çözümleri",
+    "hero_subtitle": "İstanbul'dan Türkiye'ye, projeden anahtar teslim uygulamaya",
     "hero_btn": "Bizimle İletişime Geç",
 
     // Home - Services
@@ -223,10 +223,10 @@ const translations = {
   },
   en: {
     // Page titles
-    "page_title_home": "Aksis Mühendislik | Electrical Contracting and Engineering",
-    "page_title_about": "About Us - Aksis Mühendislik",
-    "page_title_services": "Our Services - Aksis Mühendislik",
-    "page_title_projects": "Projects - Aksis Mühendislik",
+    "page_title_home": "Aksis Mühendislik | Electrical Contracting and Engineering – Istanbul",
+    "page_title_about": "About Us | Aksis Mühendislik – Electrical Contracting Company",
+    "page_title_services": "Electrical Contracting and Engineering Services | Aksis Mühendislik",
+    "page_title_projects": "Reference Projects | Aksis Mühendislik",
     "page_title_404": "Page Not Found - Aksis Mühendislik",
     "notfound_title": "Page Not Found",
     "notfound_desc": "The page you are looking for may have been moved, removed, or the address may be mistyped.",
@@ -241,8 +241,8 @@ const translations = {
     "nav_contact": "Contact",
 
     // Hero
-    "hero_title": "Modern Engineering Solutions",
-    "hero_subtitle": "Building the future together",
+    "hero_title": "Electrical Contracting and Engineering Solutions",
+    "hero_subtitle": "From Istanbul across Türkiye, from design to turnkey delivery",
     "hero_btn": "Contact Us",
 
     // Home - Services
