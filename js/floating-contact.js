@@ -21,20 +21,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p class="fcp-intro">${translations[currentLang]["floating_contact_intro"]}</p>
                 <form id="fcp-form">
                     <div class="fcp-form-group">
-                        <input type="text" name="user_name" class="fcp-input" placeholder="${translations[currentLang]["floating_contact_name_placeholder"]}" required>
+                        <input type="text" name="user_name" class="fcp-input" maxlength="100" placeholder="${translations[currentLang]["floating_contact_name_placeholder"]}" required>
                     </div>
                     <div class="fcp-form-group">
-                        <input type="email" name="user_email" class="fcp-input" placeholder="${translations[currentLang]["floating_contact_email_placeholder"]}" required>
+                        <input type="email" name="user_email" class="fcp-input" maxlength="150" placeholder="${translations[currentLang]["floating_contact_email_placeholder"]}" required>
                     </div>
                     <div class="fcp-form-group">
-                        <textarea name="message" class="fcp-textarea" placeholder="${translations[currentLang]["floating_contact_msg_placeholder"]}" required></textarea>
+                        <textarea name="message" class="fcp-textarea" maxlength="3000" placeholder="${translations[currentLang]["floating_contact_msg_placeholder"]}" required></textarea>
                     </div>
                     <div class="fcp-recaptcha" id="fcp-recaptcha"></div>
                     <button type="submit" class="fcp-submit" id="fcp-submit-btn">${translations[currentLang]["floating_contact_submit"]} <i class="bi bi-send-fill ms-1"></i></button>
                 </form>
             </div>
         </div>
-        <button class="floating-contact-btn" id="fcp-toggle-btn">
+        <button class="floating-contact-btn" id="fcp-toggle-btn" aria-label="${translations[currentLang]["nav_contact"]}">
             <i class="bi bi-chat-quote-fill"></i>
         </button>
         `;

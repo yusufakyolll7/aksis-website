@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 indicators += `<button type="button" data-bs-target="#${carouselId}" data-bs-slide-to="${index}" class="${activeClass}"></button>`;
                 items += `
                     <div class="carousel-item ${activeClass}">
-                        <img src="${url}" class="d-block w-100 proje-card-img" style="height: 280px; object-fit: cover;" alt="${baslik}">
+                        <img src="${url}" loading="lazy" class="d-block w-100 proje-card-img" style="height: 280px; object-fit: cover;" alt="${baslik}">
                     </div>
                 `;
             });
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
             imgHtml = `
                 <div class="px-4 pt-4 proje-img-wrapper">
                     <div class="overflow-hidden shadow-sm rounded-4">
-                        <img src="${tekResim}" class="w-100 proje-card-img" style="height: 280px; object-fit: cover;" alt="${baslik}">
+                        <img src="${tekResim}" loading="lazy" class="w-100 proje-card-img" style="height: 280px; object-fit: cover;" alt="${baslik}">
                     </div>
                 </div>
             `;

@@ -3,6 +3,16 @@ window.addEventListener("scroll", function() {
   navbar.classList.toggle("scrolled", window.scrollY > 50);
 });
 
+// Mobilde menüden bir bağlantıya (ör. #iletisim) basınca açık menüyü kapat
+document.querySelectorAll("#menu .nav-link:not(.dropdown-toggle), #menu .dropdown-item").forEach(link => {
+  link.addEventListener("click", () => {
+    const menu = document.getElementById("menu");
+    if (menu.classList.contains("show") && typeof bootstrap !== "undefined") {
+      bootstrap.Collapse.getOrCreateInstance(menu).hide();
+    }
+  });
+});
+
 const counters = document.querySelectorAll('.counter');
 
 counters.forEach(counter => {

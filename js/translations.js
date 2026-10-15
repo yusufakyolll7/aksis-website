@@ -1,5 +1,11 @@
 const translations = {
   tr: {
+    // Sekme başlıkları
+    "page_title_home": "Aksis Mühendislik | Elektrik Taahhüt ve Proje",
+    "page_title_about": "Hakkımızda - Aksis Mühendislik",
+    "page_title_services": "Hizmetlerimiz - Aksis Mühendislik",
+    "page_title_projects": "Projeler - Aksis Mühendislik",
+
     // Navbar
     "nav_home": "Ana Sayfa",
     "nav_services": "Hizmetlerimiz",
@@ -213,6 +219,12 @@ const translations = {
     "back_to_home": "Ana Sayfaya Dön",
   },
   en: {
+    // Page titles
+    "page_title_home": "Aksis Mühendislik | Electrical Contracting and Engineering",
+    "page_title_about": "About Us - Aksis Mühendislik",
+    "page_title_services": "Our Services - Aksis Mühendislik",
+    "page_title_projects": "Projects - Aksis Mühendislik",
+
     // Navbar
     "nav_home": "Home",
     "nav_services": "Services",

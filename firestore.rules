@@ -14,8 +14,10 @@ service cloud.firestore {
 
     function isValidProject(data) {
       return data.keys().hasOnly(['baslik', 'baslik_tr', 'baslik_en', 'aciklama', 'aciklama_tr', 'aciklama_en',
-                                  'durum', 'resimUrls', 'resimUrl', 'createdAt'])
+                                  'durum', 'resimUrls', 'resimUrl', 'createdAt', 'one_cikan'])
         && data.durum in ['tamamlandi', 'devam_ediyor']
+        // Ana sayfada gösterilecek projeler (admin panelindeki yıldız)
+        && (!('one_cikan' in data) || data.one_cikan is bool)
         // Eski yapıdaki projelerde bu alanlar olmayabilir; varsa kontrol ediliyor
         && (!('resimUrls' in data) || (data.resimUrls is list && data.resimUrls.size() <= 30))
         && (!('baslik_tr' in data) || (data.baslik_tr is string && data.baslik_tr.size() <= 300))

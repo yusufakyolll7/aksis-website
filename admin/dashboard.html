@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
   <meta name="robots" content="noindex, nofollow">
   <title>Aksis Admin Panel</title>
   
@@ -16,9 +19,11 @@
     .sidebar a { color: #adb5bd; text-decoration: none; display: block; padding: 10px 20px; transition: 0.3s; }
     .sidebar a:hover, .sidebar a.active { color: white; background-color: #343a40; border-left: 4px solid #0d6efd; }
     .main-content { padding: 2rem; }
+    /* Oturum kontrolü bitene kadar panel görünmesin */
+    body.auth-pending { visibility: hidden; }
   </style>
 </head>
-<body>
+<body class="auth-pending">
 
   <div class="container-fluid">
     <div class="row">
@@ -76,7 +81,7 @@
           <div class="modal-body">
             <div class="mb-3">
               <label class="form-label">Proje Başlığı (TR)</label>
-              <input type="text" class="form-control" id="proje-baslik-tr">
+              <input type="text" class="form-control" id="proje-baslik-tr" required maxlength="300">
             </div>
             <div class="mb-3">
               <label class="form-label">Proje Başlığı (EN)</label>
@@ -96,6 +101,11 @@
                 <option value="devam_ediyor">Devam Ediyor</option>
                 <option value="tamamlandi">Tamamlandı</option>
               </select>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="proje-one-cikan">
+              <label class="form-check-label" for="proje-one-cikan"><i class="bi bi-star-fill text-warning"></i> Ana sayfada göster (Referans Projelerimiz)</label>
+              <div class="form-text">Ana sayfada en fazla 3 proje gösterilir.</div>
             </div>
             <div class="mb-3">
               <label class="form-label">Resim Linkleri (Çoklu Galeri İçin)</label>
@@ -125,7 +135,7 @@
             <input type="hidden" id="edit-proje-id">
             <div class="mb-3">
               <label class="form-label">Proje Başlığı (TR)</label>
-              <input type="text" class="form-control" id="edit-proje-baslik-tr">
+              <input type="text" class="form-control" id="edit-proje-baslik-tr" required maxlength="300">
             </div>
             <div class="mb-3">
               <label class="form-label">Proje Başlığı (EN)</label>
@@ -145,6 +155,11 @@
                 <option value="devam_ediyor">Devam Ediyor</option>
                 <option value="tamamlandi">Tamamlandı</option>
               </select>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="edit-proje-one-cikan">
+              <label class="form-check-label" for="edit-proje-one-cikan"><i class="bi bi-star-fill text-warning"></i> Ana sayfada göster (Referans Projelerimiz)</label>
+              <div class="form-text">Ana sayfada en fazla 3 proje gösterilir.</div>
             </div>
             <div class="mb-3">
               <label class="form-label">Resim Linkleri</label>

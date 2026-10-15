@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Küçük resim (Thumbnail) butonları
                 indicators += `
                     <button type="button" data-bs-target="#${carouselId}" data-bs-slide-to="${index}" class="thumb-btn ${activeClass}">
-                        <img src="${url}" style="width: 100%; height: 100%; object-fit: cover;" alt="Thumbnail ${index+1}">
+                        <img src="${url}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" alt="Thumbnail ${index+1}">
                     </button>
                 `;
                 
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="carousel-item ${activeClass} h-100 position-relative">
                         <div class="position-absolute w-100 h-100" style="background-image: url('${url}'); background-size: cover; background-position: center; filter: blur(25px) brightness(0.6); z-index: 0; transform: scale(1.1);"></div>
                         <div class="d-flex align-items-center justify-content-center h-100 position-relative z-1">
-                            <img src="${url}" class="d-block proje-detay-img shadow-lg" style="max-height: 55vh; max-width: 100%; object-fit: contain;" alt="${baslik}">
+                            <img src="${url}" loading="lazy" class="d-block proje-detay-img shadow-lg" style="max-height: 55vh; max-width: 100%; object-fit: contain;" alt="${baslik}">
                         </div>
                     </div>
                 `;
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="shadow-lg rounded-4 overflow-hidden position-relative border-0" style="min-height: 300px; background-color: #0f172a;">
                     <div class="position-absolute w-100 h-100" style="background-image: url('${tekResim}'); background-size: cover; background-position: center; filter: blur(25px) brightness(0.6); z-index: 0; transform: scale(1.1);"></div>
                     <div class="d-flex align-items-center justify-content-center position-relative z-1" style="min-height: 300px;">
-                        <img src="${tekResim}" class="img-fluid proje-detay-img shadow-lg" style="max-height: 55vh; max-width: 100%; object-fit: contain;" alt="${baslik}">
+                        <img src="${tekResim}" loading="lazy" class="img-fluid proje-detay-img shadow-lg" style="max-height: 55vh; max-width: 100%; object-fit: contain;" alt="${baslik}">
                     </div>
                 </div>
             `;

@@ -1128,6 +1128,16 @@ p {
   margin-bottom: 16px;
 }
 
+/* Ana sayfa hizmet kartları (link) */
+.service-link-card {
+  transition: transform 0.3s ease;
+}
+
+.service-link-card:hover,
+.service-link-card:focus-visible {
+  transform: translateY(-5px);
+}
+
 /* reCAPTCHA kutusu sabit 304px; dar pencereye sığması için biraz küçültülüyor */
 .fcp-recaptcha {
   transform: scale(0.9);

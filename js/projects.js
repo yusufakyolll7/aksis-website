@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let imgHtml = `
             <div class="px-4 pt-4 proje-img-wrapper">
                 <div class="overflow-hidden shadow-sm rounded-4">
-                    <img src="${tekResim}" class="w-100 proje-card-img" style="height: 250px; object-fit: cover;" alt="${baslik}">
+                    <img src="${tekResim}" loading="lazy" class="w-100 proje-card-img" style="height: 250px; object-fit: cover;" alt="${baslik}">
                 </div>
             </div>
         `;
@@ -64,17 +64,36 @@ document.addEventListener("DOMContentLoaded", () => {
         sonProjelerAlani.innerHTML = html;
     }
 
-    // Firebase'den Verileri Çek (Sadece Son 3 Proje)
-    db.collection("projects").orderBy("createdAt", "desc").limit(3).onSnapshot((querySnapshot) => {
-        sonProjelerData = [];
-        if (!querySnapshot.empty) {
-            querySnapshot.forEach((doc) => {
-                sonProjelerData.push({ id: doc.id, data: doc.data() });
-            });
-        }
-        renderProjects();
-    }, (error) => {
+    const hataGoster = (error) => {
         console.error("Projeler yüklenirken hata oluştu:", error);
         sonProjelerAlani.innerHTML = `<div class="col-12 text-center text-danger py-4"><p>${translations[currentLang]["projects_error"]}</p></div>`;
-    });
+    };
+
+    const yeniOnce = (a, b) => {
+        const t = (p) => (p.data.createdAt && typeof p.data.createdAt.toMillis === 'function') ? p.data.createdAt.toMillis() : 0;
+        return t(b) - t(a);
+    };
+
+    // Admin panelinden "Ana sayfada göster" (yıldız) seçilen projeler; en fazla 3 tane
+    // Hiç seçili proje yoksa son eklenen 3 proje gösterilir
+    let sonEklenenlerDinleyici = null;
+
+    db.collection("projects").where("one_cikan", "==", true).onSnapshot((querySnapshot) => {
+        if (querySnapshot.empty) {
+            if (!sonEklenenlerDinleyici) {
+                sonEklenenlerDinleyici = db.collection("projects").orderBy("createdAt", "desc").limit(3).onSnapshot((snap) => {
+                    sonProjelerData = snap.docs.map(doc => ({ id: doc.id, data: doc.data() }));
+                    renderProjects();
+                }, hataGoster);
+            }
+            return;
+        }
+
+        if (sonEklenenlerDinleyici) {
+            sonEklenenlerDinleyici();
+            sonEklenenlerDinleyici = null;
+        }
+        sonProjelerData = querySnapshot.docs.map(doc => ({ id: doc.id, data: doc.data() })).sort(yeniOnce).slice(0, 3);
+        renderProjects();
+    }, hataGoster);
 });

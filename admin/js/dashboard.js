@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     auth.onAuthStateChanged((user) => {
         if (!user) {
             window.location.href = 'index.html'; // Giriş yapmamışsa logine at
+        } else {
+            document.body.classList.remove('auth-pending'); // Oturum doğrulandı, paneli göster
         }
     });
 
@@ -20,6 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateProjectBtn = document.getElementById('update-project-btn');
 
     let allProjectsData = {}; // Projelerin datasını hafızada tutmak için
+
+    // Ana sayfada en fazla 3 proje gösterilir; yeni bir proje seçilmeden önce sınır kontrol edilir
+    const ANA_SAYFA_LIMIT = 3;
+    const oneCikanSiniriAsiliyor = (haricId) =>
+        Object.entries(allProjectsData).filter(([id, p]) => p.one_cikan && id !== haricId).length >= ANA_SAYFA_LIMIT;
+    const SINIR_UYARISI = "Ana sayfada en fazla 3 proje gösterilebilir. Önce başka bir projenin yıldızını kaldırın.";
 
 
     // Projeleri Getir
@@ -41,6 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? '<span class="badge bg-success">Tamamlandı</span>'
                 : '<span class="badge bg-warning text-dark">Devam Ediyor</span>';
 
+            // Ana sayfada gösterilsin mi (yıldız)
+            const yildizButton = `<button class="btn btn-sm ${proje.one_cikan ? 'btn-warning' : 'btn-outline-warning'} me-2" onclick="oneCikanDegistir('${id}')" title="${proje.one_cikan ? 'Ana sayfadan kaldır' : 'Ana sayfada göster'}"><i class="bi bi-star${proje.one_cikan ? '-fill' : ''}"></i></button>`;
+
             const durumButton = proje.durum === 'devam_ediyor'
                 ? `<button class="btn btn-sm btn-success me-2" onclick="tamamlandiIsaretle('${id}')" title="Tamamlandı Olarak İşaretle"><i class="bi bi-check-circle"></i></button>`
                 : '';
@@ -54,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td class="fw-bold">${escapeHtml(proje.baslik_tr || proje.baslik || '')}</td>
                 <td>${durumBadge}</td>
                 <td>
+                    ${yildizButton}
                     ${durumButton}
                     <button class="btn btn-sm btn-primary me-2" onclick="projeDuzenle('${id}')" title="Düzenle"><i class="bi bi-pencil"></i></button>
                     <button class="btn btn-sm btn-danger" onclick="projeSil('${id}')" title="Sil"><i class="bi bi-trash"></i></button>
@@ -66,6 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Yeni Proje Ekle
     addProjectForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        const one_cikan = document.getElementById('proje-one-cikan').checked;
+        if (one_cikan && oneCikanSiniriAsiliyor(null)) {
+            alert(SINIR_UYARISI);
+            return;
+        }
 
         saveProjectBtn.disabled = true;
         const baslik_tr = document.getElementById('proje-baslik-tr').value;
@@ -87,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 aciklama: aciklama_tr, // fallback for older structure
                 durum: durum,
                 resimUrls: resimUrls, // Artık dizi olarak kaydediyoruz
+                one_cikan: one_cikan,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
             });
 
@@ -109,8 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
         editProjectForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            updateProjectBtn.disabled = true;
             const id = document.getElementById('edit-proje-id').value;
+            const one_cikan = document.getElementById('edit-proje-one-cikan').checked;
+            if (one_cikan && oneCikanSiniriAsiliyor(id)) {
+                alert(SINIR_UYARISI);
+                return;
+            }
+
+            updateProjectBtn.disabled = true;
             const baslik_tr = document.getElementById('edit-proje-baslik-tr').value;
             const baslik_en = document.getElementById('edit-proje-baslik-en').value;
             const aciklama_tr = document.getElementById('edit-proje-aciklama-tr').value;
@@ -129,7 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     baslik: baslik_tr,
                     aciklama: aciklama_tr,
                     durum: durum,
-                    resimUrls: resimUrls
+                    resimUrls: resimUrls,
+                    one_cikan: one_cikan
                 });
 
                 editProjectForm.reset();
@@ -153,6 +179,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    window.oneCikanDegistir = async (id) => {
+        const proje = allProjectsData[id];
+        if (!proje) return;
+        const yeniDeger = !proje.one_cikan;
+        if (yeniDeger && oneCikanSiniriAsiliyor(id)) {
+            alert(SINIR_UYARISI);
+            return;
+        }
+        try {
+            await db.collection("projects").doc(id).update({ one_cikan: yeniDeger });
+        } catch (error) {
+            console.error("Ana sayfa seçimi güncellenemedi: ", error);
+            alert("İşlem başarısız oldu. Firestore kurallarının güncel olduğundan emin olun.");
+        }
+    };
+
     window.projeDuzenle = (id) => {
         const proje = allProjectsData[id];
         if (!proje) return;
@@ -163,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('edit-proje-aciklama-tr').value = proje.aciklama_tr || proje.aciklama || '';
         document.getElementById('edit-proje-aciklama-en').value = proje.aciklama_en || '';
         document.getElementById('edit-proje-durum').value = proje.durum;
+        document.getElementById('edit-proje-one-cikan').checked = proje.one_cikan === true;
 
         // Varsa resimUrls arrayini satır satır birleştirip textarea'ya yaz, yoksa eski resimUrl'i yaz
         if (proje.resimUrls && proje.resimUrls.length > 0) {
