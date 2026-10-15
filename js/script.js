@@ -6,19 +6,18 @@ window.addEventListener("scroll", function() {
 const counters = document.querySelectorAll('.counter');
 
 counters.forEach(counter => {
-  counter.innerText = '0';
+  const target = +counter.getAttribute('data-target');
+  const increment = target / 100;
+  // Binlik ayırıcı dile göre: TR "2.000.000", EN "2,000,000"
+  const locale = localStorage.getItem('lang') === 'en' ? 'en-US' : 'tr-TR';
+  let count = 0;
 
   const updateCounter = () => {
-    const target = +counter.getAttribute('data-target');
-    const count = +counter.innerText;
-
-    const increment = target / 100;
+    count = Math.min(target, Math.ceil(count + increment));
+    counter.innerText = count.toLocaleString(locale);
 
     if (count < target) {
-      counter.innerText = Math.ceil(count + increment);
       setTimeout(updateCounter, 20);
-    } else {
-      counter.innerText = target;
     }
   };
 

@@ -151,7 +151,7 @@ h6 {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('../images/aksis_upscaled.png') center 75%/cover no-repeat;
+  background: url('../images/aksis_upscaled.jpg') center 75%/cover no-repeat;
   z-index: 0;
   animation: projectsZoomOut 10s ease-out forwards;
 }
@@ -596,7 +596,7 @@ p {
 /* STATS */
 .stat-box {
   background: #FFFFFF;
-  padding: 40px 30px;
+  padding: 40px 20px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   transition: all 0.3s ease;
@@ -604,10 +604,23 @@ p {
 }
 
 .stat-box h2 {
-  font-size: 42px;
+  /* Ekran daraldıkça küçülsün, "2.000.000" gibi uzun sayılar kutudan taşmasın */
+  font-size: clamp(28px, 3vw, 42px);
   font-weight: 800;
   color: var(--accent);
   margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+/* Tablet ve mobilde kutular 2x2 diziliyor */
+@media (max-width: 991.98px) {
+  .stat-box {
+    padding: 30px 12px;
+  }
+
+  .stat-box h2 {
+    font-size: clamp(22px, 6vw, 40px);
+  }
 }
 
 .stat-box p {
