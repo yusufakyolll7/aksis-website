@@ -1128,6 +1128,20 @@ p {
   margin-bottom: 16px;
 }
 
+/* Proje detay başlığı: mobilde tamamı görünsün (alt satıra geçsin), büyük ekranda tek satır */
+.proje-detay-baslik {
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 992px) {
+  .proje-detay-baslik {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 /* Ana sayfa hizmet kartları (link) */
 .service-link-card {
   transition: transform 0.3s ease;

@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <i class="bi bi-arrow-left fs-3"></i>
                         </button>
                         <div class="text-center flex-grow-1 px-3" style="min-width: 0;">
-                            <h1 class="fw-bold mb-0 text-truncate" style="font-size: clamp(1.2rem, 2.5vw, 1.8rem); letter-spacing: -0.02em; color: var(--primary); width: 100%;" title="${baslik}">${baslik}</h1>
+                            <h1 class="fw-bold mb-0 proje-detay-baslik" style="font-size: clamp(1.2rem, 2.5vw, 1.8rem); letter-spacing: -0.02em; color: var(--primary); width: 100%;" title="${baslik}">${baslik}</h1>
                         </div>
                         <div style="width: 40px;"></div> <!-- Dengeleyici -->
                     </div>
