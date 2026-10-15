@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Projeyi çek (onSnapshot ile anında yükleme)
     db.collection("projects").doc(projeId).onSnapshot((doc) => {
+        // Önbellekte yoksa sunucunun cevabını bekle; "proje bulunamadı" sadece sunucu öyle derse gösterilsin
+        if (!doc.exists && doc.metadata.fromCache) return;
+
         if (!doc.exists) {
             detayAlani.innerHTML = `
                 <div class="alert alert-warning text-center shadow-sm rounded-4 border-0 p-5">

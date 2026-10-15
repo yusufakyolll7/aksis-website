@@ -122,6 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Firebase'den Verileri Çek (Sıralama ve filtrelemeyi JS ile yapıyoruz, onSnapshot ile anında yüklenir)
     db.collection("projects").onSnapshot((querySnapshot) => {
+        // Sunucuya henüz ulaşılamadıysa boş önbellek "kayıt yok" gibi görünmesin; yükleniyor göstergesi kalsın
+        if (querySnapshot.empty && querySnapshot.metadata.fromCache) return;
+
         projelerData = [];
 
         querySnapshot.forEach((doc) => {

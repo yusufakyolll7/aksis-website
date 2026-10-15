@@ -79,9 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let sonEklenenlerDinleyici = null;
 
     db.collection("projects").where("one_cikan", "==", true).onSnapshot((querySnapshot) => {
+        // Sunucuya henüz ulaşılamadıysa boş önbelleğe göre karar verme; yükleniyor göstergesi kalsın
+        if (querySnapshot.empty && querySnapshot.metadata.fromCache) return;
+
         if (querySnapshot.empty) {
             if (!sonEklenenlerDinleyici) {
                 sonEklenenlerDinleyici = db.collection("projects").orderBy("createdAt", "desc").limit(3).onSnapshot((snap) => {
+                    if (snap.empty && snap.metadata.fromCache) return;
                     sonProjelerData = snap.docs.map(doc => ({ id: doc.id, data: doc.data() }));
                     renderProjects();
                 }, hataGoster);
