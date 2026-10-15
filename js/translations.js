@@ -37,7 +37,7 @@ const translations = {
     // Home - About
     "home_about_title": "Hakkımızda",
     "home_about_subtitle": "20 yılı aşkın sektör deneyimi",
-    "home_about_desc": "Aksis Mühendislik, üst yapı ve altyapı elektrik sektöründe proje, müşavirlik ve uygulama alanlarında profesyonel çözümler sunmaktadır. 2 Milyon m²'yi aşan proje deneyimi ve 25 MVA üzeri trafo kurulumu ile sektörün güvenilir markalarından biri olmayı hedeflemektedir.",
+    "home_about_desc": "Aksis Mühendislik, üst yapı ve altyapı elektrik sektöründe proje, müşavirlik ve uygulama alanlarında profesyonel çözümler sunmaktadır. 1,2 Milyon m²'yi aşan proje deneyimi ve 25 MVA üzeri trafo kurulumu ile sektörün güvenilir markalarından biri olmayı hedeflemektedir.",
     "home_about_btn": "Kurumsal Bilgilerimiz",
 
     // Home - Projects
@@ -76,7 +76,7 @@ const translations = {
     "about_profile_p1": "AKSİS MÜHENDİSLİK, üst yapı ve altyapı elektrik sektöründe; proje, müşavirlik ve uygulama alanlarında edinilmiş tecrübeleri farklı bir anlayış ile müşterileri ve iş ortaklarıyla paylaşabilmek amacıyla hizmet vermektedir. Kendi iş alanımızda yatırımların planlanmasından kesin kabule kadar olan tüm süreçte, müşterimizin ihtiyaç duyabileceği her konuda projeye özel ve anahtar teslimi hizmet vermek temel amacımızdır.",
     "about_profile_p2": "Uygulama tecrübesi olarak pek çok projeyi başarıyla bitirmiş şirketimizin bünyesinde, tasarım ve uygulama alanlarında deneyimli elektrik mühendisleri, teknisyenler ve teknik ressamlar bulunmaktadır.",
     "about_profile_p3": "Saha kadrolarımız ise, şirketin kadrolu personelleri ile proje bazlı çalıştığımız uzman ekiplerden oluşmaktadır. Şirketimizin kurucusu BAKİ AKYOL meslek hayatına başladığı günden bu yana oldukça büyük ve prestijli projelerin tasarım, uygulama ve müşavirlik hizmetlerini gerçekleştirmiştir.",
-    "about_profile_p4": "Uygulaması yapılan bina veya tesislerin toplam yapı alanı 2 Milyon m²’yi, müşavirliği ve şantiye sorumluluğu yürütülen toplam yapı alanı 3 Milyon m²’yi aşmıştır. Bunun yanında taahhüt olarak kurulumu gerçekleştirilen O.G. trafo tesisi 12 MVA’nın, şantiye sorumlusu olarak kurulumu gerçekleştirilen O.G. trafo tesisi ise 25 MVA’nın üzerindedir.",
+    "about_profile_p4": "Uygulaması yapılan bina veya tesislerin toplam yapı alanı 1,2 Milyon m²’yi, müşavirliği ve şantiye sorumluluğu yürütülen toplam yapı alanı 3 Milyon m²’yi aşmıştır. Bunun yanında taahhüt olarak kurulumu gerçekleştirilen O.G. trafo tesisi 12 MVA’nın, şantiye sorumlusu olarak kurulumu gerçekleştirilen O.G. trafo tesisi ise 25 MVA’nın üzerindedir.",
     "about_profile_p5": "AKSİS MÜHENDİSLİK olarak, teknolojinin yakından takibini, enerji verimliliğini destekleyen çevre dostu tasarımları, ulusal ve uluslararası normlara hakim olmayı, kaliteli mühendislik ve işçilik hizmetini fark yaratabileceğimiz alanlar olarak görmekteyiz.",
     "about_profile_p6": "Rekabetin çok yoğun olduğu sektörde, düşük fiyat ile rekabet etmek yerine güven ve kalıcı farklar yaratarak var olmayı ilke edinen şirketimiz, tamamladığı ve halen devam ettiği projeler ile bu yaklaşımını kanıtlamaktadır.",
     "about_profile_p7": "Bu bağlamda kaliteli ve hızlı hizmet sunarak, hem bulunduğumuz projelere katma değer yaratmak hem de müşteri memnuniyetini sağlamak amacındayız.",
@@ -259,7 +259,7 @@ const translations = {
     // Home - About
     "home_about_title": "About Us",
     "home_about_subtitle": "Over 20 years of industry experience",
-    "home_about_desc": "Aksis Mühendislik provides professional solutions in project design, consultancy, and implementation for the superstructure and infrastructure electrical sectors. With over 2 Million m² of project experience and over 25 MVA transformer installations, it aims to be one of the reliable brands in the industry.",
+    "home_about_desc": "Aksis Mühendislik provides professional solutions in project design, consultancy, and implementation for the superstructure and infrastructure electrical sectors. With over 1.2 Million m² of project experience and over 25 MVA transformer installations, it aims to be one of the reliable brands in the industry.",
     "home_about_btn": "Corporate Information",
 
     // Home - Projects
@@ -298,7 +298,7 @@ const translations = {
     "about_profile_p1": "AKSİS MÜHENDİSLİK provides services in the superstructure and infrastructure electrical sectors to share its experience in project design, consultancy, and implementation with its customers and business partners through a different approach. Our main goal is to provide project-specific and turnkey services on any subject our clients may need throughout the entire process from investment planning to final acceptance.",
     "about_profile_p2": "Having successfully completed many projects in terms of implementation experience, our company employs experienced electrical engineers, technicians, and draftsmen in design and implementation fields.",
     "about_profile_p3": "Our field staff consists of our company's permanent personnel and expert teams we work with on a project basis. Our founder, BAKİ AKYOL, has provided design, implementation, and consultancy services for highly large and prestigious projects since the beginning of his professional career.",
-    "about_profile_p4": "The total construction area of the buildings or facilities implemented has exceeded 2 Million m², and the total construction area for which consultancy and site responsibility were undertaken has exceeded 3 Million m². In addition, the MV transformer facilities installed as a contractor exceed 12 MVA, and the MV transformer facilities installed as site manager exceed 25 MVA.",
+    "about_profile_p4": "The total construction area of the buildings or facilities implemented has exceeded 1.2 Million m², and the total construction area for which consultancy and site responsibility were undertaken has exceeded 3 Million m². In addition, the MV transformer facilities installed as a contractor exceed 12 MVA, and the MV transformer facilities installed as site manager exceed 25 MVA.",
     "about_profile_p5": "As AKSİS MÜHENDİSLİK, we see closely following technology, supporting energy efficiency with eco-friendly designs, mastering national and international norms, and providing high-quality engineering and workmanship services as the areas where we can make a difference.",
     "about_profile_p6": "Adopting the principle of existing by creating trust and permanent differences rather than competing with low prices in a highly competitive sector, our company proves this approach with the projects it has completed and is currently carrying out.",
     "about_profile_p7": "In this context, we aim to create added value for the projects we are involved in and ensure customer satisfaction by providing high-quality and fast service.",
